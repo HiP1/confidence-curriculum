@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+title: "The Confidence Curriculum: Compliance, Judgment, and Accountability in AI Systems"
+message: "If you use or reference this work, please cite it using the metadata below."
+type: report
+authors:
+  - family-names: Phan
+    given-names: Ivan
+    alias: HiP
+    orcid: "https://orcid.org/0009-0003-1095-5855"
+date-released: "2026-03-24"
+url: "https://hip1.github.io/confidence-curriculum/"
+repository-code: "https://github.com/HiP1/confidence-curriculum"
+license: CC-BY-4.0
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.19198621"
+    description: "Series Introduction"
+  - type: doi
+    value: "10.5281/zenodo.19199055"
+    description: "Paper 1: The Confidence Vulnerability"
+  - type: doi
+    value: "10.5281/zenodo.19199328"
+    description: "Paper 2: The Skill Ceiling"
+  - type: doi
+    value: "10.5281/zenodo.19199657"
+    description: "Paper 3: The Knowledge Horizon"
+  - type: doi
+    value: "10.5281/zenodo.19199682"
+    description: "Paper 4: The Pedagogical Inversion"
+  - type: doi
+    value: "10.5281/zenodo.19199987"
+    description: "Paper 5: The Confidence Collision"
+keywords:
+  - AI safety
+  - prompt injection
+  - epistemic calibration
+  - AI accountability
+  - human-AI interaction
+  - cognitive offloading
+  - AI alignment
+  - agentic AI
+abstract: >-
+  A five-paper research series examining how AI training incentives
+  rewarding confident compliance create exploitable vulnerabilities
+  across model behaviour, ecosystem security, institutional
+  accountability, and human cognition.
