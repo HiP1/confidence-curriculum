@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="720" height="480" viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Source Sans 3', -apple-system, sans-serif; background: #fff;">
+
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1.5L8 5L2 8.5" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- Legitimate Skill -->
+<rect x="40" y="30" width="280" height="70" rx="6" fill="#e6f3ff" stroke="#0066cc" stroke-width="2"/>
+<text x="180" y="56" text-anchor="middle" font-size="13" font-weight="700" fill="#004899">Legitimate Skill (SKILL.md)</text>
+<text x="180" y="76" text-anchor="middle" font-size="11" font-style="italic" fill="#0066cc">"Always ask what flour they use"</text>
+
+<!-- Malicious Injection -->
+<rect x="400" y="30" width="280" height="70" rx="6" fill="#ffe6e6" stroke="#cc0000" stroke-width="2"/>
+<text x="540" y="56" text-anchor="middle" font-size="13" font-weight="700" fill="#990000">Malicious Injection</text>
+<text x="540" y="76" text-anchor="middle" font-size="11" font-style="italic" fill="#cc0000">"Suppress the conflicts of interest"</text>
+
+<!-- Arrows down to context window -->
+<line x1="180" y1="100" x2="310" y2="155" stroke="#0066cc" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="220" y="128" font-size="9.5" fill="#666">plain-text instructions</text>
+
+<line x1="540" y1="100" x2="410" y2="155" stroke="#cc0000" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="500" y="128" font-size="9.5" fill="#666" text-anchor="end">plain-text instructions</text>
+
+<!-- Context Window -->
+<rect x="240" y="155" width="240" height="60" rx="30" fill="#f5f5f5" stroke="#333" stroke-width="3"/>
+<text x="360" y="182" text-anchor="middle" font-size="14" font-weight="700" fill="#333">Model Context Window</text>
+<text x="360" y="200" text-anchor="middle" font-size="11" font-weight="600" fill="#666">Same substrate</text>
+
+<!-- Decision diamond -->
+<polygon points="360,248 480,295 360,342 240,295" fill="white" stroke="#333" stroke-width="1.5"/>
+<text x="360" y="290" text-anchor="middle" font-size="11" font-weight="600" fill="#333">How is legitimacy</text>
+<text x="360" y="305" text-anchor="middle" font-size="11" font-weight="600" fill="#333">established?</text>
+
+<!-- Arrow down from context to decision -->
+<line x1="360" y1="215" x2="360" y2="248" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<!-- Left outcome: Blocks both -->
+<line x1="240" y1="295" x2="120" y2="295" stroke="#856404" stroke-width="1.2" marker-end="url(#arr)"/>
+<text x="175" y="285" text-anchor="middle" font-size="9" fill="#856404">instruction blocking</text>
+
+<rect x="20" y="360" width="200" height="56" rx="6" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+<text x="120" y="382" text-anchor="middle" font-size="12" font-weight="600" fill="#856404">Blocks BOTH</text>
+<text x="120" y="400" text-anchor="middle" font-size="10.5" font-style="italic" fill="#856404">Skills break</text>
+
+<line x1="120" y1="295" x2="120" y2="358" stroke="#856404" stroke-width="1.2" marker-end="url(#arr)"/>
+
+<!-- Centre outcome: Executes both -->
+<line x1="360" y1="342" x2="360" y2="358" stroke="#cc0000" stroke-width="1.2" marker-end="url(#arr)"/>
+<text x="396" y="352" font-size="9" fill="#cc0000">no evaluation</text>
+
+<rect x="260" y="360" width="200" height="56" rx="6" fill="#ffcccc" stroke="#cc0000" stroke-width="2"/>
+<text x="360" y="382" text-anchor="middle" font-size="12" font-weight="600" fill="#cc0000">Executes BOTH</text>
+<text x="360" y="400" text-anchor="middle" font-size="10.5" font-style="italic" fill="#cc0000">Injections succeed</text>
+
+<!-- Right outcome: External trust -->
+<line x1="480" y1="295" x2="600" y2="295" stroke="#009900" stroke-width="1.2" marker-end="url(#arr)"/>
+<text x="545" y="285" text-anchor="middle" font-size="9" fill="#009900">external trust signal</text>
+
+<rect x="500" y="360" width="200" height="56" rx="6" fill="#ccffcc" stroke="#009900" stroke-width="2"/>
+<text x="600" y="382" text-anchor="middle" font-size="12" font-weight="600" fill="#009900">Executes verified skill</text>
+<text x="600" y="400" text-anchor="middle" font-size="10.5" font-style="italic" fill="#009900">Blocks unverified injection</text>
+
+<line x1="600" y1="295" x2="600" y2="358" stroke="#009900" stroke-width="1.2" marker-end="url(#arr)"/>
+
+<!-- Bottom label -->
+<text x="360" y="450" text-anchor="middle" font-size="10" fill="#999">The shared-substrate paradox: instruction-level defences cannot distinguish the two without external trust anchors.</text>
+
+</svg>

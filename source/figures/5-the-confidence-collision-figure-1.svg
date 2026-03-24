@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="780" height="560" viewBox="0 0 780 560" xmlns="http://www.w3.org/2000/svg" style="font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff;">
+
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1.5L8 5L2 8.5" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- ======================== -->
+<!-- ROW 0: Standard pipeline -->
+<!-- ======================== -->
+<rect x="40" y="24" width="130" height="40" rx="6" fill="#F8F7F4" stroke="#B4B2A9" stroke-width="1.2"/>
+<text x="105" y="48" text-anchor="middle" font-size="12" font-weight="500" fill="#555">Pretraining</text>
+
+<line x1="172" y1="44" x2="198" y2="44" stroke="#999" stroke-width="1.2" marker-end="url(#arr)"/>
+
+<rect x="200" y="24" width="130" height="40" rx="6" fill="#F8F7F4" stroke="#B4B2A9" stroke-width="1.2"/>
+<text x="265" y="48" text-anchor="middle" font-size="12" font-weight="500" fill="#555">SFT</text>
+
+<line x1="332" y1="44" x2="358" y2="44" stroke="#999" stroke-width="1.2" marker-end="url(#arr)"/>
+
+<rect x="360" y="24" width="130" height="40" rx="6" fill="#F8F7F4" stroke="#B4B2A9" stroke-width="1.2"/>
+<text x="425" y="48" text-anchor="middle" font-size="12" font-weight="500" fill="#555">RLHF / RLVR</text>
+
+<line x1="492" y1="44" x2="518" y2="44" stroke="#B53030" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<!-- ======================== -->
+<!-- ROW 0: Proposed new stage -->
+<!-- ======================== -->
+<rect x="520" y="16" width="220" height="56" rx="8" fill="#FCE8E8" stroke="#B53030" stroke-width="1.5"/>
+<text x="630" y="38" text-anchor="middle" font-size="13" font-weight="600" fill="#7A1A1A">Epistemic Training Phase</text>
+<text x="630" y="56" text-anchor="middle" font-size="11" fill="#B53030">post-alignment (proposed)</text>
+
+<!-- Arrow down into the phase detail -->
+<line x1="630" y1="72" x2="630" y2="100" stroke="#B53030" stroke-width="1.3" marker-end="url(#arr)"/>
+
+<!-- ====================================== -->
+<!-- MAIN BOX: Phase internals              -->
+<!-- ====================================== -->
+<rect x="40" y="106" width="700" height="310" rx="12" fill="#FFF8F8" stroke="#B53030" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="60" y="130" font-size="11" font-weight="600" fill="#B53030" letter-spacing="0.5">TRAINING LOOP (DETAIL)</text>
+
+<!-- Left: Prompt environment -->
+<rect x="70" y="150" width="200" height="100" rx="8" fill="#FAEEDA" stroke="#BA7517" stroke-width="1.2"/>
+<text x="170" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="#633806">Prompt Environment</text>
+<text x="170" y="194" text-anchor="middle" font-size="10.5" fill="#BA7517">Adversarially ranked content</text>
+<text x="170" y="210" text-anchor="middle" font-size="10.5" fill="#BA7517">Genuinely contested claims</text>
+<text x="170" y="226" text-anchor="middle" font-size="10.5" fill="#BA7517">Manipulative framing</text>
+
+<!-- Centre: Model -->
+<rect x="310" y="162" width="160" height="76" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
+<text x="390" y="193" text-anchor="middle" font-size="13" font-weight="600" fill="#3C3489">Model</text>
+<text x="390" y="212" text-anchor="middle" font-size="10.5" fill="#534AB7">detects conflicts,</text>
+<text x="390" y="226" text-anchor="middle" font-size="10.5" fill="#534AB7">calibrates uncertainty</text>
+
+<!-- Arrow: prompt env → model -->
+<line x1="272" y1="200" x2="308" y2="200" stroke="#BA7517" stroke-width="1.2" marker-end="url(#arr)"/>
+<text x="290" y="192" text-anchor="middle" font-size="9" fill="#BA7517">exposed to</text>
+
+<!-- Right: Verification substrate -->
+<rect x="510" y="150" width="200" height="100" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/>
+<text x="610" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="#085041">Verification Substrate</text>
+<text x="610" y="194" text-anchor="middle" font-size="10.5" fill="#0F6E56">Knowledge sanctuaries</text>
+<text x="610" y="210" text-anchor="middle" font-size="10.5" fill="#0F6E56">Factual databases</text>
+<text x="610" y="226" text-anchor="middle" font-size="10.5" fill="#0F6E56">Procedurally generated envs</text>
+
+<!-- Arrow: model → verification -->
+<line x1="472" y1="200" x2="508" y2="200" stroke="#0F6E56" stroke-width="1.2" marker-end="url(#arr)"/>
+<text x="490" y="188" text-anchor="middle" font-size="9" fill="#0F6E56">graded against</text>
+
+<!-- Stochastic annotation -->
+<rect x="460" y="260" width="170" height="30" rx="5" fill="#fff" stroke="#0F6E56" stroke-width="0.8"/>
+<text x="545" y="279" text-anchor="middle" font-size="10" fill="#0F6E56">Stochastic (low-rate, variable)</text>
+<line x1="545" y1="252" x2="545" y2="260" stroke="#0F6E56" stroke-width="0.8"/>
+
+<!-- Reward signal box -->
+<rect x="150" y="278" width="270" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.2"/>
+<text x="285" y="300" text-anchor="middle" font-size="12" font-weight="600" fill="#0C447C">Reward Signal</text>
+<text x="285" y="316" text-anchor="middle" font-size="10.5" fill="#185FA5">Grades conflict detection + calibrated uncertainty</text>
+<text x="285" y="330" text-anchor="middle" font-size="10.5" fill="#185FA5">Not truth adjudication</text>
+
+<!-- Arrow: reward → model (upward) -->
+<line x1="285" y1="276" x2="370" y2="240" stroke="#185FA5" stroke-width="1.2" marker-end="url(#arr)"/>
+<text x="310" y="258" text-anchor="middle" font-size="9" fill="#185FA5">shapes</text>
+
+<!-- Abstention as rewarded output -->
+<rect x="150" y="348" width="270" height="30" rx="5" fill="#fff" stroke="#185FA5" stroke-width="0.8"/>
+<text x="285" y="367" text-anchor="middle" font-size="10" fill="#185FA5">Correct abstention explicitly rewarded</text>
+
+<!-- Verification → reward arrow (routed right of stochastic box) -->
+<path d="M704 250 L704 306 L422 306" fill="none" stroke="#0F6E56" stroke-width="1" marker-end="url(#arr)"/>
+<text x="718" y="282" font-size="9" fill="#0F6E56" text-anchor="start">external</text>
+<text x="718" y="294" font-size="9" fill="#0F6E56" text-anchor="start">signal</text>
+
+<!-- ====================================== -->
+<!-- ROW 3: Design risk                     -->
+<!-- ====================================== -->
+<rect x="140" y="436" width="500" height="52" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="1.5"/>
+<text x="390" y="458" text-anchor="middle" font-size="13" font-weight="600" fill="#712B13">Verification Proxy Trap</text>
+<text x="390" y="476" text-anchor="middle" font-size="11" fill="#993C1D">Central design risk: model learns to perform verification rather than do it</text>
+
+<!-- Dashed arrow from training loop to risk -->
+<line x1="390" y1="416" x2="390" y2="434" stroke="#993C1D" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+
+<!-- ====================================== -->
+<!-- ROW 4: Diagnostic                      -->
+<!-- ====================================== -->
+<rect x="170" y="510" width="440" height="36" rx="6" fill="#F8F7F4" stroke="#B4B2A9" stroke-width="1"/>
+<text x="390" y="533" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">Reverse Collision Test — diagnostic for genuine vs performed calibration</text>
+
+<!-- Arrow from risk to diagnostic -->
+<line x1="390" y1="488" x2="390" y2="508" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+<text x="420" y="502" font-size="9" fill="#999">tested by</text>
+
+</svg>

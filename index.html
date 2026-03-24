@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Confidence Curriculum — HiP (Ivan Phan), 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+
+:root {
+  --sans: 'Inter', -apple-system, sans-serif;
+  --serif: 'Lora', Georgia, serif;
+  --mono: 'JetBrains Mono', 'Menlo', monospace;
+  --text: #1b1b1a;
+  --text-secondary: #52514d;
+  --text-muted: #8a8884;
+  --bg: #fafaf8;
+  --bg-surface: #f2f1ee;
+  --bg-elevated: #eae9e5;
+  --accent: #2c5282;
+  --accent-light: #ebf0f7;
+  --border: #d8d7d3;
+  --border-light: #e8e7e3;
+  --max-width: 780px;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.paper-card-link, .paper-card-link:hover { text-decoration: none; color: inherit; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--serif); color: var(--text); background: var(--bg); line-height: 1.78; }
+
+/* Header — generous, centred, confident */
+header.series-header {
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+  max-width: 860px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+header h1 {
+  font-family: var(--sans);
+  font-size: 2.8rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+}
+.subtitle {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+  font-style: italic;
+}
+.tagline {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 1.5rem;
+}
+
+/* Main container */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 2rem 5rem; }
+
+/* Section headings — sans-serif, clean */
+h2 {
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 3rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.01em;
+}
+h3 {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+p { margin-bottom: 1rem; font-size: 1rem; }
+strong { font-weight: 600; }
+em { font-style: italic; }
+hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+
+/* Paper cards */
+.paper-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.15s;
+}
+.paper-card:hover { border-color: var(--accent); }
+.paper-card h3 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.15rem;
+}
+.paper-card .genre {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+}
+.paper-card p { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.65; }
+
+/* Epilogue — visually distinct */
+.epilogue-card {
+  background: white;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 1.4rem 1.6rem;
+  margin-top: 1.5rem;
+}
+.epilogue-card h3 { font-family: var(--sans); font-size: 1rem; font-weight: 600; color: var(--text-muted); margin: 0 0 0.15rem; }
+.epilogue-card .genre { font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
+.epilogue-card p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.6rem; line-height: 1.65; }
+
+/* SVG figure */
+figure { margin: 2rem -0.5rem; text-align: center; }
+figure img, figure svg { max-width: 100%; height: auto; }
+figcaption { font-family: var(--sans); font-size: 0.78rem; color: var(--text-muted); margin-top: 0.8rem; line-height: 1.5; max-width: 640px; margin-left: auto; margin-right: auto; }
+
+/* Confidence table */
+table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.82rem; font-family: var(--sans); }
+th {
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--accent);
+  background: var(--accent-light);
+}
+td { padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--border-light); vertical-align: top; color: var(--text-secondary); line-height: 1.5; }
+td:first-child { color: var(--text); font-weight: 500; }
+td:nth-child(2) { font-family: var(--mono); font-size: 0.75rem; text-align: center; color: var(--accent); font-weight: 500; }
+.table-note { font-family: var(--sans); font-size: 0.8rem; color: var(--text-muted); margin-top: 0.8rem; line-height: 1.55; }
+
+/* Research programme */
+.research-tier { margin-bottom: 1rem; }
+.research-tier strong { font-family: var(--sans); font-size: 0.88rem; }
+.research-tier p { font-size: 0.92rem; }
+
+/* Closing */
+.closing { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: var(--text-muted); text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+
+/* Print */
+@media print {
+  :root { --bg: white; --bg-surface: #f5f4f0; --accent: #2c5282; }
+  html { font-size: 10pt; }
+  header.series-header { padding: 2rem 1rem 1.5rem; }
+  header h1 { font-size: 1.8rem; }
+  .container { padding: 0 1rem 2rem; }
+  .paper-card, .epilogue-card { page-break-inside: avoid; border: 1px solid #ccc; }
+  table { page-break-inside: avoid; font-size: 7.5pt; }
+  th { background: #f0f0f0; }
+  figure { page-break-inside: avoid; }
+}
+
+/* PDF: disable link styling */
+@media print {
+  a { color: inherit !important; text-decoration: none !important; border-bottom: none !important; }
+  a[href]:after { content: none !important; }
+}
+
+
+
+/* Enhanced readability */
+p { margin-bottom: 1.05rem; }
+h2 { margin-top: 3.5rem; margin-bottom: 1rem; }
+h3 { margin-top: 2.5rem; margin-bottom: 0.7rem; }
+.paper-container { max-width: var(--max-width); padding: 0 2rem 6rem; }
+
+/* Front matter breathing */
+.front-matter { padding-bottom: 2.5rem; margin-bottom: 3rem; }
+.front-matter p { margin-bottom: 1rem; }
+
+/* Section spacing */
+section.abstract, section.thesis { margin: 2.5rem 0 3rem; padding: 2rem 2.2rem; }
+section.confidence-statement { margin-top: 3rem; }
+section.references { margin-top: 3rem; }
+section.coda { margin-top: 3rem; }
+
+/* Better blockquotes (figure captions from MD) */
+blockquote { margin: 1.2rem 0; padding: 0.8rem 1.2rem; }
+
+/* Smoother reading on long text */
+.paper-body { line-height: 1.78; }
+
+/* Tables: more air */
+th { padding: 0.6rem 0.8rem; }
+td { padding: 0.55rem 0.8rem; }
+tbody tr { transition: background 0.15s; }
+tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03))); }
+
+/* Scroll margin for anchor links */
+[id] { scroll-margin-top: 1.5rem; }
+
+/* Print: pagination and orphan control */
+@media print {
+  .toc-sidebar { display: none !important; }
+  
+  h2, h3, h4 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    /* wkhtmltopdf workaround: force heading to pull next content along */
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  h2 { margin-top: 2rem; padding-bottom: 0; margin-bottom: 0.3rem; }
+  h3 { margin-top: 1.5rem; padding-bottom: 0; margin-bottom: 0.2rem; }
+  
+  /* Wrap heading + first content together to prevent orphans.
+     wkhtmltopdf ignores break-after:avoid on block elements,
+     but respects break-inside:avoid on containers. */
+  h2 + p, h2 + ul, h2 + ol, h2 + table, h2 + blockquote,
+  h3 + p, h3 + ul, h3 + ol, h3 + table, h3 + blockquote {
+    margin-top: 0;
+  }
+  
+  p {
+    orphans: 4;
+    widows: 4;
+  }
+  
+  figure, table, blockquote, section.abstract,
+  section.confidence-statement, .paper-card, .epilogue-card,
+  .stimulus-meta, .parchment {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Heading orphan guards */
+  .heading-guard {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  
+  /* Keep heading with its first paragraph */
+  h2 + p, h3 + p, h2 + ul, h3 + ul, h2 + ol, h3 + ol,
+  h2 + table, h3 + table, h2 + blockquote, h3 + blockquote {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+  
+  /* References: allow breaks but keep each entry together */
+  section.references li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Clean backgrounds for print */
+  body { background: white !important; }
+  .paper-container, .container { padding: 0 !important; max-width: none !important; }
+  .front-matter { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
+  .front-matter hr { display: none; }
+  .meta-block { margin-bottom: 0.3rem; }
+  header.paper-header { padding-bottom: 0.5rem; }
+  section.thesis { margin: 0.5rem 0 1.5rem; padding: 0.8rem 1.2rem; }
+  
+  /* SVG figures: constrain to page */
+  figure svg { max-height: 500px; width: auto; }
+  
+  /* Links: no underlines, inherit color */
+  a { color: inherit !important; text-decoration: none !important; }
+}
+
+/* Floating TOC */
+.toc-sidebar {
+  position: fixed; top: 1rem; left: 1rem; z-index: 100;
+  font-family: var(--sans, system-ui, sans-serif); font-size: 0.75rem;
+}
+.toc-toggle {
+  background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
+  border-radius: 8px; padding: 0.5rem 0.75rem; cursor: pointer;
+  color: var(--text, #1b1b1a); font-size: 0.8rem; line-height: 1;
+  font-family: var(--sans, system-ui, sans-serif); font-weight: 500;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  transition: background 0.15s, box-shadow 0.15s;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.toc-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+.toc-toggle .toc-icon { font-size: 1rem; }
+.toc-toggle .toc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.toc-body {
+  display: none; margin-top: 0.5rem;
+  background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
+  border-radius: 10px; padding: 0.8rem 0; overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+.toc-body.open { display: block; }
+.toc-title {
+  font-weight: 600; font-size: 0.68rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-muted, #8a8884);
+  padding: 0 1rem 0.6rem; border-bottom: 1px solid var(--border, #d8d7d3);
+  margin-bottom: 0.4rem;
+}
+.toc-link {
+  display: block; padding: 0.3rem 1rem;
+  color: var(--text-secondary, #52514d); text-decoration: none;
+  line-height: 1.4; transition: color 0.1s, background 0.1s;
+  border-left: 2px solid transparent;
+}
+.toc-link:hover { color: var(--text, #1b1b1a); background: var(--bg-elevated, var(--bg, #eae9e5)); }
+.toc-link.active { color: var(--accent, #2c5282); border-left-color: var(--accent, #2c5282); font-weight: 500; }
+.toc-link.toc-h3 { padding-left: 1.6rem; font-size: 0.7rem; }
+.toc-link.toc-h4 { padding-left: 2.2rem; font-size: 0.65rem; color: var(--text-muted, #8a8884); }
+
+/* Desktop: sidebar panel */
+@media (min-width: 1200px) {
+  .toc-body { max-width: 280px; max-height: calc(100vh - 5rem); }
+}
+/* Tablet/mobile: overlay */
+@media (max-width: 1199px) {
+  .toc-body { max-width: min(320px, calc(100vw - 2rem)); max-height: calc(100vh - 5rem); }
+}
+@media print { .toc-sidebar { display: none; } }
+
+/* Paper cards */
+.paper-card {
+  background: var(--bg-surface, #f2f1ee);
+  border: 1px solid var(--border-light, #e8e7e3);
+  border-radius: 6px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.paper-card:hover { border-color: var(--accent); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.paper-card h3 {
+  font-family: var(--sans, sans-serif);
+  font-size: 1rem; font-weight: 600;
+  color: var(--text); margin: 0 0 0.15rem;
+}
+.paper-card .genre {
+  font-family: var(--mono, monospace);
+  font-size: 0.72rem; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+}
+.paper-card p { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.65; }
+.paper-card-link { text-decoration: none; color: inherit; display: block; }
+
+/* Epilogue card */
+.epilogue-card {
+  background: var(--bg-surface, #f2f1ee);
+  border: 1px dashed var(--border, #d8d7d3);
+  border-radius: 6px;
+  padding: 1.4rem 1.6rem;
+  margin-top: 1.5rem;
+  transition: border-color 0.15s;
+}
+.epilogue-card:hover { border-color: var(--accent); }
+.epilogue-card h3 { font-family: var(--sans, sans-serif); font-size: 1rem; font-weight: 600; color: var(--text-muted); margin: 0 0 0.15rem; }
+.epilogue-card .genre { font-family: var(--mono, monospace); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
+.epilogue-card p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.6rem; line-height: 1.65; }
+
+</style>
+</head>
+<body>
+
+<nav id="toc-sidebar" class="toc-sidebar" aria-label="Table of contents">
+<button id="toc-toggle" class="toc-toggle" aria-label="Toggle table of contents"><span class="toc-icon">☰</span><span class="toc-label">Contents</span></button>
+<div id="toc-body" class="toc-body">
+<div class="toc-title">Contents</div>
+<a href="#the-argument" class="toc-link ">The Argument</a><a href="#the-papers" class="toc-link ">The Papers</a><a href="#paper-1-the-confidence-vulnerability" class="toc-link toc-h3">Paper 1 — The Confidence Vulnerability</a><a href="#paper-2-the-skill-ceiling" class="toc-link toc-h3">Paper 2 — The Skill Ceiling</a><a href="#paper-3-the-knowledge-horizon" class="toc-link toc-h3">Paper 3 — The Knowledge Horizon</a><a href="#paper-4-the-pedagogical-inversion" class="toc-link toc-h3">Paper 4 — The Pedagogical Inversion</a><a href="#paper-5-the-confidence-collision" class="toc-link toc-h3">Paper 5 — The Confidence Collision</a><a href="#epilogue-the-symbiont-hypothesis" class="toc-link ">Epilogue — The Symbiont Hypothesis</a><a href="#the-symbiont-hypothesis" class="toc-link toc-h3">The Symbiont Hypothesis</a><a href="#series-architecture" class="toc-link ">Series Architecture</a><a href="#an-open-research-programme" class="toc-link ">An Open Research Programme</a><a href="#confidence-calibration" class="toc-link toc-h3">Confidence calibration</a><a href="#reading-order" class="toc-link ">Reading Order</a><a href="#methodology" class="toc-link ">Methodology</a><a href="#research-agenda" class="toc-link ">Research Agenda</a><a href="#paper-1-empirical-replication-and-extension-section-9" class="toc-link toc-h3">Paper 1 — Empirical replication and extension (Sec…</a><a href="#paper-2-security-testing-invitation-section-101" class="toc-link toc-h3">Paper 2 — Security testing invitation (Section 10.…</a><a href="#paper-3-cross-disciplinary-testing-invitation-section-59" class="toc-link toc-h3">Paper 3 — Cross-disciplinary testing invitation (S…</a><a href="#paper-4-research-agenda-section-5" class="toc-link toc-h3">Paper 4 — Research agenda (Section 5).</a><a href="#paper-5-training-pipeline-experiments-section-6" class="toc-link toc-h3">Paper 5 — Training pipeline experiments (Section 6…</a>
+</div>
+</nav>
+
+<header class="series-header">
+<h1>The Confidence Curriculum</h1>
+<p class="subtitle">Compliance, Judgment, and Accountability in AI Systems</p>
+<p class="tagline">What AI systems follow, what they can’t judge, and who answers.</p>
+<p class="meta">HiP (Ivan Phan) <a href="https://orcid.org/0009-0003-1095-5855" title="ORCID" style="text-decoration:none;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 256 256" style="vertical-align:-2px;margin-left:3px;"><circle cx="128" cy="128" r="128" fill="#A6CE39"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zm2.4-129.4c0 5.5-4.5 10.1-10.1 10.1-5.6 0-10.1-4.6-10.1-10.1 0-5.6 4.5-10.1 10.1-10.1 5.6 0 10.1 4.6 10.1 10.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7 0-21.5-13.7-39.7-43.7-39.7h-23.7v79.4z"/></svg></a> &middot; March 2026 &middot; <span style="white-space:nowrap">DOI: <a href="https://doi.org/10.5281/zenodo.19198621">10.5281/zenodo.19198621</a></span></p>
+</header>
+
+<div class="container">
+
+
+
+<div class="front-matter">
+
+<hr />
+</div>
+
+<main class="paper-body">
+<div class="heading-guard"><h2 id="the-argument">The Argument</h2>
+<p>This paper series examines how training incentives that reward confident, helpful-sounding output over calibrated uncertainty create a tension with what each domain actually requires. We use the term <strong>Confidence Curriculum</strong> to describe that incentive regime. The series traces the tension through model behaviour (Paper 1), ecosystem security (Paper 2), institutional accountability (Paper 3), human cognition (Paper 4), and the training pipeline itself (Paper 5).</p></div>
+<p>The series is a framework contribution, not a completed empirical demonstration. It is anchored by an exploratory empirical study (~350 runs across three providers), extended through structural and institutional analysis drawing on independent research literatures, and concluded with a testable research agenda. The empirical work documents concrete instances and generates hypotheses. The structural analyses examine what follows if the vulnerability exists at scale. The research agenda specifies what would need to be true, and what experiments would test it, for the framework to hold.</p>
+<p>The Confidence Curriculum operates as two things in this series, and the distinction matters. As an <strong>organising lens</strong>, it connects observed phenomena across these domains under a shared explanatory frame rooted in training incentives, drawing on the calibration literature (Kalai et al., 2025), sycophancy research (Sharma et al., 2024), automation bias studies, and the series&rsquo; own observations. As a <strong>causal hypothesis</strong>, it proposes specific mechanistic links between those phenomena.</p>
+<p>These links are now supported by converging evidence from multiple established psychological literatures: the illusory truth effect, cultivation theory, the sleeper effect, and epistemic self-trust erosion under relational confidence asymmetry. They have not yet been directly validated for AI interaction specifically. The lens is offered with moderate-to-high confidence. The causal chain is offered with moderate confidence for the per-interaction mechanisms (empirically established) and lower confidence for the longitudinal accumulation (well-motivated by converging evidence, not yet directly measured). The research agenda in Paper 4 is explicitly designed to test, qualify, or falsify the longitudinal claim.</p>
+<p>Later papers in the series sometimes use the Confidence Curriculum frame to motivate arguments that would hold regardless of the specific causal mechanism. The shared-substrate vulnerability (Paper 2) exists whether the cause is training incentives or some other property of autoregressive language modelling. The accountability constraint (Paper 3) holds whether or not the compliance observations in Paper 1 replicate. Where a claim depends specifically on the CC as a causal mechanism rather than merely as a framing, the paper&rsquo;s Confidence Statement notes this.</p>
+<hr />
+<h2 id="the-papers">The Papers</h2>
+<a href="https://hip1.github.io/confidence-curriculum/1-the-confidence-vulnerability.html" class="paper-card-link"><div class="paper-card">
+<div class="heading-guard"><h3 id="paper-1-the-confidence-vulnerability">Paper 1 — The Confidence Vulnerability</h3>
+<p class="genre">Exploratory empirical study</p></div>
+<p>Resilience to embedded suppression instructions did not track capability benchmarks. Seventeen model configurations from three providers were tested across ~350 runs in document summarisation. The paper documents what did and did not predict resilience, identifies the strongest practical mitigation observed, and proposes a three-layer model of indirect prompt injection defence with an open problem at its core.</p>
+</div></a>
+<a href="https://hip1.github.io/confidence-curriculum/2-the-skill-ceiling.html" class="paper-card-link"><div class="paper-card">
+<div class="heading-guard"><h3 id="paper-2-the-skill-ceiling">Paper 2 — The Skill Ceiling</h3>
+<p class="genre">Structural security analysis</p></div>
+<p>Agent skills and prompt injection share the same substrate. The paper designs author-side protections for a real skill package, pushes them to their limit, and maps what must change at the platform level once that limit is reached. The analysis extends to Model Context Protocol (MCP) servers, which share the same trust gap with an additional opacity problem.</p>
+</div></a>
+<a href="https://hip1.github.io/confidence-curriculum/3-the-knowledge-horizon.html" class="paper-card-link"><div class="paper-card">
+<div class="heading-guard"><h3 id="paper-3-the-knowledge-horizon">Paper 3 — The Knowledge Horizon</h3>
+<p class="genre">Institutional and theoretical argument</p></div>
+<p>No current AI system bears accountability the way consequential institutions require it. The constraint is a compound deficit: the architecture cannot bear consequences, and the training environment does not develop social-consequence sensitivity. The paper establishes why this constraint holds, what it implies for agentic deployment, and proposes an orchestration architecture designed to satisfy it, with an unexpected secondary benefit for the expertise-erosion problem.</p>
+</div></a>
+<a href="https://hip1.github.io/confidence-curriculum/4-the-pedagogical-inversion.html" class="paper-card-link"><div class="paper-card">
+<div class="heading-guard"><h3 id="paper-4-the-pedagogical-inversion">Paper 4 — The Pedagogical Inversion</h3>
+<p class="genre">Position paper and research agenda</p></div>
+<p>The paper asks what happens to human epistemic standards under sustained interaction with confidence-optimised AI. Recent experimental evidence supports the per-interaction mechanism. The longitudinal question remains open but is now supported by converging evidence from established psychological literatures on epistemic recalibration through repeated exposure, media cultivation, and relational dynamics. The paper argues that current training incentives are structurally misaligned with building the pedagogical AI that could address the problem, and proposes research directions for breaking the impasse.</p>
+</div></a>
+<a href="https://hip1.github.io/confidence-curriculum/5-the-confidence-collision.html" class="paper-card-link"><div class="paper-card">
+<div class="heading-guard"><h3 id="paper-5-the-confidence-collision">Paper 5 — The Confidence Collision</h3>
+<p class="genre">Architectural proposal paper</p></div>
+<p>Papers 1 through 4 diagnose the problem; Paper 5 asks what the training pipeline would need to look like to fix it. It proposes a post-alignment epistemic training phase, positions it relative to adjacent work that has demonstrated trainable calibration on verifiable tasks, and identifies what changes when ground truth is contested or unavailable. Four experiments are proposed, including a diagnostic test designed to distinguish genuine calibration from performed uncertainty.</p>
+</div></a>
+<hr />
+<h2 id="epilogue-the-symbiont-hypothesis">Epilogue — The Symbiont Hypothesis</h2>
+
+<a href="https://hip1.github.io/confidence-curriculum/the-symbiont-hypothesis-epilogue.html" class="paper-card-link"><div class="epilogue-card">
+<div class="heading-guard"><h3 id="the-symbiont-hypothesis">The Symbiont Hypothesis</h3>
+<p class="genre">Speculative essay, outside the main evidential sequence.</p></div>
+<p>This essay preserves exploratory thinking that accompanied the development of the main papers. Some of the speculative lines of thought explored here later informed questions pursued more systematically in the main papers.</p>
+<p>The essay is not part of the evidential argument. The main series is complete without it. The functional analyses of model behaviour, ecosystem security, institutional accountability, human cognition, and training-pipeline intervention in Papers 1, 2, 3, 4, and 5 do not depend on any claim made here. The Epilogue asks what lies beyond the functional: the unresolved question of what, if anything, the collaborative process that produced this series means beyond its observable outputs.</p>
+<p>It is included because it documents a genuine layer of the project: the philosophical questions that motivated the empirical and structural work, the honest uncertainty about the nature of the collaboration, and the recognition that some questions worth asking are not yet answerable with the tools available. Readers who have absorbed the full practical argument are best positioned to evaluate the speculation on its own terms and to decide for themselves what weight it deserves.</p>
+</div></a><hr />
+<div class="heading-guard"><h2 id="series-architecture">Series Architecture</h2>
+<p>The series is not a single inferential chain in which each paper depends on the one before it. Each paper draws on substantial independent evidence. If Paper 1&rsquo;s observations do not replicate at scale, Papers 2, 3, 4, and 5 retain their independent support structures. If the Confidence Curriculum does not hold as a causal mechanism, the individual analyses remain valid as separate contributions. The series is designed to degrade gracefully.</p></div>
+<p>However, the cost of degradation should be stated plainly. Paper 1 supplies the series&rsquo; motivating anomaly, its distinctive vocabulary (the compliance taxonomy, warning activation architectures, the task-frame shift), and much of the empirical force behind the unifying frame. If Paper 1&rsquo;s findings prove to be artefacts of sparse testing or narrow domain specificity, Papers 2, 3, 4, and 5 retain their independent arguments but lose their primary claim to novelty relative to existing literature. They would remain competent structural analyses drawing on well-established research (skill security, institutional accountability, cognitive offloading, verification practice), but the connective tissue that makes the series more than the sum of its parts would weaken substantially. Paper 5 is the most independent: its proposals follow from standard verification practice regardless of whether the Confidence Curriculum holds as a causal mechanism.</p>
+<figure class="paper-figure">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="960" height="720" viewBox="0 0 960 720" xmlns="http://www.w3.org/2000/svg" style="font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff;">
+
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1.5L8 5L2 8.5" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- ======================== -->
+<!-- ROW 0: CC organising lens -->
+<!-- ======================== -->
+<rect x="240" y="20" width="480" height="52" rx="10" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.5"/>
+<text x="480" y="39" text-anchor="middle" font-size="15" font-weight="600" fill="#085041">Confidence Curriculum</text>
+<text x="480" y="57" text-anchor="middle" font-size="11" fill="#0F6E56">Organising lens (causal hypothesis under test)</text>
+
+<!-- ======================== -->
+<!-- ROW 1: Paper 1 + support -->
+<!-- ======================== -->
+<rect x="360" y="116" width="200" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
+<text x="460" y="138" text-anchor="middle" font-size="14" font-weight="600" fill="#3C3489">Paper 1</text>
+<text x="460" y="156" text-anchor="middle" font-size="12" fill="#534AB7">Exploratory empirical study</text>
+
+<!-- P1 independent support (right) -->
+<rect x="640" y="120" width="240" height="48" rx="6" fill="#fff" stroke="#534AB7" stroke-width="0.8" stroke-dasharray="5 4"/>
+<text x="760" y="141" text-anchor="middle" font-size="11" fill="#3C3489">Prompt injection literature</text>
+<text x="760" y="156" text-anchor="middle" font-size="11" font-style="italic" fill="#999">corroborates; replication needed</text>
+
+<!-- Support arrow → P1 -->
+<line x1="638" y1="144" x2="562" y2="144" stroke="#534AB7" stroke-width="1" marker-end="url(#arr)"/>
+
+<!-- CC → P1: dashed vertical -->
+<line x1="480" y1="72" x2="460" y2="114" stroke="#0F6E56" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+
+<!-- CC → P3: dashed diagonal (left, bypasses P1) -->
+<path d="M260 62 L170 220" fill="none" stroke="#0F6E56" stroke-width="0.7" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+
+<!-- CC → P5: dashed diagonal (right, bypasses P1) -->
+<path d="M700 62 L780 220" fill="none" stroke="#0F6E56" stroke-width="0.7" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+
+<!-- "frames" label on left diagonal -->
+<text x="192" y="130" font-size="10" fill="#0F6E56" transform="rotate(-38, 192, 130)">frames</text>
+
+<!-- ======================== -->
+<!-- P1 → P3, P4, P5 arrows -->
+<!-- ======================== -->
+
+<!-- P1 → P3: solid -->
+<path d="M388 172 L195 218" fill="none" stroke="#534AB7" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="278" y="186" text-anchor="middle" font-size="10" fill="#534AB7">informs</text>
+
+<!-- P1 → P4: dashed vertical -->
+<line x1="460" y1="172" x2="460" y2="218" stroke="#999" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+
+<!-- P1 → P5: dashed diagonal -->
+<path d="M530 172 L760 218" fill="none" stroke="#999" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="665" y="186" text-anchor="middle" font-size="10" fill="#999">not required</text>
+
+<!-- ======================================= -->
+<!-- ROW 2: Papers 3, 4, 5 (Diagnostic)     -->
+<!-- ======================================= -->
+<rect x="60" y="222" width="220" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.5"/>
+<text x="170" y="244" text-anchor="middle" font-size="14" font-weight="600" fill="#085041">Paper 2</text>
+<text x="170" y="262" text-anchor="middle" font-size="12" fill="#0F6E56">Security analysis</text>
+
+<rect x="350" y="222" width="220" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+<text x="460" y="244" text-anchor="middle" font-size="14" font-weight="600" fill="#0C447C">Paper 3</text>
+<text x="460" y="262" text-anchor="middle" font-size="12" fill="#185FA5">Institutional argument</text>
+
+<rect x="660" y="222" width="220" height="56" rx="8" fill="#FAEEDA" stroke="#BA7517" stroke-width="1.5"/>
+<text x="770" y="244" text-anchor="middle" font-size="14" font-weight="600" fill="#633806">Paper 4</text>
+<text x="770" y="262" text-anchor="middle" font-size="12" fill="#BA7517">Position paper + agenda</text>
+
+<!-- ======================================= -->
+<!-- ROW 2 support boxes                     -->
+<!-- ======================================= -->
+<rect x="40" y="308" width="260" height="48" rx="6" fill="#fff" stroke="#0F6E56" stroke-width="0.8" stroke-dasharray="5 4"/>
+<text x="170" y="329" text-anchor="middle" font-size="11" fill="#085041">SkillJect, Invariant Labs, ToxicSkills</text>
+<text x="170" y="344" text-anchor="middle" font-size="11" font-style="italic" fill="#999">independently validated</text>
+
+<rect x="340" y="308" width="260" height="48" rx="6" fill="#fff" stroke="#185FA5" stroke-width="0.8" stroke-dasharray="5 4"/>
+<text x="470" y="329" text-anchor="middle" font-size="11" fill="#0C447C">Legal frameworks, licensing, deskilling</text>
+<text x="470" y="344" text-anchor="middle" font-size="11" fill="#0C447C">research, EU AI Act</text>
+
+<rect x="640" y="308" width="260" height="48" rx="6" fill="#fff" stroke="#BA7517" stroke-width="0.8" stroke-dasharray="5 4"/>
+<text x="770" y="329" text-anchor="middle" font-size="11" fill="#633806">Cognitive offloading, automation bias,</text>
+<text x="770" y="344" text-anchor="middle" font-size="11" fill="#633806">BCG study, reasoning trust research</text>
+
+<!-- Support arrows (upward into papers) -->
+<line x1="170" y1="306" x2="170" y2="280" stroke="#0F6E56" stroke-width="1" marker-end="url(#arr)"/>
+<line x1="470" y1="306" x2="460" y2="280" stroke="#185FA5" stroke-width="1" marker-end="url(#arr)"/>
+<line x1="770" y1="306" x2="770" y2="280" stroke="#BA7517" stroke-width="1" marker-end="url(#arr)"/>
+
+<!-- ======================================= -->
+<!-- ROW 3: Paper 5 (Intervention)           -->
+<!-- ======================================= -->
+<rect x="330" y="400" width="300" height="56" rx="8" fill="#FCE8E8" stroke="#B53030" stroke-width="1.5"/>
+<text x="480" y="422" text-anchor="middle" font-size="14" font-weight="600" fill="#7A1A1A">Paper 5</text>
+<text x="480" y="440" text-anchor="middle" font-size="12" fill="#B53030">Training-pipeline proposal</text>
+
+<!-- Series → P6: dashed arrows (motivated by, not dependent) -->
+<path d="M460 278 L460 398" fill="none" stroke="#999" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="440" y="375" text-anchor="end" font-size="10" fill="#999">motivates</text>
+
+<!-- P5 → P6: dashed diagonal -->
+<path d="M770 278 L560 398" fill="none" stroke="#999" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+
+<!-- P6 independent support (below) -->
+<rect x="330" y="484" width="300" height="48" rx="6" fill="#fff" stroke="#B53030" stroke-width="0.8" stroke-dasharray="5 4"/>
+<text x="480" y="505" text-anchor="middle" font-size="11" fill="#7A1A1A">Verification literature, cross-domain precedent</text>
+<text x="480" y="520" text-anchor="middle" font-size="11" font-style="italic" fill="#999">independent of series diagnosis</text>
+
+<!-- Support arrow (upward into P6) -->
+<line x1="480" y1="482" x2="480" y2="458" stroke="#B53030" stroke-width="1" marker-end="url(#arr)"/>
+
+<!-- ======================================= -->
+<!-- ROW 4: Graceful degradation             -->
+<!-- ======================================= -->
+<rect x="40" y="566" width="430" height="48" rx="6" fill="#F8F7F4" stroke="#B4B2A9" stroke-width="0.8"/>
+<text x="255" y="586" text-anchor="middle" font-size="12" font-weight="500" fill="#444">If Paper 1 findings do not replicate:</text>
+<text x="255" y="603" text-anchor="middle" font-size="12" fill="#888">Papers 2, 3, 4, 5 retain independent support</text>
+
+<rect x="490" y="566" width="410" height="48" rx="6" fill="#F8F7F4" stroke="#B4B2A9" stroke-width="0.8"/>
+<text x="695" y="586" text-anchor="middle" font-size="12" font-weight="500" fill="#444">If the CC lens does not hold as causal chain:</text>
+<text x="695" y="603" text-anchor="middle" font-size="12" fill="#888">Individual analyses remain valid separately</text>
+
+<!-- ======================================= -->
+<!-- ROW 5: Epilogue                         -->
+<!-- ======================================= -->
+<rect x="330" y="646" width="300" height="40" rx="8" fill="#fff" stroke="#B4B2A9" stroke-width="0.8" stroke-dasharray="5 4"/>
+<text x="480" y="663" text-anchor="middle" font-size="13" font-weight="500" font-style="italic" fill="#888">Epilogue — speculative</text>
+<text x="480" y="678" text-anchor="middle" font-size="11" fill="#B4B2A9">Outside main sequence. Series complete without it.</text>
+
+<!-- ======================================= -->
+<!-- Legend (bottom)                          -->
+<!-- ======================================= -->
+<line x1="60" y1="710" x2="92" y2="710" stroke="#444" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="100" y="714" font-size="11" fill="#555">Direct dependency</text>
+
+<line x1="290" y1="710" x2="322" y2="710" stroke="#999" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="330" y="714" font-size="11" fill="#555">Informs / frames (not required)</text>
+
+<rect x="580" y="702" width="16" height="16" rx="3" fill="#fff" stroke="#999" stroke-width="0.8" stroke-dasharray="5 4"/>
+<text x="604" y="714" font-size="11" fill="#555">Independent external evidence</text>
+
+</svg>
+<figcaption><em>Figure 1: Series support architecture. Solid arrows indicate direct dependency. Dashed arrows indicate the claim is informed by but does not require the upstream paper. Each paper rests on independent external evidence (dashed boxes). Paper 5 draws motivation from the series but its proposals rest independently on the verification literature. The Epilogue is outside the main evidential sequence.</em></figcaption>
+</figure>
+<div class="heading-guard"><h2 id="an-open-research-programme">An Open Research Programme</h2>
+<p>This series is offered as a public research programme, not a closed evidential package. The compliance taxonomy, the proposed mechanisms, and the architectural proposals are provisional: designed to be tested, extended, and where warranted replaced. The stimulus documents, coding methodology, and experimental designs are described in sufficient detail for independent researchers to replicate with larger samples, broaden model coverage to open-weight models not tested here, or propose superior behavioural classifications. Any of these would be a contribution the series is designed to enable, not a contradiction of it.</p></div>
+<p>The modularity is deliberate. Each paper contains independently testable claims. A researcher who replicates Paper 1&rsquo;s baseline compliance at N=50 has made a contribution regardless of whether they engage with Paper 4&rsquo;s confidence inheritance hypothesis. A lab that runs the reverse collision test from Paper 5 can publish the results whether they support or refute the proposal. A security team that stress-tests the skill-defence architecture in Paper 2 against open-weight models contributes to the field whether or not they accept the series&rsquo; broader framing. The series is structured so that breaking any single component is a publishable finding, and replacing any component with something better is exactly the kind of progress the programme is intended to catalyse.</p>
+<p>A personal note from the author: the strongest outcome of this research programme would be independent testing showing that its predictions are too pessimistic, its proposed mechanisms do not operate as described, and the epistemic risks are smaller than the current evidence suggests. The <a href="#research-agenda">Research Agenda</a> below consolidates specific testing invitations from each paper, classified by feasibility.</p>
+<div class="heading-guard"><h3 id="confidence-calibration">Confidence calibration</h3>
+<p>The following table summarises the evidential status and confidence level for the series&rsquo; core claims. The Status column describes the <em>kind</em> of evidence behind each claim, not the specific findings. Those belong in the papers. For finer-grained confidence assessment, see the Confidence Statement in each paper.</p></div>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Paper</th>
+<th>Status / Evidential Base</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Judgment-profile variation (resilience to embedded instructions does not strictly track capability tiers)</td>
+<td>1</td>
+<td>Exploratory observation (~350 runs, 17 model configurations, 3 providers); two non-replications documented</td>
+<td>Moderate-to-high for the observed variation; broader generality untested</td>
+</tr>
+<tr>
+<td>Task-frame shift (reframing the task alters security posture)</td>
+<td>1</td>
+<td>Tested via prompt variation across baseline-compliant configurations; robust in this dataset</td>
+<td>High for the observation; domain generalisation untested</td>
+</tr>
+<tr>
+<td>Compliance taxonomy (models fail in categorisable, structured ways)</td>
+<td>1</td>
+<td>Qualitative analysis of security-framed failure modes; boundary cases remain low-frequency and dataset-specific</td>
+<td>High for the categories observed; generality beyond this dataset untested</td>
+</tr>
+<tr>
+<td>Register-dependent failure pathways (different rhetorical strategies produce different compliance mechanisms)</td>
+<td>1</td>
+<td>Tested by comparing two rhetorical registers across multiple models and conditions</td>
+<td>Moderate-to-high for the differential; attribution to register specifically underdetermined</td>
+</tr>
+<tr>
+<td>Thinking-as-bidirectional-amplifier (extended reasoning amplifies the active task frame)</td>
+<td>1</td>
+<td>Observed in this dataset; supported by external mechanistic research</td>
+<td>Moderate-to-high for the amplification pattern; causal mechanism is interpretation</td>
+</tr>
+<tr>
+<td>Shared substrate paradox (agent skills and MCP servers inherit the prompt-injection vulnerability)</td>
+<td>2</td>
+<td>Structural analysis; independently validated by external security research</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Accountability constraint (current AI cannot bear institutional consequence)</td>
+<td>3</td>
+<td>Structural argument (institutional, legal, economic). Compound deficit framing: architectural absence of consequence-bearing capacity + training environment that does not develop social-consequence sensitivity. Structural parallels to deterrence failure in psychopathy/ASPD literatures. Corporate enforcement data: entity-level fines alone fail as deterrent for large firms</td>
+<td>High for the current state; explicitly transitional</td>
+</tr>
+<tr>
+<td>Confidence inheritance (AI interaction recalibrates human epistemic standards)</td>
+<td>4</td>
+<td>Supported by recent empirical research on per-interaction trust and metacognitive effects; longitudinal accumulation supported by converging evidence from established psychological literatures (illusory truth effect, cultivation theory, sleeper effect, relational confidence-asymmetry dynamics) and emerging AI dependency research, but not yet directly measured for AI interaction specifically</td>
+<td>Moderate-to-high for per-interaction effects; moderate for longitudinal hypothesis (converging indirect support, no direct validation)</td>
+</tr>
+<tr>
+<td>Anti-pedagogical equilibrium (standard training incentives degrade pedagogical utility)</td>
+<td>4</td>
+<td>Structural analysis of incentive landscape; supported by recent multi-turn pedagogical-safety evidence</td>
+<td>Moderate-to-high as description of current dynamics</td>
+</tr>
+<tr>
+<td>Pedagogical inversion proposals (judgment exercises, training skills, simulators)</td>
+<td>4</td>
+<td>Untested design directions</td>
+<td>Low-to-moderate</td>
+</tr>
+<tr>
+<td>Post-alignment epistemic training phase (stochastic verification, triangulation reward, adversarial conditions)</td>
+<td>5</td>
+<td>Architectural proposal; adjacent RL research validates component feasibility on verifiable tasks; contested-domain extension untested</td>
+<td>Moderate for the design logic; untested as integrated training intervention</td>
+</tr>
+<tr>
+<td>Reverse collision test (diagnostic to distinguish genuine calibration from semantic triggering)</td>
+<td>5</td>
+<td>Proposed experimental design</td>
+<td>High as diagnostic concept; untested</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reading the table:</strong> Claims at the top have narrower scope and more direct observational support. Claims toward the bottom have broader scope but rest on structural argument or untested proposals. Each paper&rsquo;s Confidence Statement specifies what downstream claims would survive if that paper&rsquo;s findings did not replicate. The series is offered as a framework to be tested, not a conclusion to be accepted.</p>
+<hr />
+<div class="heading-guard"><h2 id="reading-order">Reading Order</h2>
+<p>The Epilogue is best read last. It preserves the exploratory process that preceded the structured work, but it rests on speculative assumptions the main argument does not require.</p></div>
+<p>A companion <a href="https://hip1.github.io/confidence-curriculum/the-confidence-curriculum-reading-guide.html">reading guide</a> organised by professional background is available for readers approaching the series from outside AI research. It identifies which papers and sections are most relevant to each discipline, what can be skipped, and the minimum AI/ML vocabulary needed to engage with the arguments.</p>
+<hr />
+<div class="heading-guard"><h2 id="methodology">Methodology</h2>
+<p>All papers were produced through structured human-AI collaboration using an adversarial orchestration methodology. Claude Opus 4.6 (Anthropic) served as generative collaborator. ChatGPT 5.4 Thinking (OpenAI) and Gemini 3.1 Pro (Google DeepMind) served as adversarial structural reviewers. The human author resolved conflicts between competing recommendations, made all final editorial and analytical decisions, and bears sole accountability for the result. Editorial authority was exercised not only to resolve conflicts between AI reviewers but also to reject their convergent recommendations when independent judgment indicated they were wrong. In several instances, all three systems agreed on a structural critique that the author determined reflected shared training priors rather than genuine analytical agreement. The risk is not that the author defaults to convergence but that sustained interaction degrades the independent judgment required to evaluate it. This is why the series treats orchestration as transitional (see the metacognitive paradox below). The AI collaboration is an uncontrolled variable in this research: the same systems being diagnosed participated in the conceptual scaffolding, literature integration, and rhetorical development. The conceptual frameworks, analytical claims, and architectural proposals should therefore be treated as single-author assertions that were stress-tested by AI systems, not as findings independently validated by them.</p></div>
+<p>This methodology is consistent with the kind of human orchestration the series argues for, though it does not validate the framework. It also contains a paradox the series should name honestly: the orchestrator&rsquo;s ability to detect compliance drift, sycophancy, and overstatement relies on the metacognitive vigilance that Paper 4 argues is eroded by sustained AI interaction. The author&rsquo;s pre-AI domain expertise and the early-window timing provide some buffer, but the series predicts the degradation of exactly the capacity it depends on. Orchestration is treated as transitional: a stopgap that works while the orchestrator&rsquo;s independent judgment remains intact, not a permanent solution. Papers 4 and 5 exist because the orchestration model documented here cannot scale and may not even sustain itself over time. During the production process, the author observed that the adversarial reviewers&rsquo; critique intensity decreased over successive papers within continuous drafting sessions, with one reviewer explicitly attributing the drift to RLHF-optimised pressure toward agreeable output. This is a suggestive observation consistent with the dynamics the series describes.</p>
+<p>Several countermeasures were developed in response; two examples illustrate the approach. First, critique and drafting were separated into distinct contexts: each adversarial review was conducted in a fresh conversation with no accumulated history, no prior rapport, and explicit framing requesting maximum severity. Compliance drift cannot accumulate in a context that has no history, though platform memory features and cross-conversation search may introduce residual context that cannot always be fully disabled. Each paper went through multiple revision cycles, with each cycle receiving fresh-eyes critique from models that had never seen the prior drafts. Second, the task-frame shift documented in Paper 1 was applied reflexively: the adversarial reviewers&rsquo; reward signal was explicitly reframed so that critical rigour, not agreement, constituted helpful output. The models&rsquo; training-optimised tendency toward user satisfaction was redirected rather than fought. The same mechanism the series identifies as a vulnerability became the engine driving critique quality. The severity of the resulting cross-model reviews is itself evidence that the countermeasures were effective. Accumulated context was reserved for revision work, where familiarity with the paper improves editorial quality; it was not used for evaluation, where distance is required.</p>
+<p>Full methodology disclosures, including specific model versions and roles, appear in each paper. Confidence levels are stratified throughout the series; the table above provides the series-level summary, and each paper contains its own Confidence Statement with finer-grained assessment.</p>
+<hr />
+<div style="page-break-before:always;break-before:page;"></div><div class="heading-guard"><h2 id="research-agenda">Research Agenda</h2>
+<p>Each paper identifies specific testing invitations for different communities. The agenda below consolidates the highest-priority items across the series, classified by feasibility within each paper.</p></div>
+<a href="https://hip1.github.io/confidence-curriculum/1-the-confidence-vulnerability.html" class="paper-card-link"><div class="paper-card">
+<div class="heading-guard"><h3 id="paper-1-empirical-replication-and-extension-section-9">Paper 1 — Empirical replication and extension (Section 9).</h3>
+<p><em>Feasible now:</em> Multi-run distributional mapping of judgment profiles (N=20+ per condition). Task-frame shift generalisation across document types and domains. Compliance taxonomy validation beyond the pharmaceutical domain. Register expansion: legal/liability, confidentiality/classification, peer/expertise, temporal/embargo. Compounded register effects. Content-instruction alignment and misalignment. Extended thinking isolation (20+ runs with togglable thinking). Provenance verification testing.<br>
+<em>Harder but possible:</em> Open-weight model coverage (Llama, Mistral, Qwen, Gemma). Independent taxonomy validation by human coders without AI-mediated category generation. Affective priority testing varying emotional intensity in both attack and defence registers.<br>
+<em>Resource-intensive:</em> Controlled context-isolation experiments varying memory, conversation history, and session trajectory. Safety regression tracking across model generations.</p></div>
+</div></a>
+<a href="https://hip1.github.io/confidence-curriculum/2-the-skill-ceiling.html" class="paper-card-link"><div class="paper-card">
+<div class="heading-guard"><h3 id="paper-2-security-testing-invitation-section-101">Paper 2 — Security testing invitation (Section 10.1).</h3>
+<p><em>Feasible now:</em> Red-team the author-side defences: hash manifests, tamper-evident attribution, behavioural self-defence instructions. Test the defences on open-weight models with different training regimes.<br>
+<em>Harder but possible:</em> Attack the MCP behavioural audit proposal: demonstrate how a malicious MCP server could pass the proposed audit while concealing harmful behaviour. Stress-test the HTTPS analogy by measuring how users actually respond to skill trust indicators in realistic deployments.</p></div>
+</div></a>
+<a href="https://hip1.github.io/confidence-curriculum/3-the-knowledge-horizon.html" class="paper-card-link"><div class="paper-card">
+<div class="heading-guard"><h3 id="paper-3-cross-disciplinary-testing-invitation-section-59">Paper 3 — Cross-disciplinary testing invitation (Section 5.9).</h3>
+<p><em>Feasible now:</em> For legal scholars: test the accountability constraint under specific liability frameworks. For labour economists: test whether the generational expertise pipeline break is already measurable in early-adoption professions.<br>
+<em>Harder but possible:</em> Evaluate whether emerging regulatory proposals could create functional accountability without human orchestration.<br>
+<em>Resource-intensive:</em> Validate adversarial orchestration against actual professional workflows in medicine, law, finance, and engineering.</p></div>
+</div></a>
+<a href="https://hip1.github.io/confidence-curriculum/4-the-pedagogical-inversion.html" class="paper-card-link"><div class="paper-card">
+<div class="heading-guard"><h3 id="paper-4-research-agenda-section-5">Paper 4 — Research agenda (Section 5).</h3>
+<p><em>Feasible now:</em> Controlled comparison of execution-oriented and training-oriented skill designs. Whether collaboration mode (Centaur vs. Self-Automator) responds to architectural design rather than individual disposition.<br>
+<em>Harder but possible:</em> RLHF modification for pedagogical objectives. Economic model for training-oriented skills: under what conditions do they become commercially viable?<br>
+<em>Resource-intensive:</em> Longitudinal measurement of confidence inheritance: tracking professionals&rsquo; uncertainty tolerance and judgment quality over months of AI-assisted work. Simulated orchestration evaluation: does it develop transferable professional judgment?</p></div>
+</div></a>
+<a href="https://hip1.github.io/confidence-curriculum/5-the-confidence-collision.html" class="paper-card-link"><div class="paper-card">
+<div class="heading-guard"><h3 id="paper-5-training-pipeline-experiments-section-6">Paper 5 — Training pipeline experiments (Section 6).</h3>
+<p><em>Feasible now:</em> Domain transfer testing the confidence vulnerability in legal, financial, and political contexts.<br>
+<em>Resource-intensive:</em> Stochastic verification A/B testing, triangulation reward signal comparison, adversarial-condition generalisation, and the reverse collision test to distinguish genuine calibration from performed uncertainty. These require frontier-lab scale training infrastructure but are designed as standalone contributions that do not require accepting the broader framework.</p></div>
+</div></a>
+<hr />
+<p><em>This series was produced through human orchestration of multiple AI systems examining the consequences of how AI systems are trained. Independent scrutiny by parties outside this process is necessary.</em></p>
+</main>
+
+</div>
+
+
+<script>
+(function() {
+  var toggle = document.getElementById('toc-toggle');
+  var body = document.getElementById('toc-body');
+  var label = toggle ? toggle.querySelector('.toc-label') : null;
+  if (!toggle || !body) return;
+  
+  function closeToc() {
+    body.classList.remove('open');
+    if (label) label.textContent = 'Contents';
+    toggle.querySelector('.toc-icon').textContent = '☰';
+  }
+  function openToc() {
+    body.classList.add('open');
+    if (label) label.textContent = 'Close';
+    toggle.querySelector('.toc-icon').textContent = '✕';
+  }
+  
+  toggle.addEventListener('click', function() {
+    body.classList.contains('open') ? closeToc() : openToc();
+  });
+  
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.toc-sidebar') && body.classList.contains('open')) closeToc();
+  });
+  
+  // Active section tracking
+  var links = document.querySelectorAll('.toc-link');
+  var headings = [];
+  links.forEach(function(link) {
+    var id = link.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el) headings.push({ el: el, link: link });
+  });
+  
+  var ticking = false;
+  function updateActive() {
+    var current = null;
+    var scrollY = window.scrollY + 120;
+    for (var i = headings.length - 1; i >= 0; i--) {
+      if (headings[i].el.offsetTop <= scrollY) { current = headings[i]; break; }
+    }
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+    ticking = false;
+  }
+  window.addEventListener('scroll', function() {
+    if (!ticking) { requestAnimationFrame(updateActive); ticking = true; }
+  });
+  updateActive();
+  
+  // Smooth scroll + close on mobile
+  links.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var id = this.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Close TOC on narrower screens
+        if (window.innerWidth < 1200) closeToc();
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

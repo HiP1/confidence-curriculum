@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="740" height="520" viewBox="0 0 740 520" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Source Sans 3', -apple-system, sans-serif; background: #fff;">
+
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1.5L8 5L2 8.5" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- Top: Skill loaded -->
+<rect x="260" y="20" width="220" height="44" rx="6" fill="#f5f5f5" stroke="#333" stroke-width="1.5"/>
+<text x="370" y="47" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Skill Loaded for Execution</text>
+
+<!-- Decision diamond -->
+<polygon points="370,96 490,140 370,184 250,140" fill="white" stroke="#333" stroke-width="1.5"/>
+<text x="370" y="136" text-anchor="middle" font-size="11" font-weight="600" fill="#333">Human-attended?</text>
+
+<line x1="370" y1="64" x2="370" y2="96" stroke="#333" stroke-width="1.3" marker-end="url(#arr)"/>
+
+<!-- Left branch: Interactive -->
+<line x1="250" y1="140" x2="170" y2="140" stroke="#2e7d32" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="210" y="132" text-anchor="middle" font-size="9" fill="#2e7d32">Yes: Claude.ai, IDE, chat</text>
+
+<!-- Right branch: Headless -->
+<line x1="490" y1="140" x2="570" y2="140" stroke="#e65100" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="530" y="132" text-anchor="middle" font-size="9" fill="#e65100">No: API, bot, pipeline</text>
+
+<!-- ========================================= -->
+<!-- LEFT: Interactive Deployment box          -->
+<!-- ========================================= -->
+<rect x="20" y="170" width="300" height="320" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+<text x="170" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#2e7d32">Interactive Deployment</text>
+
+<!-- Platform check -->
+<rect x="55" y="212" width="230" height="34" rx="5" fill="white" stroke="#2e7d32" stroke-width="1"/>
+<text x="170" y="234" text-anchor="middle" font-size="11" fill="#333">Platform checks origin &amp; signature</text>
+
+<line x1="170" y1="246" x2="170" y2="268" stroke="#333" stroke-width="1" marker-end="url(#arr)"/>
+
+<!-- Verification result diamond -->
+<polygon points="170,270 240,295 170,320 100,295" fill="white" stroke="#333" stroke-width="1"/>
+<text x="170" y="299" text-anchor="middle" font-size="9.5" font-weight="600" fill="#333">Result?</text>
+
+<!-- Verified -->
+<line x1="100" y1="295" x2="60" y2="295" stroke="#009900" stroke-width="1"/>
+<line x1="60" y1="295" x2="60" y2="400" stroke="#009900" stroke-width="1" marker-end="url(#arr)"/>
+<text x="70" y="345" font-size="8.5" fill="#009900">Verified</text>
+
+<rect x="30" y="402" width="130" height="42" rx="4" fill="#ccffcc" stroke="#009900" stroke-width="1.2"/>
+<text x="95" y="420" text-anchor="middle" font-size="10" font-weight="600" fill="#009900">Silent execution</text>
+<text x="95" y="434" text-anchor="middle" font-size="9" font-style="italic" fill="#009900">Green padlock</text>
+
+<!-- Failed -->
+<line x1="170" y1="320" x2="170" y2="340" stroke="#856404" stroke-width="1" marker-end="url(#arr)"/>
+<text x="195" y="333" font-size="8.5" fill="#856404">Failed</text>
+
+<rect x="120" y="342" width="130" height="42" rx="4" fill="#fff3cd" stroke="#856404" stroke-width="1.2"/>
+<text x="185" y="360" text-anchor="middle" font-size="10" font-weight="600" fill="#856404">Warning displayed</text>
+<text x="185" y="374" text-anchor="middle" font-size="9" font-style="italic" fill="#856404">User decides</text>
+
+<!-- No origin -->
+<line x1="240" y1="295" x2="280" y2="295" stroke="#856404" stroke-width="1"/>
+<line x1="280" y1="295" x2="280" y2="400" stroke="#856404" stroke-width="1" marker-end="url(#arr)"/>
+<text x="260" y="325" font-size="8.5" fill="#856404" text-anchor="end">No origin</text>
+
+<rect x="200" y="402" width="110" height="42" rx="4" fill="#fff3cd" stroke="#856404" stroke-width="1.2"/>
+<text x="255" y="420" text-anchor="middle" font-size="10" font-weight="600" fill="#856404">Unverified</text>
+<text x="255" y="434" text-anchor="middle" font-size="9" font-style="italic" fill="#856404">User decides</text>
+
+<!-- Arrow from left heading to box -->
+<line x1="170" y1="140" x2="170" y2="170" stroke="#2e7d32" stroke-width="1.3"/>
+
+<!-- ========================================= -->
+<!-- RIGHT: Headless Deployment box            -->
+<!-- ========================================= -->
+<rect x="420" y="170" width="300" height="320" rx="8" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+<text x="570" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#e65100">Headless Deployment</text>
+
+<!-- Platform check -->
+<rect x="455" y="212" width="230" height="34" rx="5" fill="white" stroke="#e65100" stroke-width="1"/>
+<text x="570" y="234" text-anchor="middle" font-size="11" fill="#333">Platform checks origin &amp; signature</text>
+
+<line x1="570" y1="246" x2="570" y2="268" stroke="#333" stroke-width="1" marker-end="url(#arr)"/>
+
+<!-- Verification result diamond -->
+<polygon points="570,270 640,295 570,320 500,295" fill="white" stroke="#333" stroke-width="1"/>
+<text x="570" y="299" text-anchor="middle" font-size="9.5" font-weight="600" fill="#333">Result?</text>
+
+<!-- Verified -->
+<line x1="500" y1="295" x2="460" y2="295" stroke="#009900" stroke-width="1"/>
+<line x1="460" y1="295" x2="460" y2="400" stroke="#009900" stroke-width="1" marker-end="url(#arr)"/>
+<text x="470" y="345" font-size="8.5" fill="#009900">Verified</text>
+
+<rect x="430" y="402" width="130" height="42" rx="4" fill="#ccffcc" stroke="#009900" stroke-width="1.2"/>
+<text x="495" y="420" text-anchor="middle" font-size="10" font-weight="600" fill="#009900">Execute per</text>
+<text x="495" y="434" text-anchor="middle" font-size="9" font-style="italic" fill="#009900">pipeline policy</text>
+
+<!-- Failed -->
+<line x1="570" y1="320" x2="570" y2="340" stroke="#cc0000" stroke-width="1" marker-end="url(#arr)"/>
+<text x="595" y="333" font-size="8.5" fill="#cc0000">Failed</text>
+
+<rect x="520" y="342" width="130" height="42" rx="4" fill="#ffcccc" stroke="#cc0000" stroke-width="1.2"/>
+<text x="585" y="360" text-anchor="middle" font-size="10" font-weight="600" fill="#cc0000">Refuse, log,</text>
+<text x="585" y="374" text-anchor="middle" font-size="9" font-style="italic" fill="#cc0000">or alert async</text>
+
+<!-- No origin -->
+<line x1="640" y1="295" x2="680" y2="295" stroke="#cc0000" stroke-width="1"/>
+<line x1="680" y1="295" x2="680" y2="400" stroke="#cc0000" stroke-width="1" marker-end="url(#arr)"/>
+<text x="660" y="325" font-size="8.5" fill="#cc0000" text-anchor="end">No origin</text>
+
+<rect x="600" y="402" width="110" height="42" rx="4" fill="#ffcccc" stroke="#cc0000" stroke-width="1.2"/>
+<text x="655" y="420" text-anchor="middle" font-size="10" font-weight="600" fill="#cc0000">Refuse default</text>
+<text x="655" y="434" text-anchor="middle" font-size="9" font-style="italic" fill="#cc0000">No human to warn</text>
+
+<!-- Arrow from right heading to box -->
+<line x1="570" y1="140" x2="570" y2="170" stroke="#e65100" stroke-width="1.3"/>
+
+</svg>

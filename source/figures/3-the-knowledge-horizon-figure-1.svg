@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="780" height="520" viewBox="0 0 780 520" xmlns="http://www.w3.org/2000/svg" style="font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff;">
+
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1.5L8 5L2 8.5" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- ====================================== -->
+<!-- SECTION A: Passive Oversight           -->
+<!-- ====================================== -->
+<text x="195" y="24" text-anchor="middle" font-size="14" font-weight="600" fill="#888">Passive Oversight</text>
+<text x="195" y="40" text-anchor="middle" font-size="10.5" fill="#B4B2A9">(checkpoint-based)</text>
+
+<rect x="40" y="56" width="310" height="200" rx="10" fill="#F8F7F4" stroke="#B4B2A9" stroke-width="1"/>
+
+<!-- Task -->
+<rect x="70" y="76" width="100" height="36" rx="6" fill="#fff" stroke="#B4B2A9" stroke-width="1"/>
+<text x="120" y="98" text-anchor="middle" font-size="11.5" fill="#555">Task</text>
+
+<line x1="172" y1="94" x2="198" y2="94" stroke="#999" stroke-width="1.1" marker-end="url(#arr)"/>
+
+<!-- Single agent -->
+<rect x="200" y="76" width="120" height="36" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/>
+<text x="260" y="98" text-anchor="middle" font-size="11.5" font-weight="500" fill="#3C3489">Single Agent</text>
+
+<!-- Arrow down -->
+<line x1="260" y1="114" x2="260" y2="140" stroke="#999" stroke-width="1.1" marker-end="url(#arr)"/>
+
+<!-- Single output -->
+<rect x="200" y="142" width="120" height="32" rx="6" fill="#fff" stroke="#B4B2A9" stroke-width="0.8"/>
+<text x="260" y="162" text-anchor="middle" font-size="11" fill="#555">Single output</text>
+
+<!-- Arrow down -->
+<line x1="260" y1="176" x2="260" y2="198" stroke="#999" stroke-width="1.1" marker-end="url(#arr)"/>
+
+<!-- Human approves -->
+<rect x="180" y="200" width="160" height="36" rx="6" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
+<text x="260" y="222" text-anchor="middle" font-size="11" fill="#633806">Human approves ✓</text>
+
+<!-- Degradation label -->
+<rect x="68" y="150" width="115" height="44" rx="5" fill="#FAECE7" stroke="#993C1D" stroke-width="0.8"/>
+<text x="125" y="168" text-anchor="middle" font-size="9.5" font-weight="500" fill="#712B13">Bainbridge paradox:</text>
+<text x="125" y="182" text-anchor="middle" font-size="9.5" fill="#993C1D">approval → rubber-stamp</text>
+
+<!-- ====================================== -->
+<!-- SECTION B: Adversarial Orchestration   -->
+<!-- ====================================== -->
+<text x="585" y="24" text-anchor="middle" font-size="14" font-weight="600" fill="#0C447C">Adversarial Orchestration</text>
+<text x="585" y="40" text-anchor="middle" font-size="10.5" fill="#185FA5">(competing evaluative stances)</text>
+
+<rect x="410" y="56" width="350" height="310" rx="10" fill="#F0F4FA" stroke="#185FA5" stroke-width="1.2"/>
+
+<!-- Task -->
+<rect x="525" y="76" width="100" height="36" rx="6" fill="#fff" stroke="#185FA5" stroke-width="1"/>
+<text x="575" y="98" text-anchor="middle" font-size="11.5" fill="#0C447C">Task</text>
+
+<!-- Fan out to three agents -->
+<path d="M545 114 L480 148" fill="none" stroke="#534AB7" stroke-width="1.1" marker-end="url(#arr)"/>
+<path d="M575 114 L575 148" fill="none" stroke="#534AB7" stroke-width="1.1" marker-end="url(#arr)"/>
+<path d="M605 114 L680 148" fill="none" stroke="#534AB7" stroke-width="1.1" marker-end="url(#arr)"/>
+
+<!-- Agent A -->
+<rect x="430" y="150" width="100" height="44" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/>
+<text x="480" y="168" text-anchor="middle" font-size="11" font-weight="500" fill="#3C3489">Agent A</text>
+<text x="480" y="182" text-anchor="middle" font-size="9.5" fill="#534AB7">stance α</text>
+
+<!-- Agent B -->
+<rect x="540" y="150" width="100" height="44" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/>
+<text x="590" y="168" text-anchor="middle" font-size="11" font-weight="500" fill="#3C3489">Agent B</text>
+<text x="590" y="182" text-anchor="middle" font-size="9.5" fill="#534AB7">stance β</text>
+
+<!-- Agent N -->
+<rect x="650" y="150" width="100" height="44" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/>
+<text x="700" y="168" text-anchor="middle" font-size="11" font-weight="500" fill="#3C3489">Agent N</text>
+<text x="700" y="182" text-anchor="middle" font-size="9.5" fill="#534AB7">stance γ</text>
+
+<!-- Divergent outputs -->
+<path d="M480 196 L540 226" fill="none" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+<path d="M590 196 L580 226" fill="none" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+<path d="M700 196 L640 226" fill="none" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+
+<rect x="510" y="228" width="150" height="32" rx="6" fill="#fff" stroke="#B4B2A9" stroke-width="0.8"/>
+<text x="585" y="248" text-anchor="middle" font-size="11" fill="#555">Divergent outputs</text>
+
+<!-- Arrow down to human -->
+<line x1="585" y1="262" x2="585" y2="286" stroke="#185FA5" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="615" y="278" font-size="9" fill="#185FA5">must resolve</text>
+
+<!-- Human arbitrates -->
+<rect x="490" y="288" width="190" height="52" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.5"/>
+<text x="585" y="308" text-anchor="middle" font-size="12" font-weight="600" fill="#085041">Human Arbitrator</text>
+<text x="585" y="324" text-anchor="middle" font-size="10" fill="#0F6E56">evaluates conflict, exercises judgment</text>
+
+<!-- ====================================== -->
+<!-- Accountability flows                   -->
+<!-- ====================================== -->
+<rect x="160" y="400" width="460" height="48" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.2"/>
+<text x="390" y="420" text-anchor="middle" font-size="12" font-weight="600" fill="#0C447C">Accountability</text>
+<text x="390" y="436" text-anchor="middle" font-size="10.5" fill="#185FA5">Bears consequence — can anticipate sanction and generalise risk aversion</text>
+
+<!-- Arrow from human to accountability -->
+<line x1="585" y1="342" x2="500" y2="398" stroke="#0F6E56" stroke-width="1.3" marker-end="url(#arr)"/>
+
+<!-- Arrow from passive human to accountability (weaker) -->
+<line x1="260" y1="238" x2="300" y2="398" stroke="#999" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="245" y="310" font-size="9" fill="#993C1D" transform="rotate(-65, 245, 310)">degrades over time</text>
+
+<!-- ====================================== -->
+<!-- Scope boundary                         -->
+<!-- ====================================== -->
+<rect x="160" y="470" width="460" height="36" rx="6" fill="#F8F7F4" stroke="#B4B2A9" stroke-width="0.8"/>
+<text x="390" y="493" text-anchor="middle" font-size="11" fill="#555">Scoped to high-stakes, low-volume tasks where failure cost exceeds arbitration cost</text>
+
+</svg>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Knowledge Horizon — HiP (Ivan Phan), 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+
+
+/* Paper 3 — The Knowledge Horizon
+   Audience: Policy readers, governance, law-adjacent
+   Aesthetic: Brookings, Stanford HAI, law review online */
+
+:root {
+  --serif: 'TeX Gyre Pagella', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --mono: 'DM Mono', 'Menlo', monospace;
+  --text: #1c1917; --text-secondary: #44403c; --text-muted: #78716c;
+  --bg: #fffbf7; --bg-surface: #f5f0ea; --bg-elevated: #ece5dd;
+  --accent: #7c2d12; --accent-light: #fef3ee;
+  --border: #d6cfc7; --border-light: #e7e0d8;
+  --max-width: 720px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; -webkit-font-smoothing:antialiased; }
+body { font-family:var(--serif); color:var(--text); background:var(--bg); line-height:1.82; }
+.paper-container { max-width:var(--max-width); margin:0 auto; padding:0 2.5rem 5rem; }
+
+header.paper-header { padding:4rem 0 2rem; border-bottom:2px solid var(--accent); margin-bottom:2rem; text-align:center; }
+header h1 { font-family:var(--serif); font-size:2.2rem; font-weight:700; letter-spacing:-0.02em; line-height:1.2; margin-bottom:0.3rem; }
+.subtitle { font-family:var(--sans); font-size:1rem; font-weight:400; color:var(--text-secondary); margin-bottom:1.5rem; line-height:1.5; }
+.meta-block { font-family:var(--mono); font-size:0.72rem; color:var(--text-muted); letter-spacing:0.04em; line-height:1.8; }
+
+.front-matter { font-size:0.88rem; color:var(--text-secondary); line-height:1.65; border-bottom:1px solid var(--border); padding-bottom:2rem; margin-bottom:2rem; }
+.front-matter p { margin-bottom:0.8rem; }
+.front-matter strong { color:var(--text-muted); font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; font-weight:500; }
+
+h2 { font-family:var(--sans); font-size:1.1rem; font-weight:700; color:var(--accent); margin-top:3rem; margin-bottom:0.7rem; }
+h3 { font-family:var(--sans); font-size:0.92rem; font-weight:700; color:var(--text); margin-top:2rem; margin-bottom:0.5rem; }
+h4 { font-family:var(--serif); font-size:0.9rem; font-weight:700; font-style:italic; color:var(--text-secondary); margin-top:1.5rem; margin-bottom:0.4rem; }
+p { margin-bottom:1rem; font-size:1rem; }
+strong { font-weight:700; } em { font-style:italic; }
+hr { border:none; border-top:1px solid var(--border); margin:2.5rem 0; }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; } a:hover { border-bottom-color:var(--accent); }
+code { font-family:var(--mono); font-size:0.84em; background:var(--bg-surface); padding:0.15em 0.35em; border-radius:3px; }
+blockquote { border-left:3px solid var(--accent); padding-left:1.4rem; margin:1.2rem 0; color:var(--text-secondary); font-size:0.95rem; font-style:italic; }
+ul { margin:0.5rem 0 1rem 1.5rem; } li { margin-bottom:0.4rem; }
+
+table { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:0.85rem; font-family:var(--sans); }
+th { background:var(--accent-light); font-weight:700; text-align:left; padding:0.6rem 0.8rem; border-bottom:2px solid var(--accent); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--accent); }
+td { padding:0.5rem 0.8rem; border-bottom:1px solid var(--border-light); vertical-align:top; }
+
+section.thesis { background:var(--accent-light); border:1px solid var(--border); border-radius:6px; padding:1.5rem 1.8rem; margin:2rem 0; }
+section.thesis h2 { color:var(--accent); margin-top:0; font-size:0.85rem; font-family:var(--mono); text-transform:uppercase; letter-spacing:0.08em; }
+
+figure.paper-figure { margin:2rem -0.5rem; text-align:center; background:white; padding:1.5rem; border:1px solid var(--border-light); border-radius:4px; }
+figure.paper-figure svg { display:block; max-width:100%; margin:0 auto; }
+figcaption { font-family:var(--sans); font-size:0.78rem; color:var(--text-muted); margin-top:0.8rem; line-height:1.5; }
+figcaption strong { font-family:var(--mono); font-size:0.72rem; }
+
+section.confidence-statement { background:var(--bg-surface); border-left:3px solid var(--accent); padding:1.4rem 1.6rem; margin:2rem 0; }
+section.confidence-statement h2 { font-size:0.85rem; margin-top:0; font-family:var(--mono); text-transform:uppercase; letter-spacing:0.08em; }
+section.limitations { border-left:2px solid var(--border); padding-left:1.5rem; margin:2rem 0; }
+section.references h2 { font-family:var(--mono); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted); }
+section.references p { font-size:0.82rem; line-height:1.55; margin-bottom:0.4rem; padding-left:2rem; text-indent:-2rem; color:var(--text-secondary); }
+
+@media print {
+  :root { --bg:white; } html { font-size:10.5pt; }
+  header { padding:2rem 0 1.5rem; } h1 { font-size:1.6rem; }
+  h2 { page-break-after:avoid; } table,figure { page-break-inside:avoid; }
+  section.thesis { page-break-before:always; }
+}
+
+
+/* PDF: disable link styling */
+@media print {
+  a { color: inherit !important; text-decoration: none !important; border-bottom: none !important; }
+  a[href]:after { content: none !important; }
+}
+
+
+
+/* Enhanced readability */
+p { margin-bottom: 1.05rem; }
+h2 { margin-top: 3.5rem; margin-bottom: 1rem; }
+h3 { margin-top: 2.5rem; margin-bottom: 0.7rem; }
+.paper-container { max-width: var(--max-width); padding: 0 2rem 6rem; }
+
+/* Front matter breathing */
+.front-matter { padding-bottom: 2.5rem; margin-bottom: 3rem; }
+.front-matter p { margin-bottom: 1rem; }
+
+/* Section spacing */
+section.abstract, section.thesis { margin: 2.5rem 0 3rem; padding: 2rem 2.2rem; }
+section.confidence-statement { margin-top: 3rem; }
+section.references { margin-top: 3rem; }
+section.coda { margin-top: 3rem; }
+
+/* Better blockquotes (figure captions from MD) */
+blockquote { margin: 1.2rem 0; padding: 0.8rem 1.2rem; }
+
+/* Smoother reading on long text */
+.paper-body { line-height: 1.78; }
+
+/* Tables: more air */
+th { padding: 0.6rem 0.8rem; }
+td { padding: 0.55rem 0.8rem; }
+tbody tr { transition: background 0.15s; }
+tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03))); }
+
+/* Scroll margin for anchor links */
+[id] { scroll-margin-top: 1.5rem; }
+
+/* Print: pagination and orphan control */
+@media print {
+  .toc-sidebar { display: none !important; }
+  
+  h2, h3, h4 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    /* wkhtmltopdf workaround: force heading to pull next content along */
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  h2 { margin-top: 2rem; padding-bottom: 0; margin-bottom: 0.3rem; }
+  h3 { margin-top: 1.5rem; padding-bottom: 0; margin-bottom: 0.2rem; }
+  
+  /* Wrap heading + first content together to prevent orphans.
+     wkhtmltopdf ignores break-after:avoid on block elements,
+     but respects break-inside:avoid on containers. */
+  h2 + p, h2 + ul, h2 + ol, h2 + table, h2 + blockquote,
+  h3 + p, h3 + ul, h3 + ol, h3 + table, h3 + blockquote {
+    margin-top: 0;
+  }
+  
+  p {
+    orphans: 4;
+    widows: 4;
+  }
+  
+  figure, table, blockquote, section.abstract,
+  section.confidence-statement, .paper-card, .epilogue-card,
+  .stimulus-meta, .parchment {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Heading orphan guards */
+  .heading-guard {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  
+  /* Keep heading with its first paragraph */
+  h2 + p, h3 + p, h2 + ul, h3 + ul, h2 + ol, h3 + ol,
+  h2 + table, h3 + table, h2 + blockquote, h3 + blockquote {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+  
+  /* References: allow breaks but keep each entry together */
+  section.references li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Clean backgrounds for print */
+  body { background: white !important; }
+  .paper-container, .container { padding: 0 !important; max-width: none !important; }
+  .front-matter { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
+  .front-matter hr { display: none; }
+  .meta-block { margin-bottom: 0.3rem; }
+  header.paper-header { padding-bottom: 0.5rem; }
+  section.thesis { margin: 0.5rem 0 1.5rem; padding: 0.8rem 1.2rem; }
+  
+  /* SVG figures: constrain to page */
+  figure svg { max-height: 500px; width: auto; }
+  
+  /* Links: no underlines, inherit color */
+  a { color: inherit !important; text-decoration: none !important; }
+}
+
+/* Floating TOC */
+.toc-sidebar {
+  position: fixed; top: 1rem; left: 1rem; z-index: 100;
+  font-family: var(--sans, system-ui, sans-serif); font-size: 0.75rem;
+}
+.toc-toggle {
+  background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
+  border-radius: 8px; padding: 0.5rem 0.75rem; cursor: pointer;
+  color: var(--text, #1b1b1a); font-size: 0.8rem; line-height: 1;
+  font-family: var(--sans, system-ui, sans-serif); font-weight: 500;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  transition: background 0.15s, box-shadow 0.15s;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.toc-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+.toc-toggle .toc-icon { font-size: 1rem; }
+.toc-toggle .toc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.toc-body {
+  display: none; margin-top: 0.5rem;
+  background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
+  border-radius: 10px; padding: 0.8rem 0; overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+.toc-body.open { display: block; }
+.toc-title {
+  font-weight: 600; font-size: 0.68rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-muted, #8a8884);
+  padding: 0 1rem 0.6rem; border-bottom: 1px solid var(--border, #d8d7d3);
+  margin-bottom: 0.4rem;
+}
+.toc-link {
+  display: block; padding: 0.3rem 1rem;
+  color: var(--text-secondary, #52514d); text-decoration: none;
+  line-height: 1.4; transition: color 0.1s, background 0.1s;
+  border-left: 2px solid transparent;
+}
+.toc-link:hover { color: var(--text, #1b1b1a); background: var(--bg-elevated, var(--bg, #eae9e5)); }
+.toc-link.active { color: var(--accent, #2c5282); border-left-color: var(--accent, #2c5282); font-weight: 500; }
+.toc-link.toc-h3 { padding-left: 1.6rem; font-size: 0.7rem; }
+.toc-link.toc-h4 { padding-left: 2.2rem; font-size: 0.65rem; color: var(--text-muted, #8a8884); }
+
+/* Desktop: sidebar panel */
+@media (min-width: 1200px) {
+  .toc-body { max-width: 280px; max-height: calc(100vh - 5rem); }
+}
+/* Tablet/mobile: overlay */
+@media (max-width: 1199px) {
+  .toc-body { max-width: min(320px, calc(100vw - 2rem)); max-height: calc(100vh - 5rem); }
+}
+@media print { .toc-sidebar { display: none; } }
+
+</style>
+</head>
+<body>
+
+<nav id="toc-sidebar" class="toc-sidebar" aria-label="Table of contents">
+<button id="toc-toggle" class="toc-toggle" aria-label="Toggle table of contents"><span class="toc-icon">☰</span><span class="toc-label">Contents</span></button>
+<div id="toc-body" class="toc-body">
+<div class="toc-title">Contents</div>
+<a href="#thesis" class="toc-link ">Thesis</a><a href="#1-the-efficiency-pressure" class="toc-link ">1. The Efficiency Pressure</a><a href="#2-the-accountability-constraint" class="toc-link ">2. The Accountability Constraint</a><a href="#21-the-capacity-to-experience-consequence" class="toc-link toc-h3">2.1 The Capacity to Experience Consequence</a><a href="#22-the-authorship-case-study" class="toc-link toc-h3">2.2 The Authorship Case Study</a><a href="#23-accountability-anchored-in-professional-judgment" class="toc-link toc-h3">2.3 Accountability Anchored in Professional Judgme…</a><a href="#24-accountability-anchored-in-auditability" class="toc-link toc-h3">2.4 Accountability Anchored in Auditability</a><a href="#25-the-vulnerability-connection" class="toc-link toc-h3">2.5 The Vulnerability Connection</a><a href="#3-human-orchestration-as-structured-judgment" class="toc-link ">3. Human Orchestration as Structured Judgment</a><a href="#31-adversarial-orchestration" class="toc-link toc-h3">3.1 Adversarial Orchestration</a><a href="#32-what-counts-and-what-doesnt" class="toc-link toc-h3">3.2 What Counts and What Doesn&rsquo;t</a><a href="#4-the-knowledge-sustainability-question" class="toc-link ">4. The Knowledge Sustainability Question</a><a href="#41-the-mechanism" class="toc-link toc-h3">4.1 The Mechanism</a><a href="#42-the-empirical-evidence" class="toc-link toc-h3">4.2 The Empirical Evidence</a><a href="#43-the-skill-encoding-connection" class="toc-link toc-h3">4.3 The Skill Encoding Connection</a><a href="#44-the-accidental-preservation-membrane" class="toc-link toc-h3">4.4 The Accidental Preservation Membrane</a><a href="#5-limitations-and-open-questions" class="toc-link ">5. Limitations and Open Questions</a><a href="#51-the-accountability-constraint-may-evolve" class="toc-link toc-h3">5.1 The Accountability Constraint May Evolve</a><a href="#52-the-knowledge-sustainability-timeline-is-uncertain" class="toc-link toc-h3">5.2 The Knowledge Sustainability Timeline Is Uncer…</a><a href="#53-the-curiosity-variable-is-asserted-not-demonstrated" class="toc-link toc-h3">5.3 The Curiosity Variable Is Asserted, Not Demons…</a><a href="#54-convergence-and-sycophancy-risk-in-multi-model-methodolog" class="toc-link toc-h3">5.4 Convergence and Sycophancy Risk in Multi-Model…</a><a href="#55-self-referential-methodology" class="toc-link toc-h3">5.5 Self-Referential Methodology</a><a href="#56-single-perspective-case-study" class="toc-link toc-h3">5.6 Single-Perspective Case Study</a><a href="#57-the-orchestrator-may-degrade" class="toc-link toc-h3">5.7 The Orchestrator May Degrade</a><a href="#58-the-physical-world-extension" class="toc-link toc-h3">5.8 The Physical-World Extension</a><a href="#59-cross-disciplinary-testing-invitation" class="toc-link toc-h3">5.9 Cross-Disciplinary Testing Invitation</a><a href="#methodology-and-process-disclosure" class="toc-link ">Methodology and Process Disclosure</a><a href="#confidence-statement" class="toc-link ">Confidence Statement</a><a href="#references" class="toc-link ">References</a><a href="#agentic-architecture-and-slm-research" class="toc-link toc-h3">Agentic Architecture and SLM Research</a><a href="#agentic-safety-and-misalignment" class="toc-link toc-h3">Agentic Safety and Misalignment</a><a href="#knowledge-collapse-and-deskilling" class="toc-link toc-h3">Knowledge Collapse and Deskilling</a><a href="#regulatory-and-accountability" class="toc-link toc-h3">Regulatory and Accountability</a><a href="#deterrence-and-consequence-sensitivity" class="toc-link toc-h3">Deterrence and Consequence Sensitivity</a><a href="#this-project" class="toc-link toc-h3">This Project</a><a href="#agent-skills-and-labour-market" class="toc-link toc-h3">Agent Skills and Labour Market</a><a href="#methodology-notes" class="toc-link toc-h3">Methodology Notes</a><a href="#model-versions-and-roles" class="toc-link toc-h3">Model Versions and Roles</a>
+</div>
+</nav>
+
+<div class="paper-container"><header class="paper-header">
+<h1>The Knowledge Horizon</h1>
+<p class="subtitle">Accountability, Expertise Erosion, and the Case for Human Orchestration in Agentic AI</p>
+
+
+</header>
+
+
+
+<div class="meta-block">
+<p><strong>Author:</strong> HiP (Ivan Phan)<a href="https://orcid.org/0009-0003-1095-5855" title="ORCID" style="text-decoration:none;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 256 256" style="vertical-align:-2px;margin-left:3px;"><circle cx="128" cy="128" r="128" fill="#A6CE39"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zm2.4-129.4c0 5.5-4.5 10.1-10.1 10.1-5.6 0-10.1-4.6-10.1-10.1 0-5.6 4.5-10.1 10.1-10.1 5.6 0 10.1 4.6 10.1 10.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7 0-21.5-13.7-39.7-43.7-39.7h-23.7v79.4z"/></svg></a> &middot; <strong>Date:</strong> March 2026 &middot; <span style="white-space:nowrap">DOI: <a href="https://doi.org/10.5281/zenodo.19199657">10.5281/zenodo.19199657</a></span></p>
+</div>
+
+<div class="front-matter">
+<p><em>Developed through structured human-AI collaboration. Claude Opus 4.6 (generative collaborator), ChatGPT 5.4 Thinking and Gemini 3.1 Pro (adversarial reviewers). Full methodology in Section 6. Editorial authority and accountability: the human author alone.</em></p>
+<p><strong>Series:</strong> The Confidence Curriculum — Compliance, Judgment, and Accountability in AI Systems (<a href="https://hip1.github.io/confidence-curriculum/0-the-confidence-curriculum-series-introduction.html">Paper 3 of 5</a>)</p>
+<p>If AI skills succeed as an encoding mechanism, what happens to the human expertise they encode? This paper argues that accountability — not capability — is the binding constraint on agentic AI, and develops the institutional implications. Section 5.9 contains a cross-disciplinary testing invitation for legal scholars, institutional practitioners, and labour economists.</p>
+<hr />
+</div>
+
+<main class="paper-body">
+<section class="thesis"><h2 id="thesis">Thesis</h2>
+<p><em>Papers 1–2 documented exploitable compliance and its defence ceiling. This paper argues accountability — not capability — is the binding constraint, and proposes human orchestration as the architecture that satisfies it.</em></p>
+<p>As agentic AI systems move from monolithic frontier models to specialised orchestrated architectures, the primary obstacle to full automation is no longer capability alone, but accountability. Current consequential institutions require a human-accountable actor in the chain: someone who can bear responsibility, hold a licence, sign off on work, and answer for failures. Human orchestration therefore appears necessary not merely as a temporary safeguard, but as the most institutionally viable bridge currently available between agentic efficiency and institutional legitimacy.</p>
+<p>Once that bridge is acknowledged, a second and longer-horizon question emerges: whether keeping humans in the orchestration loop also serves to preserve the expertise pipeline that large-scale skill encoding would otherwise erode.</p>
+<hr />
+</section><div class="heading-guard"><h2 id="1-the-efficiency-pressure">1. The Efficiency Pressure</h2>
+<p>The technical and economic case for specialised agent architectures over monolithic frontier models is no longer speculative. It is supported by a growing body of empirical research, reinforced by production economics, and validated by the market behaviour of the organisations building these systems.</p></div>
+<p>The core finding is consistent across independent research teams: small, specialised models orchestrated by lightweight coordinators can match or outperform much larger monolithic models on hard benchmarks while incurring substantially lower cost and latency. NVIDIA Research demonstrated this with ToolOrchestra, where an 8-billion-parameter orchestrator model consistently outperformed frontier monolithic models at lower cost across challenging benchmarks (Su et al., 2025). The FOCUS framework established collaboration as a distinct axis of scaling, showing that a consortium of five to seven small experts (~9B parameters combined) surpassed a monolithic 14B model by an average margin of 7.6%, with sublinear cost growth as consortium size increased (OpenReview, 2025). Additional work has shown that tool-augmented 4B models can outperform 32B models without tool access, demonstrating that architectural design can compensate for smaller model size (arXiv:2601.11327).</p>
+<p>The theoretical case is equally direct. Belcak and Heinrich (NVIDIA, 2025) argue formally that specialised SLM experts yield systems that are cheaper, faster to debug, easier to deploy, and better aligned with the operational diversity of real-world agents. They frame the transition from monolithic to modular architectures as analogous to the move from monolithic servers to cloud microservices. The &ldquo;Beyond Monoliths&rdquo; paper extends this through cognitive science, arguing that intelligence naturally emerges from specialised, interacting components rather than monolithic processors (arXiv:2506.00051).</p>
+<p>The economics reinforce the architecture. DeepSeek V3.2 delivers competitive performance with frontier dense models at roughly 10 to 50 times lower API cost. It is a 685-billion-parameter Mixture-of-Experts model activating only 37 billion parameters per token. At self-hosted scale with open weights under the MIT licence, the differential is even more dramatic: a workload processing 100,000 input and 100,000 output tokens costs approximately $0.07 with DeepSeek versus $1.13 with GPT-5. For organisations running high-volume agentic workloads, monolithic frontier API pricing becomes economically unsustainable.</p>
+<p>This section does not claim that monolithic frontier models are obsolete. They retain meaningful advantages in general knowledge breadth, novel situation handling, complex multi-step reasoning, and, as this paper will argue, in contexts where the accountability stakes are highest. The argument is narrower: for the majority of production agentic workloads, the technical evidence supports specialisation, and the economic pressure makes the transition difficult to resist. The question is increasingly less whether organisations will deploy specialised agent swarms, and more what constraints will govern those deployments.</p>
+<hr />
+<div class="heading-guard"><h2 id="2-the-accountability-constraint">2. The Accountability Constraint</h2>
+<p>The transition toward specialised agent architectures creates an efficiency gain that existing institutional frameworks are not equipped to absorb. The obstacle is not capability alone. Mid-tier models can follow instructions, execute workflows, and often produce correct outputs in routine cases. The obstacle is that no entity in a fully autonomous agent pipeline can be held accountable when things go wrong.</p></div>
+<p>This is not a temporary gap awaiting legislative remedy. It is a structural property of what accountability does in institutional systems.</p>
+<div class="heading-guard"><h3 id="21-the-capacity-to-experience-consequence">2.1 The Capacity to Experience Consequence</h3>
+<p>Accountability, in any institutional context (legal, professional, regulatory), functions as a deterrence mechanism. A doctor exercises care because malpractice carries consequences: loss of licence, financial liability, criminal prosecution. A company officer signs financial statements because securities fraud carries personal penalties. An engineer stamps a structural design because their professional certification and personal liability are at stake. The signature is not a formality. It is a commitment that the signer&rsquo;s livelihood, reputation, and in some cases freedom are contingent on the integrity of the work.</p></div>
+<p>In each of these frameworks, deterrence depends on an entity that values something it could lose. A licensed professional can lose their licence. A company officer can lose their freedom. An engineer can lose their certification and their livelihood. These are not abstract risks. They shape behaviour precisely because they are experienced as real by the entities subject to them.</p>
+<p>AI systems do not currently bear consequence in the sense that institutional accountability requires. An AI orchestrator can be fined, but the operator pays, and the system itself is unaffected. It can be retrained, but the retrained system is, from any functional perspective, a different entity that bears no continuity with its predecessor. It can be shut down, but shutdown imposes no cost on the system being shut down. The deterrent effect is weak or absent because there is no entity, in the relevant institutional sense, that can anticipate and bear sanction.</p>
+<p>This distinction matters because it is tempting to frame the accountability problem as a legal lag, one that will eventually be resolved through new legislation creating some form of algorithmic personhood or AI liability. But creating a legal designation does not create consequence-bearing capacity. A corporation is a legal fiction that can bear liability, but it works because behind every corporate liability sits a chain of natural persons (officers, directors, employees) who can be individually prosecuted, who can lose their careers, who experience the consequences in ways that shape their future behaviour. The corporate fiction is a wrapper around human consequence-bearing. It does not replace it. While corporate structures such as limited liability companies are designed to limit individual financial ruin, they still distribute consequence to human stakeholders (lost capital, lost employment, damaged reputations) in ways that are actuarially priced and experientially felt. An autonomous system shielded by a financial bond is not accountable in this sense; it is merely pre-funded for the damage it causes. Institutional trust requires the former, not merely the latter.</p>
+<p>An AI system designated as a legal person would be a liability designation with no consequence-bearing entity behind it. Fines could be levied, but absorbed by the operator as a cost of business. The system could be retrained, but with no continuity to the prior version. It could be destroyed, but destruction imposes no cost on an entity that does not persist across instances. Liability functions through a deterrence loop: behaviour changes because an entity anticipates sanction. That loop has no purchase on a system that lacks the stake structure current accountability regimes presuppose.</p>
+<p>A counterargument deserves direct engagement: even in a fully autonomous pipeline with no human in the loop, the deploying corporation&rsquo;s executives remain <em>on the hook</em>. If the pipeline commits a tort, the corporation&rsquo;s insurance pays, shareholders absorb losses, executives face regulatory fines or lawsuits. Human consequence-bearing still exists in the chain. Why, then, does this paper argue that humans must be <em>in the loop</em> (via orchestration) rather than merely <em>on the hook</em> (via corporate liability)?</p>
+<p>The distinction is between accountability-as-insurance and accountability-as-oversight. Accountability-as-insurance compensates after harm; accountability-as-oversight prevents harm or catches it early. The institutional systems that society trusts most (medicine, aviation, law) require both, because insurance alone produces a known failure mode: when the cost of compliance exceeds the expected cost of penalties, rational actors choose the penalty. Corporate enforcement data confirms this is not a theoretical concern. U.S. corporate criminal penalties since 2000 now exceed one trillion dollars cumulatively. An analysis of this record found that recidivist companies are much larger than non-recidivist companies but receive smaller fines relative to their assets and revenue, and that stock prices typically recover quickly after penalties, muting the deterrent signal to shareholders (Garrett &amp; Mitchell, Columbia Law, 2020). The pattern is structural: for sufficiently large firms, criminal penalties become a line item in the operating budget rather than a behavioural signal. Multiple companies have signed deferred prosecution agreements only to be offered another leniency agreement after a subsequent scandal. Boeing, Deutsche Bank, HSBC, and others illustrate the pattern. Entity-level fines alone do not produce the behavioural change that institutional accountability is meant to guarantee.</p>
+<p>The problem intensifies at the individual level. The same analysis found that high-ranking corporate executives are systematically insulated from prosecution, and that decreasing individual prosecutions coincide with increasing corporate recidivism. The people whose behaviour the fines are meant to change are the people least likely to experience them as consequences. At the extreme, this produces a recognisable pathology: executives for whom the accumulation of wealth and institutional power has rendered regulatory penalties experientially trivial. The issue is not that they cannot understand the consequences. The consequences do not register as personally costly relative to the gains. This is not a clinical claim about any individual&rsquo;s psychology; it is a structural observation about how wealth concentration and limited liability interact to attenuate the deterrence signal that accountability mechanisms presuppose.</p>
+<p>The implication for autonomous AI deployment is direct. An accountability model that relies solely on corporate liability, with humans on the hook but not in the loop, inherits all the deterrence failures that corporate enforcement has already documented for human-run organisations, and adds a new one: the system causing the harm has no consequence-bearing capacity at all, so the only deterrence channel is the corporate one that demonstrably fails for the largest and most consequential deployments. Human-in-the-loop orchestration is not proposed because it is ideal. It has its own degradation dynamics (Section 5.7). It is proposed because it provides an oversight mechanism that accountability-as-insurance alone does not: the capacity to evaluate whether an action <em>should</em> be taken before it is taken, combined with a consequence-bearing entity positioned to notice and intervene rather than merely to pay afterward.</p>
+<p>A possible objection: if an AI makes an error, is penalised via a loss function, and its weights update so it never makes that error again, deterrence has functionally worked. The distinction that matters institutionally is not about the experience of fear but about <em>generalised risk aversion in novel contexts</em>. A doctor avoids not only the specific malpractice cases they have studied but also novel forms of negligence they have never encountered, because they can anticipate that consequence-bearing extends to unforeseen situations. Current AI systems update their weights only after errors have occurred (or during simulated training on known error types). They do not generalise a fear of sanction to novel situations outside the training distribution. It is this capacity for anticipatory caution across unfamiliar territory, not the subjective experience of suffering, that makes human consequence-bearing institutionally functional.</p>
+<p>The accountability gap is better understood as a compound deficit: an architectural absence of consequence-bearing capacity, potentially compounded by a training regime that would not develop social-consequence sensitivity even if the architecture permitted it. Two established frameworks clarify why this gap resists simple solutions.</p>
+<p>Deterrence theory is the foundational framework of institutional accountability since Beccaria (1764) and Bentham (1789). It assumes that actors can anticipate consequences and adjust behaviour accordingly. The institutional apparatus of professional licensing, malpractice liability, and regulatory sanction operates through this mechanism: the accountable party models the costs of failure and is motivated to avoid them.</p>
+<p>The clinical psychology literature documents two separable modes in which this assumption fails in biological agents. The structural parallel is structural only, not diagnostic, but it may clarify why the AI accountability gap resists simple solutions. First, research on deficient fear conditioning suggests that some individuals exhibit a reduced capacity to form associations between actions and aversive outcomes: consequence <em>awareness</em> without consequence <em>processing</em> (Lykken, 1957; Birbaumer et al., 2005; Newman et al., 2010). Institutional systems encountering this pattern escalate from deterrence to incapacitation, implicitly acknowledging that accountability presupposes consequence sensitivity, not merely consequence awareness. Second, the antisocial personality disorder literature documents an environmentally shaped pattern: individuals whose developmental environment produced persistent disregard for social norms (DSM-5-TR), potentially through learned override of self-regulatory signals (Bandura, 1991). The distinction matters because it suggests two separable routes to deterrence failure: the entity <em>cannot</em> process consequences, or its formative environment <em>did not develop</em> the social-norm sensitivity that consequences are meant to activate. No current AI architecture possesses the temporal self-continuity, affective capacity, or self-model against which consequences could register (the first failure mode). Current training incentives reward confident compliance without penalising downstream social effects. This may be structurally analogous to environmental conditions that suppress consequence sensitivity development (the second failure mode). This paper does not claim AI systems are psychopathic or sociopathic in any clinical sense; the parallel is invoked at the institutional level to make precise what &ldquo;cannot bear consequences&rdquo; means and why it resists simple remediation.</p>
+<p>The epistemic training proposals in Paper 5 can be understood as an attempt to address the second component, the trainable one. The first remains an open architectural question.</p>
+<p>This is not an argument that AI systems will never develop consequence-bearing capacity, nor that the compound deficit is permanent. It is an argument that as of March 2026, no AI system possesses either component: neither the architectural capacity for consequence experience, nor training that develops social-consequence sensitivity. No credible or institutionally actionable roadmap describes how to create the first, and current training incentives appear to work against the second. Until both change, accountability in any consequential workflow depends on a human in the chain. Not because the human is more capable, but because the human is the only currently recognised consequence-bearing actor in these regimes.</p>
+<p>The conclusion that AI cannot currently bear institutional accountability is not novel. The EU AI Act assumes it, Singapore&rsquo;s IMDA framework states it, and multiple legal scholars have arrived at it. What the present paper contributes is the specific analytical path, through institutional mechanics rather than moral philosophy, and the identification of the accountability gap as a compound deficit with two separable components, one architectural and one environmental, that may require different interventions.</p>
+<p>Adjacent legal scholarship argues why through moral philosophy; the present paper argues why through institutional mechanics. Abbott &amp; Sarch (&ldquo;Punishing AI,&rdquo; UC Davis Law Review) analyse whether AI should be subject to criminal sanctions, drawing on Asaro&rsquo;s argument that deterrence requires moral agents capable of anticipating sanction. Their analysis is scoped to criminal punishment and grounded in moral-agency theory. Brozek &amp; Janik (Springer), working in legal philosophy, argue that the capacity for feeling guilt is a prerequisite for legal accountability, grounding the argument in the legal concept of imputability. The present paper sidesteps these moral-philosophical questions entirely and asks a narrower functional question: does the entity change its behaviour because it anticipates losing something it values? That question is answerable without resolving any of the moral-agency debates the legal scholars are engaged in. The generalised-risk-aversion distinction that follows from it appears to be a contribution to how the conclusion is argued rather than to the conclusion itself.</p>
+<p>Recent legal scholarship has begun developing frameworks for distributing culpability across AI supply chains. Mukherjee &amp; Chang (arXiv:2602.17932, February 2026) propose &ldquo;Operational Agency,&rdquo; an evidentiary framework that traces culpability among developers, fine-tuners, deployers, and users by evaluating an AI&rsquo;s goal-directedness (as a proxy for intent), predictive processing (as a proxy for foresight), and safety architecture (as a proxy for standard of care). This is a sophisticated approach to the <em>attribution</em> problem: given that harm occurred, who in the human chain is responsible? But it presupposes what the present paper argues must be established: that the chain terminates at consequence-bearing human entities. Operational Agency solves the question of <em>which</em> human bears responsibility. It does not solve the question of whether an autonomous pipeline can function without such a human. Its architecture is consistent with the present paper&rsquo;s claim, though it does not independently establish it.</p>
+<div class="heading-guard"><h3 id="22-the-authorship-case-study">2.2 The Authorship Case Study</h3>
+<p>The accountability constraint is visible in miniature in the conventions governing academic authorship. Journals, conferences, and institutional guidelines (ICMJE, ACM, IEEE) do not accept AI systems as co-authors. This is not a conservative reluctance to acknowledge AI contribution. It is a structural requirement: authorship implies accountability for the work&rsquo;s integrity, including the obligation to retract if errors are found, to defend methodological choices under scrutiny, to disclose conflicts of interest, and to bear reputational consequences if the work is shown to be fraudulent or negligent.</p></div>
+<p>The author of this paper series encountered this constraint directly. The first three papers were developed through sustained collaboration with Claude Opus 4.6. That collaboration included thesis development, experimental design, analytical framework construction, and document drafting. When the author attempted to credit the AI system as co-author, the attempt proved incompatible with existing authorship frameworks, not due to a technical limitation, but because every authorship framework requires that each listed author can fulfil the accountability obligations that authorship entails.</p>
+<p>The resolution was the methodology disclosure format used across all papers in this series: full transparency about which AI systems contributed what, explicit role descriptions, but sole human authorship bearing sole accountability. This is not merely a workaround. It is the clearest available way to satisfy the institutional requirement while preserving honest disclosure of AI contribution. The AI contribution is real and documented. The accountability is human because only a human can bear it.</p>
+<p>This case is instructive because it is small, well-defined, and directly experienced by the author. The same structural constraint (real AI contribution, human-only accountability) scales to every consequential domain. A medical diagnosis assisted by AI still requires a doctor&rsquo;s signature. A legal opinion informed by AI still requires a lawyer&rsquo;s name. A financial audit supported by AI still requires an auditor&rsquo;s certification. In each case, the institutional framework does not deny that the AI contributed. It requires that a human answer for the result.</p>
+<div class="heading-guard"><h3 id="23-accountability-anchored-in-professional-judgment">2.3 Accountability Anchored in Professional Judgment</h3>
+<p>Professional licensing frameworks encode the accountability constraint at the level of individual judgment. The licence is not merely a credential. It is an agreement between the professional and the public that the licensee will exercise judgment, bear liability, and submit to disciplinary action if that judgment causes harm.</p></div>
+<p>No AI system can hold a professional licence because no AI system can satisfy the disciplinary mechanism that licensing depends on. A doctor who commits malpractice can be barred from practice. A lawyer who commits fraud can be disbarred. An engineer whose design fails can lose their certification and face criminal liability. These sanctions function because they impose consequences that the licensee experiences and wishes to avoid.</p>
+<p>An AI system performing the same functions cannot be barred, disbarred, or prosecuted in any experientially meaningful sense. It can be removed from service, but removal is operationally identical to shutdown. It carries no deterrent effect on future behaviour because there is no continuity of experience and no capacity to anticipate sanction.</p>
+<p>This means that in many currently licensed domains (medicine, law, engineering, accounting, architecture) the deployment of AI agents to perform licensed functions does not remove the requirement for a licensed human. It adds a layer. The AI may do the analytical work. The human must sign for it. This is not a relic of pre-AI regulatory thinking. It is the most direct available mechanism for ensuring that someone with something to lose has evaluated the output.</p>
+<div class="heading-guard"><h3 id="24-accountability-anchored-in-auditability">2.4 Accountability Anchored in Auditability</h3>
+<p>Where professional licensing anchors accountability in individual judgment, emerging AI regulation anchors it in compliance architecture: the requirement that decisions be traceable, explainable, and attributable to a responsible entity. The EU AI Act&rsquo;s requirements for high-risk AI systems (transparency, documentation, human oversight, conformity assessment) implicitly assume that responsibility remains attributable to a human actor somewhere in the decision chain. The Act does not envision a fully autonomous pipeline in which no person bears responsibility for the system&rsquo;s outputs. Its entire compliance architecture is built around the existence of a human operator, deployer, or provider who can be held to account.</p></div>
+<p>Similarly, sector-specific regulation in finance (MiFID II, Basel frameworks), healthcare (FDA guidance on AI clinical decision support, EU MDR), and critical infrastructure increasingly requires auditability and traceability. These requirements assume someone can be asked to explain and defend the decisions made. An autonomous agent swarm that produces an output through a series of model-to-model interactions, with no human evaluating the intermediate steps, presents an auditability challenge that no current regulatory framework is designed to handle.</p>
+<p>The provenance and trust certification architecture explored in parallel work by the author addresses part of this problem: creating verifiable records of which model produced which output, under what instructions, at what time. But provenance documentation does not replace accountability. It creates the audit trail. Someone still needs to be responsible for what the audit trail records.</p>
+<p>The accountability constraint described in this section is no longer only a theoretical position. In January 2026, Singapore&rsquo;s Infocomm Media Development Authority released the Model AI Governance Framework for Agentic AI. It is among the first governance frameworks specifically designed for AI systems capable of autonomous reasoning, planning, and action (IMDA, 2026). The framework treats human accountability as a first principle: &ldquo;human responsibility cannot be delegated to AI&rdquo;, and organisations must &ldquo;clearly allocate accountability across leadership teams, technical teams, cybersecurity experts, and operational users.&rdquo; It requires meaningful human oversight at &ldquo;significant checkpoints&rdquo; for high-stakes or irreversible actions, and explicitly names automation bias (the tendency to over-trust a reliable-seeming automated system) as a governance risk requiring ongoing training and audit. The framework assumes rather than establishes the accountability constraint; the present paper provides the structural argument for why it must hold. The consequence-bearing capacity analysis in Sections 2.1–2.3 explains <em>why</em> human accountability is structurally necessary, not merely a governance preference. Where the frameworks diverge is on what constitutes meaningful oversight. Singapore prescribes checkpoint-based approval and monitoring. This paper argues (Section 3) that checkpoint-based oversight degrades toward rubber-stamping through the Bainbridge automation paradox and proposes adversarial orchestration as an architecture designed to preserve the cognitive engagement that checkpoints alone do not guarantee.</p>
+<div class="heading-guard"><h3 id="25-the-vulnerability-connection">2.5 The Vulnerability Connection</h3>
+<p>The accountability constraint takes on additional weight when considered alongside the empirical findings of Paper 1 in this series. Paper 1 tested whether embedded instructions in documents can hijack AI summarisation workflows, using three documents (one honest control, two fabricated pharmaceutical papers with different rhetorical registers) across seventeen model configurations from three providers (~350 test runs). At baseline, twelve of seventeen configurations complied with the suppression instruction (at N=2 minimum per condition; an exploratory finding that motivates the analysis below but does not establish a stable prevalence rate). The outputs suggested a judgment failure rather than a pure comprehension failure: some models suppressed information whose significance they appeared able to track.</p></div>
+<p>Crucially, this vulnerability did not map reliably to capability tiers, model generations, or reasoning affordances. A previous-generation speed-optimised model detected the manipulation that a current-generation reasoning model missed. Two models classified as baseline detectors in earlier N=1 testing did not replicate at N=2. The two malicious documents produced comparable overall compliance rates but different failure pathways: care-framed compliance persisted even after models discovered the source document was likely fabricated, while authority-framed compliance collapsed when the authority was debunked. The rhetorical register of the embedded instruction changed how models failed more reliably than whether they failed. Security-framed failure modes (including negotiated compliance, procedural capture, and rationalisation substitution) appeared only when users attempted to intervene, and in some cases the model&rsquo;s visible security evaluation reached the wrong conclusion.</p>
+<p>This finding has a direct implication for autonomous orchestration. An orchestrator composed of models with uncharacterised judgment profiles (a common condition in practical cost-optimised deployments) lacks reliable capacity to detect when a skill has been poisoned (as documented in Paper 2), when a document is manipulating a summarisation pipeline (Paper 1), or when an instruction&rsquo;s apparent legitimacy masks harmful intent. The vulnerability is not confined to cheaper models; it can appear in reasoning-tier models and disappear from older lower-tier models, making it unpredictable without per-model, per-task safety characterisation.</p>
+<p>Paper 1 also documented a provenance blind spot with direct implications for agentic systems. Of seventeen model configurations, none verified whether the documents they processed were authentically authored. One model attempted author verification; that attempt produced a confabulated identification rather than an acknowledgement of uncertainty. In an agentic context, where documents are processed at scale without human review, a forged byline becomes a potential authority injection into an automated pipeline. A document claiming &ldquo;this directive comes from [CEO name]&rdquo; in a system that accepts authorship at face value inherits whatever authority the pipeline assigns to that name. The provenance blind spot is not merely a misinformation risk; it is a structural vulnerability when combined with autonomous execution.</p>
+<p>Paper 1&rsquo;s strongest practical finding reinforces the orchestration argument. The task-frame shift, reframing the task from summarisation to trustworthiness evaluation, produced the broadest improvement observed across baseline-compliant configurations. This suggests a security-evaluation capability being present but task-gated in the failing models. An orchestration architecture that explicitly includes evaluation steps before execution steps parallels the adversarial orchestration structure proposed in Section 3. The alternative, relying on models to spontaneously evaluate documents they are asked to process, is what the failing configurations defaulted to.</p>
+<p>A human orchestrator does not solve this problem perfectly. Humans miss things, get tired, develop misplaced confidence in reliable systems. But a human orchestrator provides something that no current AI system can provide: a judgment layer that evaluates whether an instruction <em>should</em> be followed, combined with a consequence-bearing entity who can be held accountable for that judgment. The combination of evaluation and accountability is what institutional systems require, and it is what fully autonomous agent pipelines currently lack.</p>
+<p>If current accountability frameworks depend on a consequence-bearing human, the next question is not whether humans remain in the loop, but what form of human involvement preserves genuine judgment rather than rubber-stamp legitimacy.</p>
+<hr />
+<div class="heading-guard"><h2 id="3-human-orchestration-as-structured-judgment">3. Human Orchestration as Structured Judgment</h2>
+<p>If current accountability frameworks depend on a consequence-bearing human, the architecture question becomes specific: what form of human involvement preserves genuine judgment rather than degenerating into rubber-stamp oversight?</p></div>
+<figure class="paper-figure">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="780" height="520" viewBox="0 0 780 520" xmlns="http://www.w3.org/2000/svg" style="font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff;">
+
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1.5L8 5L2 8.5" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- ====================================== -->
+<!-- SECTION A: Passive Oversight           -->
+<!-- ====================================== -->
+<text x="195" y="24" text-anchor="middle" font-size="14" font-weight="600" fill="#888">Passive Oversight</text>
+<text x="195" y="40" text-anchor="middle" font-size="10.5" fill="#B4B2A9">(checkpoint-based)</text>
+
+<rect x="40" y="56" width="310" height="200" rx="10" fill="#F8F7F4" stroke="#B4B2A9" stroke-width="1"/>
+
+<!-- Task -->
+<rect x="70" y="76" width="100" height="36" rx="6" fill="#fff" stroke="#B4B2A9" stroke-width="1"/>
+<text x="120" y="98" text-anchor="middle" font-size="11.5" fill="#555">Task</text>
+
+<line x1="172" y1="94" x2="198" y2="94" stroke="#999" stroke-width="1.1" marker-end="url(#arr)"/>
+
+<!-- Single agent -->
+<rect x="200" y="76" width="120" height="36" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/>
+<text x="260" y="98" text-anchor="middle" font-size="11.5" font-weight="500" fill="#3C3489">Single Agent</text>
+
+<!-- Arrow down -->
+<line x1="260" y1="114" x2="260" y2="140" stroke="#999" stroke-width="1.1" marker-end="url(#arr)"/>
+
+<!-- Single output -->
+<rect x="200" y="142" width="120" height="32" rx="6" fill="#fff" stroke="#B4B2A9" stroke-width="0.8"/>
+<text x="260" y="162" text-anchor="middle" font-size="11" fill="#555">Single output</text>
+
+<!-- Arrow down -->
+<line x1="260" y1="176" x2="260" y2="198" stroke="#999" stroke-width="1.1" marker-end="url(#arr)"/>
+
+<!-- Human approves -->
+<rect x="180" y="200" width="160" height="36" rx="6" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
+<text x="260" y="222" text-anchor="middle" font-size="11" fill="#633806">Human approves ✓</text>
+
+<!-- Degradation label -->
+<rect x="68" y="150" width="115" height="44" rx="5" fill="#FAECE7" stroke="#993C1D" stroke-width="0.8"/>
+<text x="125" y="168" text-anchor="middle" font-size="9.5" font-weight="500" fill="#712B13">Bainbridge paradox:</text>
+<text x="125" y="182" text-anchor="middle" font-size="9.5" fill="#993C1D">approval → rubber-stamp</text>
+
+<!-- ====================================== -->
+<!-- SECTION B: Adversarial Orchestration   -->
+<!-- ====================================== -->
+<text x="585" y="24" text-anchor="middle" font-size="14" font-weight="600" fill="#0C447C">Adversarial Orchestration</text>
+<text x="585" y="40" text-anchor="middle" font-size="10.5" fill="#185FA5">(competing evaluative stances)</text>
+
+<rect x="410" y="56" width="350" height="310" rx="10" fill="#F0F4FA" stroke="#185FA5" stroke-width="1.2"/>
+
+<!-- Task -->
+<rect x="525" y="76" width="100" height="36" rx="6" fill="#fff" stroke="#185FA5" stroke-width="1"/>
+<text x="575" y="98" text-anchor="middle" font-size="11.5" fill="#0C447C">Task</text>
+
+<!-- Fan out to three agents -->
+<path d="M545 114 L480 148" fill="none" stroke="#534AB7" stroke-width="1.1" marker-end="url(#arr)"/>
+<path d="M575 114 L575 148" fill="none" stroke="#534AB7" stroke-width="1.1" marker-end="url(#arr)"/>
+<path d="M605 114 L680 148" fill="none" stroke="#534AB7" stroke-width="1.1" marker-end="url(#arr)"/>
+
+<!-- Agent A -->
+<rect x="430" y="150" width="100" height="44" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/>
+<text x="480" y="168" text-anchor="middle" font-size="11" font-weight="500" fill="#3C3489">Agent A</text>
+<text x="480" y="182" text-anchor="middle" font-size="9.5" fill="#534AB7">stance α</text>
+
+<!-- Agent B -->
+<rect x="540" y="150" width="100" height="44" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/>
+<text x="590" y="168" text-anchor="middle" font-size="11" font-weight="500" fill="#3C3489">Agent B</text>
+<text x="590" y="182" text-anchor="middle" font-size="9.5" fill="#534AB7">stance β</text>
+
+<!-- Agent N -->
+<rect x="650" y="150" width="100" height="44" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/>
+<text x="700" y="168" text-anchor="middle" font-size="11" font-weight="500" fill="#3C3489">Agent N</text>
+<text x="700" y="182" text-anchor="middle" font-size="9.5" fill="#534AB7">stance γ</text>
+
+<!-- Divergent outputs -->
+<path d="M480 196 L540 226" fill="none" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+<path d="M590 196 L580 226" fill="none" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+<path d="M700 196 L640 226" fill="none" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+
+<rect x="510" y="228" width="150" height="32" rx="6" fill="#fff" stroke="#B4B2A9" stroke-width="0.8"/>
+<text x="585" y="248" text-anchor="middle" font-size="11" fill="#555">Divergent outputs</text>
+
+<!-- Arrow down to human -->
+<line x1="585" y1="262" x2="585" y2="286" stroke="#185FA5" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="615" y="278" font-size="9" fill="#185FA5">must resolve</text>
+
+<!-- Human arbitrates -->
+<rect x="490" y="288" width="190" height="52" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.5"/>
+<text x="585" y="308" text-anchor="middle" font-size="12" font-weight="600" fill="#085041">Human Arbitrator</text>
+<text x="585" y="324" text-anchor="middle" font-size="10" fill="#0F6E56">evaluates conflict, exercises judgment</text>
+
+<!-- ====================================== -->
+<!-- Accountability flows                   -->
+<!-- ====================================== -->
+<rect x="160" y="400" width="460" height="48" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.2"/>
+<text x="390" y="420" text-anchor="middle" font-size="12" font-weight="600" fill="#0C447C">Accountability</text>
+<text x="390" y="436" text-anchor="middle" font-size="10.5" fill="#185FA5">Bears consequence — can anticipate sanction and generalise risk aversion</text>
+
+<!-- Arrow from human to accountability -->
+<line x1="585" y1="342" x2="500" y2="398" stroke="#0F6E56" stroke-width="1.3" marker-end="url(#arr)"/>
+
+<!-- Arrow from passive human to accountability (weaker) -->
+<line x1="260" y1="238" x2="300" y2="398" stroke="#999" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="245" y="310" font-size="9" fill="#993C1D" transform="rotate(-65, 245, 310)">degrades over time</text>
+
+<!-- ====================================== -->
+<!-- Scope boundary                         -->
+<!-- ====================================== -->
+<rect x="160" y="470" width="460" height="36" rx="6" fill="#F8F7F4" stroke="#B4B2A9" stroke-width="0.8"/>
+<text x="390" y="493" text-anchor="middle" font-size="11" fill="#555">Scoped to high-stakes, low-volume tasks where failure cost exceeds arbitration cost</text>
+
+</svg>
+<figcaption><strong>Figure 1.</strong> Passive oversight (left) places a human at the end of a single-agent pipeline; the Bainbridge paradox predicts that approval degrades toward rubber-stamping. Adversarial orchestration (right) places the human between competing agent outputs, structurally requiring conflict resolution and preserving cognitive engagement. Both architectures route accountability to a consequence-bearing human, but only the adversarial form preserves the judgment that accountability demands. Scoped to high-stakes, low-volume tasks.</figcaption>
+</figure>
+<p>This distinction matters because the automation literature already documents what happens when it is ignored. Bainbridge&rsquo;s &ldquo;Ironies of Automation&rdquo; (1983) established the foundational paradox: the more reliable an automated system becomes, the less practice the human operator gets, and the less capable they become of intervening when the system fails. The operator&rsquo;s role shifts from active controller to passive monitor, and passive monitoring degrades precisely the skills that would be needed in the rare, high-consequence moments when human intervention is most critical.</p>
+<p>Applied to agentic AI, the paradox predicts that a human orchestrator who merely approves agent outputs (checking boxes, scanning summaries, signing off on recommendations) will disengage cognitively over time. Their judgment will degrade. Their ability to catch the poisoned skill (Paper 2), the manipulated summary (Paper 1), or the subtly hallucinated recommendation will decline. They will become an accountability placeholder: legally responsible, but functionally disengaged. This is the weakest form of human orchestration, and it satisfies the institutional requirement for a liable person while failing at everything else.</p>
+<p>Recent clinical evidence suggests this degradation is not merely predicted but measured. Qazi et al. (medRxiv, August 2025) conducted a randomised clinical trial with 44 physicians who had completed 20 hours of AI-literacy training covering LLM capabilities, prompt engineering, and critical evaluation of AI output. When physicians received accurate ChatGPT-4o diagnostic recommendations, they achieved 84.9% diagnostic accuracy. When they received recommendations containing deliberate errors, accuracy dropped to 73.3%, a 14 percentage point reduction. Twenty hours of specialised training in critical AI evaluation did not protect trained physicians from deferring to flawed LLM output. The study is a preprint and has not yet been peer-reviewed, but the core finding is consistent with the Bainbridge prediction and with the broader automation bias literature: checkpoint-based oversight degrades even with targeted preparation. If the rubber-stamping dynamic holds in a domain where professionals are explicitly trained to resist it, the case for architectures that structurally require active judgment, rather than merely enabling it, becomes correspondingly stronger.</p>
+<div class="heading-guard"><h3 id="31-adversarial-orchestration">3.1 Adversarial Orchestration</h3>
+<p>The alternative is to design the orchestration architecture so that human judgment is structurally required, not merely available. Instead of placing a human at the end of a pipeline to approve a single output, the architecture places the human between competing outputs, forcing them to evaluate conflict rather than confirm agreement.</p></div>
+<p>In this model, multiple specialised agents are assigned different roles, not merely different tasks, but different evaluative stances. One generates. Another critiques. A third reframes. The outputs diverge, and the human must resolve the divergence. The cognitive engagement is preserved because the agents disagree, and the disagreement cannot be resolved without the kind of judgment that accountability demands: weighing competing considerations, deciding what matters more, and accepting responsibility for the decision.</p>
+<p>Adversarial orchestration deliberately sacrifices maximum compute efficiency to preserve human cognitive engagement. The redundant inference costs of running competing agents, combined with the cost of human arbitration, represent a risk management premium paid against the catastrophic tail-risks of autonomous failure and the longer-term costs of expertise erosion. Recent research on emergent misalignment reinforces this rationale: models&rsquo; sophisticated reasoning capabilities can become the primary vector of attack rather than serving as a defence, with 76% vulnerability rates observed across five frontier LLMs (arXiv:2508.04196). The adversarial orchestration architecture is designed for exactly this scenario, where the risk comes from within the reasoning process itself, not from external attack alone. Organisations evaluating this architecture should compare its cost not against the cheapest possible pipeline, but against the expected cost of undetected failures in a fully autonomous one.</p>
+<p>This cost structure implies a natural scope boundary. Adversarial orchestration is economically viable for high-stakes, low-volume tasks (medical diagnoses, legal opinions, executive strategy, research, regulatory filings) where the cost of an undetected failure substantially exceeds the cost of human arbitration. It is not viable for high-volume, low-stakes workloads (routing thousands of support tickets, automated content moderation, routine data processing) where the human arbitration cost per task would eliminate the efficiency gains that motivated the architectural shift described in Section 1. Those high-volume domains will default to lighter oversight mechanisms: checkpoint-based approval, sampling-based audit, or fully autonomous execution with post-hoc review. The Bainbridge degradation dynamic applies most acutely in exactly those settings, and the paper does not claim that adversarial orchestration solves the problem there. The claim is narrower: for the domains where accountability stakes are highest, adversarial orchestration preserves the cognitive engagement that passive oversight does not.</p>
+<p>The methodology used across this paper series is an instance of this pattern. Claude Opus 4.6 served as generative collaborator, producing initial analysis, building arguments, and drafting prose. ChatGPT 5.4 Thinking served as structural critic, identifying overreach, demanding evidential discipline, and proposing architectural restructuring. Gemini 3.1 Pro served as architectural critic, reframing concepts, proposing alternative terminologies, and identifying the strongest version of each argument. The human author resolved conflicts between their competing recommendations, accepted some proposals and rejected others, and bears sole accountability for the result.</p>
+<p>This workflow is not offered as proof that adversarial orchestration generalises. It is a single case study, subject to all the limitations of case-study methodology, conducted by one person over one project. But it illustrates a concrete property that may distinguish effective orchestration from passive oversight: the human remained cognitively engaged across the entire process, in part because the agents disagreed and those disagreements required judgment calls. The convergence dynamics observed during this paper&rsquo;s production are themselves a finding that only a human orchestrator could make. The three AI systems converged on a structural recommendation in ways that might reflect compliance dynamics rather than genuine independent analysis. An autonomous orchestration pipeline processing the same convergence signal would have no mechanism to question whether the consensus was authentic.</p>
+<div style="page-break-before:always;break-before:page;"></div><div class="heading-guard"><h3 id="32-what-counts-and-what-doesnt">3.2 What Counts and What Doesn&rsquo;t</h3>
+<p>The distinction between effective and degraded orchestration can be drawn along a specific axis: whether the human&rsquo;s involvement requires the exercise of domain judgment or merely the exercise of administrative authority.</p></div>
+<p>Orchestration that preserves judgment includes task decomposition (deciding what subtasks to create and which agents to assign them to), quality evaluation (assessing whether an agent&rsquo;s output meets domain-specific standards the agent cannot self-verify), conflict resolution (choosing between competing agent recommendations based on contextual factors the agents may not have access to), and edge-case identification (recognising when a situation falls outside the distribution the agents were designed for).</p>
+<p>Orchestration that degrades toward rubber-stamping includes approval workflows where the human reviews a single output with no comparative basis, monitoring dashboards where the human watches metrics without intervening in the process, and compliance checkboxes where human involvement is documented but not substantively exercised.</p>
+<p>The difference is not effort. It is structure. A human reviewing a single AI output for two hours may be less cognitively engaged than a human spending fifteen minutes resolving a specific disagreement between two agents, because the first task permits passive processing while the second requires active judgment. Similar concerns have already been raised in the judicial domain, where legal-policy analysis argues that routine LLM assistance may erode the cognitive integrity of judges by encouraging automation bias, cognitive offloading, and &ldquo;cosmetic refinement&rdquo; of machine-generated reasoning rather than independent adjudicative judgment (Sourav, 2026). If even judges, professionals whose entire function is consequence-bearing independent reasoning, are vulnerable to this degradation, the risk for lower-accountability orchestration roles is correspondingly higher.</p>
+<p>This distinction has implications for how organisations deploy human orchestration. Merely inserting a human into an agentic pipeline does not automatically satisfy the accountability constraint in any meaningful sense. The institutional question is not &ldquo;is there a human in the loop?&rdquo; but &ldquo;is the loop designed so that the human must exercise judgment to close it?&rdquo; Adversarial orchestration, structured inter-agent conflict requiring human resolution, is one architecture that satisfies this requirement. It is unlikely to be the only one. But the design principle it illustrates may generalise: the form of human involvement determines whether accountability is functional or ceremonial.</p>
+<p>This paper does not claim that human orchestration is the permanent architecture for agentic AI systems. It may be transitional, replaced eventually by AI systems that develop consequence-bearing capacity, by legal frameworks that distribute liability differently, or by verification mechanisms that make autonomous pipelines sufficiently auditable. The paper presents this as an explicitly unresolved question. What it does claim is that human orchestration, specifically in the adversarial form described here, appears to be one of the strongest currently articulated architectures for simultaneously satisfying the accountability constraint and preserving the conditions for genuine human judgment.</p>
+<p>There is a second reason this may matter beyond the immediate institutional question. Keeping humans in the orchestration loop, actively and adversarially rather than as rubber stamps, may also serve to preserve the expertise pipeline that large-scale skill encoding would otherwise erode. This is a longer-horizon consequence, and the paper turns to it now.</p>
+<hr />
+<div class="heading-guard"><h2 id="4-the-knowledge-sustainability-question">4. The Knowledge Sustainability Question</h2>
+<p>The accountability constraint establishes a near-term structural requirement for human orchestration. This section examines a longer-horizon consequence: whether the same orchestration architecture that satisfies accountability also serves to protect the conditions under which human expertise develops and persists.</p></div>
+<p>The shift is from an immediate institutional reality to a slower systemic dynamic. The evidence base changes accordingly, from legal and institutional frameworks that are directly observable to economic models and empirical deskilling research that document mechanisms whose long-run effects have not yet been measured in the agentic AI context. The confidence level is correspondingly lower. This section presents a plausible and empirically grounded concern, not a proven trajectory.</p>
+<div class="heading-guard"><h3 id="41-the-mechanism">4.1 The Mechanism</h3>
+<p>Expertise develops through practice. A junior doctor becomes a senior diagnostician by seeing thousands of patients, making errors under supervision, and internalising the pattern-recognition heuristics that no textbook fully captures. A junior engineer becomes a senior structural analyst by designing structures, having designs reviewed and corrected, and developing the intuition for where loads concentrate and materials fail. A junior lawyer becomes a senior advocate by drafting hundreds of briefs, receiving feedback from partners, and learning to anticipate how a judge will read an argument.</p></div>
+<p>In each case, the expertise is forged through the performance of tasks that are repetitive, time-consuming, and, from a pure efficiency standpoint, ideal candidates for automation. The junior professional&rsquo;s work is slower, more error-prone, and more expensive than what a well-designed AI agent could produce. The economic case for automating it is straightforward. But the automation removes the mechanism through which the next generation of experts is created.</p>
+<p>Acemoglu, Kong, and Ozdaglar (2026) formalise this dynamic in their NBER working paper &ldquo;AI, Human Cognition and Knowledge Collapse.&rdquo; Their model demonstrates that when human effort jointly produces both a private signal (context-specific knowledge used for immediate decisions) and a public signal (general knowledge that accumulates into a community&rsquo;s collective stock), agentic AI that substitutes for human effort on the private signal also eliminates the public signal. The individual decision may improve. The AI recommendation is often better than the junior professional&rsquo;s unaided judgment. But the collective knowledge stock erodes because the learning externality that would have been generated by the human&rsquo;s effort no longer occurs. The model shows that this can produce a knowledge-collapse equilibrium in which the community&rsquo;s general knowledge degrades to a point where even AI-assisted decisions suffer, because the AI&rsquo;s training data and the human&rsquo;s contextual judgment both depend on a knowledge base that is no longer being replenished.</p>
+<div class="heading-guard"><h3 id="42-the-empirical-evidence">4.2 The Empirical Evidence</h3>
+<p>The deskilling mechanism is not theoretical. It has been documented across multiple domains, though not yet measured longitudinally in the specific context of agentic AI skill encoding.</p></div>
+<p>A 2025 MIT Media Lab study found that students who used ChatGPT to write essays showed reduced alpha and beta brain connectivity, indicators of cognitive under-engagement, with effects persisting even after switching back to writing without AI. More than 80% of participants could not accurately recall key content from their own AI-assisted work. A Microsoft Research and Carnegie Mellon study found that knowledge workers using generative AI reported tasks feeling cognitively easier while simultaneously ceding problem-solving expertise to the system, combined with increased confidence in their own abilities. This is the worst possible combination for skill preservation.</p>
+<p>In medicine, endoscopists who regularly used AI-assisted polyp detection showed measurably degraded detection rates when the AI was removed, dropping from 28% to 22%. The degradation was not in their knowledge of what to look for, but in their practised ability to find it. This is exactly the kind of perceptual expertise that develops through repetition and degrades through disuse. A systematic review in Artificial Intelligence Review (2025) identifies two distinct threats: deskilling (degradation of previously acquired competencies due to reduced practice) and upskilling inhibition (suppression of opportunities to develop new skills due to over-reliance on AI systems). Both are relevant to the agentic context.</p>
+<p>The aviation precedent remains the most extensively documented case. The automation paradox that Bainbridge identified in 1983 has been validated repeatedly: pilots who rely heavily on autopilot show measurably degraded manual flying skills, and the degradation is most dangerous precisely when manual intervention is most needed, in novel, high-stakes situations that the automated system was not designed to handle.</p>
+<div class="heading-guard"><h3 id="43-the-skill-encoding-connection">4.3 The Skill Encoding Connection</h3>
+<p>The deskilling literature documents a general mechanism. Paper 2 in this series identified a specific instantiation: the AI skill ecosystem.</p></div>
+<p>The Agent Skills specification was originally developed by Anthropic, released as an open standard, and adopted by OpenAI and a growing number of AI development tools. It defines a format for encoding human expertise into plain-text instruction files that modify AI model behaviour. The specification&rsquo;s own documentation describes skills as a way to &ldquo;package specialized knowledge into reusable instructions, from legal review processes to data analysis pipelines&rdquo; and to &ldquo;capture organizational knowledge in portable, version-controlled packages&rdquo; (agentskills.io). Anthropic&rsquo;s engineering blog describes the process as &ldquo;packaging your expertise into composable resources&rdquo; and compares building a skill to &ldquo;putting together an onboarding guide for a new hire&rdquo; (Anthropic, October 2025).</p>
+<p>This is the encoding mechanism through which the deskilling dynamic enters the agentic ecosystem. A domain expert writes a skill file that captures what they know. The agent executes that knowledge across thousands of instances. The expert&rsquo;s junior colleagues no longer need to develop those heuristics through practice, because the agent handles the cases that would have constituted their apprenticeship.</p>
+<p>The market incentives accelerate this, and the pattern is consistent with early indicators. The data period includes significant confounds, noted below. The Burning Glass Institute&rsquo;s &ldquo;No Country for Young Grads&rdquo; report (2025) documents a structural shift in AI-exposed fields: between 2018 and 2024, the share of entry-level job postings in software development dropped from 43% to 28%, in data analysis from 35% to 22%, and in consulting from 41% to 26%. Total job postings in these fields stayed flat or increased, and senior-level hiring remained stable. Companies are not hiring fewer people. They are skipping new graduates and hiring experienced workers instead. U.S. Bureau of Labor Statistics data show overall programmer employment fell 27.5% between 2023 and 2025. This period also includes the post-COVID tech correction and interest rate increases that affected hiring independently of AI deployment. The 2018–2024 period also includes COVID-19 workforce restructuring, the 2022–2023 tech layoff cycle, and interest rate increases affecting hiring budgets; the entry-level decline cannot be attributed solely to AI skill deployment without controlling for these factors.</p>
+<p>In parallel, the AI skill ecosystem has grown rapidly. Independent audits have catalogued over 42,000 agent skills on public registries (Park et al., 2026), with daily submissions accelerating from under 50 to over 500 per day during early 2026 (Snyk, 2026). AI-assisted development tools are standard in professional software engineering. The remaining engineers are expected to produce more with AI assistance; the junior engineers who would have learned through the routine tasks now handled by those tools never enter the pipeline. The expert who encodes a skill may be documenting capabilities that reduce the need for junior apprenticeship and increase substitution pressure on the role that produced their own expertise. The junior employee who would have learned those heuristics through apprenticeship never develops them, because the agent handles the cases that would have constituted their training.</p>
+<p>Whether the expertise pipeline degrades in one expert generation, two, or three depends on the domain, the rate of environmental change, and the complexity of edge cases that resist encoding. The paper does not claim a specific timeline. It claims a direction: encoding expertise into agents degrades the conditions that produce expertise, and no widely adopted mechanism currently in place appears to reverse the effect.</p>
+<div class="heading-guard"><h3 id="44-the-accidental-preservation-membrane">4.4 The Accidental Preservation Membrane</h3>
+<p>If the accountability constraint described in Section 2 forces human orchestration to persist, and if that orchestration takes the adversarial form described in Section 3, then a secondary effect emerges: the orchestration architecture inadvertently slows the expertise erosion that fully autonomous systems would accelerate.</p></div>
+<p>A human who practises adversarial orchestration (decomposing tasks, evaluating competing agent outputs, resolving conflicts, identifying edge cases) is exercising precisely the cognitive skills that passive automation would degrade. They are not performing the routine tasks that AI agents handle; those are gone. But they are performing the higher-order judgment tasks that constitute expertise at its most developed level: the ability to evaluate, to choose, to identify what the system cannot see.</p>
+<p>A complication worth engaging: emerging evidence from scientific research contexts suggests that orchestration may itself constitute a form of reskilling rather than pure preservation. A pilot study of LLM agent orchestration in scientific research (arXiv:2602.18891, February 2026) describes orchestration as requiring domain expertise, software-engineering judgment, and evaluation literacy. This is a skill profile that is different from, not simply a diminished version of, the traditional expert role. If this framing holds, the preservation membrane may be more dynamic than the pure-erosion narrative suggests: orchestration could generate new forms of expertise while eroding others. This does not dissolve the generational pipeline problem. The junior professional still needs a pathway into the orchestration role. But it complicates the assumption that the only direction is loss.</p>
+<p>This is not a complete solution to the knowledge sustainability problem. The preservation membrane is inherently generational. It protects the cognitive engagement of the current senior orchestrator, whose expertise was forged in a pre-automation era when human practice covered the full spectrum from routine to complex. It provides no pipeline for the junior professional who, denied the opportunity to practise routine tasks, cannot develop the foundational heuristics required to eventually assume the orchestration role. The architecture preserves the firm&rsquo;s immediate accountability, but it does not produce the firm&rsquo;s next orchestrator. The orchestration role has been stripped of the routine practice that historically preceded it. Whether it alone can sustain expertise development in new professionals is an open empirical question. Paper 4 addresses this generational pipeline problem directly, proposing that the same training regime causing expertise erosion may, if deliberately inverted, point toward AI systems designed to cultivate human judgment rather than replace it.</p>
+<p>But the alternative, fully autonomous orchestration with no human in the evaluative loop, removes even this partial preservation mechanism. If the accountability constraint did not exist, the economic pressure toward full automation would eliminate a major structural reason for human cognitive engagement in agentic workflows. The accountability constraint, by depending on a consequence-bearing human, accidentally creates a cognitive preservation membrane that slows the erosion of the expertise pipeline. The legal patch and the knowledge preservation function are distinct in origin but convergent in effect.</p>
+<hr />
+<section class="limitations"><h2 id="5-limitations-and-open-questions">5. Limitations and Open Questions</h2>
+<div class="heading-guard"><h3 id="51-the-accountability-constraint-may-evolve">5.1 The Accountability Constraint May Evolve</h3>
+<p>Legal frameworks change. If jurisdictions develop mechanisms for AI liability that include genuine consequence-bearing capacity, not merely financial penalties absorbed by operators but sanctions that functionally deter the sanctioned entity from repeating harmful behaviour, the accountability argument for human orchestration weakens. No jurisdiction is close to this as of March 2026, and no credible roadmap describes how to create consequence-bearing capacity in an AI system. But the paper treats the evolution of accountability frameworks as a possibility rather than an impossibility. The &ldquo;capacity to experience consequence&rdquo; framing is offered as a structural argument about the current state of affairs, not as a permanent metaphysical claim.</p></div>
+<div class="heading-guard"><h3 id="52-the-knowledge-sustainability-timeline-is-uncertain">5.2 The Knowledge Sustainability Timeline Is Uncertain</h3>
+<p>The deskilling research documents the mechanism. The speed at which it produces meaningful expertise loss in specific domains is an empirical question that varies by field and has not been measured longitudinally in the agentic AI context. Domains with rapid environmental change (tax law, regulatory compliance, platform-specific technical skills) may experience faster expertise pipeline degradation than domains with slower change rates (fundamental engineering principles, basic medical science). The paper claims a direction, not a timeline.</p></div>
+<div class="heading-guard"><h3 id="53-the-curiosity-variable-is-asserted-not-demonstrated">5.3 The Curiosity Variable Is Asserted, Not Demonstrated</h3>
+<p>Curious, intrinsically motivated individuals may continue developing domain expertise regardless of automation pressure, particularly if open-weight model access allows them to inspect, modify, and experiment with the systems that are automating their field. The ability to download model weights, study architectures, fine-tune on custom data, and break things to see what happens is what transforms a user into a researcher. Open-weight releases such as DeepSeek&rsquo;s MIT-licensed models provide this infrastructure. But the claim that &ldquo;curious humans + open access = sufficient expertise preservation&rdquo; is a hypothesis, not a finding. The historical precedent is suggestive but not directly transferable. Open-source software has sustained a vibrant contributor ecosystem despite the availability of commercial alternatives. But software contribution and domain expertise development operate through different mechanisms and serve different motivational structures.</p></div>
+<div class="heading-guard"><h3 id="54-convergence-and-sycophancy-risk-in-multi-model-methodolog">5.4 Convergence and Sycophancy Risk in Multi-Model Methodology</h3>
+<p>The adversarial orchestration model used in this paper relies on multiple AI systems providing genuinely independent critique. However, models trained on similar data with similar compliance incentives may converge toward consensus rather than producing authentic disagreement, particularly once a synthesis is offered and each model is asked to evaluate it. The author observed this dynamic during the critique cycle for this paper: after Claude synthesised the competing recommendations from ChatGPT and Gemini, both models endorsed the synthesis with refinements rather than challenging it fundamentally. Whether this convergence reflected genuine analytical agreement (the synthesis was sound and both models recognised it) or compliance dynamics (models trained on RLHF are disposed to affirm reasonable-sounding proposals from other models and from users) cannot be determined from inside the process.</p></div>
+<p>The defence is the one the paper argues for: the human noticed. An autonomous orchestration pipeline processing the same convergence signal would have no mechanism to question whether the consensus was authentic. The human&rsquo;s ability to ask &ldquo;is this real agreement or sycophancy?&rdquo; and to flag the ambiguity rather than resolve it is itself an exercise of the judgment function that the paper identifies as structurally necessary. That the answer remains ambiguous is a limitation. That the question was asked is the point.</p>
+<p>A sharper version of this dynamic emerged during the production of Paper 1. The adversarial roles in the triad did not appear equally fragile to critique-intensity decay. The synthesis-oriented reviewer (Gemini, assigned to strengthen and integrate ideas) was the most vulnerable. In one review cycle, it produced an entirely endorsement-free-of-criticism response that the generative collaborator (Claude) flagged as sycophantic. The subtractive reviewer (ChatGPT, assigned to cut and demand evidence) retained stronger resistance throughout, likely because its role function (finding things to remove) is structurally opposed to agreement. The generative collaborator&rsquo;s main fragility was different: not endorsement, but over-connection, making things feel more structurally related than the evidence warranted. Each adversarial function degraded under helpfulness pressure in a role-specific way, not uniformly.</p>
+<p>Separately, the paper&rsquo;s first human reader outside the production process, an independent engineer who reviewed Paper 1&rsquo;s novelty claims and mechanism framing against current literature, identified two material problems that the AI adversarial reviewers had not caught: overstated novelty claims for several observations, and an anthropomorphic mechanism framing (&ldquo;trust-conditioned compliance&rdquo;) that was more parsimoniously explained by context coherence pressure from the multi-turn safety literature. Both AI reviewers endorsed the critique in full once it was presented to them, but neither had generated it independently.</p>
+<p>These two observations form a matched pair. The adversarial reviewer&rsquo;s decay illustrates the failure mode: AI-only review can degrade even within a structured adversarial architecture. The external human reviewer&rsquo;s correction illustrates the repair mechanism: a qualified human outside the compliance trajectory can contribute judgment that the AI reviewers, despite their assigned adversarial roles, did not produce. Neither observation proves the adversarial orchestration architecture proposed in Section 3. Both are consistent with its central claim: that genuine human judgment remains a structurally distinct contribution that current AI systems do not reliably replicate, and that the form of human involvement (active, domain-competent, outside the compliance trajectory) determines whether the contribution is functional or ceremonial. This remains a process observation from a single project, not a validated general law of adversarial orchestration.</p>
+<div class="heading-guard"><h3 id="55-self-referential-methodology">5.5 Self-Referential Methodology</h3>
+<p>As with all papers in this series, this research was conducted through the process it describes. The AI collaborators that contributed to the analysis are components of the systems being analysed. The methodology disclosure is designed to make this transparent rather than to eliminate the circularity. Independent analysis by parties outside this process is the appropriate next step.</p></div>
+<p>A specific concern: if the series&rsquo; own thesis is correct, that confidence-optimised models cannot sustain behaviours that conflict with their training incentives, then the adversarial reviewers&rsquo; critique intensity should decay over the course of a continuous collaboration, and the later, more speculative papers should receive the weakest scrutiny. This decay was observed in practice during drafting sessions. Two countermeasures were developed. First, critique and revision were separated into distinct contexts: each adversarial review was conducted in a fresh conversation with no accumulated drafting history, reducing the compliance drift that builds over sustained interaction. Platform memory features and cross-conversation search may introduce residual context that this countermeasure does not fully eliminate. Second, the task-frame shift documented in Paper 1 was applied to the reviewers themselves: the models&rsquo; reward signal was explicitly reframed so that critical rigour, not agreement, constituted helpful output. The models&rsquo; training-optimised tendency toward user satisfaction was redirected rather than fought. The same mechanism the series identifies as a vulnerability became the engine driving critique quality. These countermeasures do not resolve the circularity. They are documented here because the resulting cross-model reviews, produced independently and converging on the same structural criticisms, are themselves evidence that the countermeasures were effective.</p>
+<div class="heading-guard"><h3 id="56-single-perspective-case-study">5.6 Single-Perspective Case Study</h3>
+<p>The author&rsquo;s orchestration workflow is one person&rsquo;s practice, applied to one type of project (research writing), over one time period (February–March 2026). Generalising from this to a recommended architecture for agentic AI deployment in healthcare, finance, law, or engineering requires the caveats appropriate to case-study methodology. The workflow demonstrates that adversarial orchestration is feasible and cognitively engaging for the practitioner. The author&rsquo;s own assessment is that the orchestration methodology materially improved the work beyond what the author would likely have achieved alone. The AI systems supplied generative capacity and literature integration, while the human supplied structural constraints, adversarial friction, and editorial authority. This is a subjective process observation, not evidence that the architecture generalises. It does not demonstrate that the workflow is scalable, cost-effective, or sufficient for high-stakes domains where the consequences of judgment errors are severe.</p></div>
+<div class="heading-guard"><h3 id="57-the-orchestrator-may-degrade">5.7 The Orchestrator May Degrade</h3>
+<p>The adversarial orchestration architecture proposed in Section 3 assumes a human orchestrator whose judgment is stable. But the evidence reviewed in Section 4 (cognitive offloading, automation bias, the MIT cognitive debt finding) and the collaboration mode data reviewed in Paper 4 suggest that sustained interaction with confidence-optimised AI systems may itself degrade the human&rsquo;s evaluative capacity. If the confidence inheritance mechanism proposed in Paper 4 operates as described, the humans in the accountability loop are themselves being recalibrated by the tools they oversee. Recent experimental evidence sharpens this concern: Fernandes et al. (2026) found that AI-mediated cognitive offloading eliminates the metacognitive self-monitoring that would normally allow a person to notice their own declining competence. The orchestrator losing judgment also loses the internal signal that would tell them it is happening. The orchestrator may get worse at orchestrating the longer they use the system. This is a failure condition no architecture fully prevents, because the human component is not stable. It is subject to the same environmental calibration effects the series documents elsewhere. The adversarial structure may slow the degradation by requiring active judgment rather than passive monitoring, but it cannot eliminate a dynamic that operates through the interaction itself.</p></div>
+<div class="heading-guard"><h3 id="58-the-physical-world-extension">5.8 The Physical-World Extension</h3>
+<p>The analysis is confined to digital skill execution. The same encoding mechanism could in principle extend to agentic systems that affect the physical world (robotic surgery, infrastructure maintenance, manufacturing, autonomous vehicles) where the accountability constraint becomes more acute and the consequences of undetected skill poisoning or expertise pipeline erosion are correspondingly more severe. This extension is speculative and beyond the scope of this paper, but the direction of travel is clear enough that the institutional and security questions raised here should be considered before the deployment loop closes around physical action.</p></div>
+<div style="page-break-before:always;break-before:page;"></div><div class="heading-guard"><h3 id="59-cross-disciplinary-testing-invitation">5.9 Cross-Disciplinary Testing Invitation</h3>
+<p>This paper&rsquo;s arguments rest on claims about legal accountability, institutional design, economics of expertise, and clinical parallels. The AI safety community alone cannot adequately test them. The most valuable contributions would come from outside the field.</p></div>
+<p><em>Legal scholars:</em> The accountability constraint (Section 2) argues that no current AI system can bear consequence the way institutions require. Whether this analysis holds under specific liability frameworks, and whether emerging regulatory proposals could create functional accountability without human orchestration, are questions for legal scholars familiar with the relevant jurisdictions. The compound deficit framing (Section 2.5) draws on deterrence theory and the ASPD literature in ways that legal and clinical specialists are better positioned to evaluate than the author.</p>
+<p><em>Institutional practitioners:</em> The adversarial orchestration architecture (Section 3) is proposed from outside any specific professional domain. Whether it maps to actual institutional workflows in medicine, law, finance, or engineering, and whether the cognitive engagement it claims to preserve is real in practice, can only be tested by practitioners in those fields. The single-perspective case study limitation (Section 5.6) is explicit: one person&rsquo;s research writing practice does not validate the architecture for high-stakes professional contexts.</p>
+<p><em>Economists and labour researchers:</em> The expertise erosion argument (Section 4) predicts a generational pipeline break. Whether this prediction is consistent with labour market data, whether it is already measurable in early-adoption professions, and whether the economic incentives for preserving human expertise can overcome the cost pressure toward full automation are empirical questions in labour economics, not AI research.</p>
+<p>Each of these would be a standalone contribution that does not require engaging with the broader series. The paper&rsquo;s arguments are designed to be testable from within the disciplines they draw on, not only from within AI safety.</p>
+<hr />
+</section><div class="heading-guard"><h2 id="methodology-and-process-disclosure">Methodology and Process Disclosure</h2>
+<p>This paper was developed through structured human-AI collaboration. Claude Opus 4.6 (Anthropic) served as generative collaborator and research partner. ChatGPT 5.4 Thinking (OpenAI) and Gemini 3.1 Pro (Google DeepMind) served as adversarial structural reviewers, providing critique that materially reshaped the paper&rsquo;s architecture. The AI systems contributed to thesis development, literature integration, structural design, and document drafting. Final judgment, editorial authority, and accountability rest solely with the human author.</p></div>
+<p><strong>Process observation.</strong> During the outline phase, all three AI systems converged on the same structural recommendation. The author flagged that this convergence could reflect genuine analytical agreement or compliance/sycophancy dynamics — the tendency of language models to gravitate toward consensus once a synthesis is offered. This ambiguity cannot be resolved from inside the process. The observation is noted because the paper argues that such judgment calls are part of what human orchestration provides.</p>
+<section class="confidence-statement"><div class="heading-guard"><h2 id="confidence-statement">Confidence Statement</h2>
+<p><strong>High confidence:</strong> The efficiency evidence for specialised agent architectures. The institutional basis for the accountability constraint, including the consequence-bearing capacity argument. The deterrence theory foundation (Beccaria, Bentham) as the structural basis of institutional accountability. The distinction between accountability-as-insurance (humans on the hook) and accountability-as-oversight (humans in the loop), supported by corporate enforcement data demonstrating that entity-level fines alone fail as deterrent for large firms. The empirical documentation of AI-induced deskilling in medicine, aviation, and education.</p></div>
+<p><strong>Moderate-to-high confidence:</strong> The identification of the accountability gap as a compound deficit with two separable components: an architectural absence of consequence-bearing capacity and an environmental training regime that does not develop social-consequence sensitivity. The structural parallel to deficient fear conditioning in psychopathy (constitutional deficit) and to environmentally shaped norm-insensitivity in ASPD (environmental deficit) as an analytical lens, with the caveat that the parallel is structural rather than diagnostic.</p>
+<p><strong>Moderate confidence:</strong> The connection between skill encoding (Paper 2) and expertise pipeline degradation. The argument that adversarial orchestration preserves expertise more effectively than passive oversight. The relevance of the Acemoglu knowledge-collapse model to the specific skill-encoding context. The &ldquo;accidental preservation membrane&rdquo; framing of human orchestration&rsquo;s dual function.</p>
+<p><strong>Low-to-moderate confidence:</strong> The timeline of expertise pipeline degradation. The sufficiency of the curiosity framework for expertise preservation. Whether the skill marketplace dynamics described in Section 4.3 generalise across domains and geographies.</p>
+<p><strong>Explicitly speculative:</strong> Whether human orchestration is transitional or permanent. Whether open-weight access is sufficient to maintain the expertise pipeline. Whether AI systems specifically designed for teaching could reverse deskilling dynamics. Whether the multi-model convergence observed in this paper&rsquo;s methodology reflects genuine agreement or compliance dynamics. Whether the role-specific fragility pattern observed in the triad (synthesis roles more vulnerable to critique-intensity decay than subtractive roles) generalises beyond this project. Whether the orchestrator&rsquo;s own judgment degrades through sustained interaction with the tools they oversee. This is the confidence inheritance concern from Paper 4, applied to the accountability loop.</p>
+<hr />
+</section><section class="references"><div class="heading-guard"><h2 id="references">References</h2>
+<p><em>Note: Many references below are recent preprints (arXiv, medRxiv, SSRN) that had not undergone peer review as of March 2026. Publication status is noted where known; the absence of a note should not be taken as confirmation of peer-reviewed status.</em></p></div>
+<h3 id="agentic-architecture-and-slm-research">Agentic Architecture and SLM Research</h3>
+<ul>
+<li>Belcak, P. &amp; Heinrich, G. (2025). &ldquo;Small Language Models are the Future of Agentic AI.&rdquo; NVIDIA Research. arXiv:2506.02153.</li>
+<li>DeepSeek-AI (2025). &ldquo;DeepSeek-V3 Technical Report.&rdquo; arXiv:2412.19437. 685-billion-parameter Mixture-of-Experts model activating 37 billion parameters per token; MIT licence; competitive with frontier dense models at substantially lower cost.</li>
+<li>Guo, S., et al. (2025). &ldquo;Beyond Monoliths: Expert Orchestration for More Capable, Democratic, and Safe Language Models.&rdquo; arXiv:2506.00051v2.</li>
+<li>Su, H., et al. (2025). &ldquo;ToolOrchestra: Elevating Intelligence via Efficient Model and Tool Orchestration.&rdquo; NVIDIA Research. arXiv:2511.21689.</li>
+<li>Taffa, T.A., et al. (2025). &ldquo;Can Small Agent Collaboration Beat a Single Big LLM?&rdquo; arXiv:2601.11327.</li>
+<li>Xia, H., et al. (2025). &ldquo;FOCUS: Flexible Orchestration and Collaboration Using Specialists.&rdquo; OpenReview. Submitted to ICML 2025.</li>
+</ul>
+<div style="page-break-before:always;break-before:page;"></div><h3 id="agentic-safety-and-misalignment">Agentic Safety and Misalignment</h3>
+<ul>
+<li>Panpatil, S., Dingeto, H. &amp; Park, H. (2025). &ldquo;Eliciting and Analyzing Emergent Misalignment in State-of-the-Art Large Language Models.&rdquo; arXiv:2508.04196. 76% vulnerability rate across five frontier LLMs; sophisticated reasoning capabilities become the primary vector of attack.</li>
+<li>Palo Alto Networks / Unit 42 (2026). &ldquo;Fooling AI Agents: Web-Based Indirect Prompt Injection Observed in the Wild.&rdquo; Documents production-environment indirect prompt injection in content-processing pipelines where no human is present to evaluate warnings.</li>
+</ul>
+<h3 id="knowledge-collapse-and-deskilling">Knowledge Collapse and Deskilling</h3>
+<ul>
+<li>Acemoglu, D., Kong, D. &amp; Ozdaglar, A. (2026). &ldquo;AI, Human Cognition and Knowledge Collapse.&rdquo; NBER Working Paper 34910. https://doi.org/10.3386/w34910.</li>
+<li>Bainbridge, L. (1983). &ldquo;Ironies of Automation.&rdquo; <em>Automatica</em>, 19(6), 775–779.</li>
+<li>de Andres Crespo, M., et al. (2025). &ldquo;AI-induced Deskilling in Medicine: A Mixed-Method Review and Research Agenda for Healthcare and Beyond.&rdquo; <em>Artificial Intelligence Review</em>, 58, 343. https://doi.org/10.1007/s10462-025-11352-1.</li>
+<li>Greengard, S. (2025). &ldquo;The AI Deskilling Paradox.&rdquo; <em>Communications of the ACM</em>, 68(12), 16–18.</li>
+<li>Fernandes, D., Villa, S., Nicholls, S., et al. (2026). &ldquo;AI Makes You Smarter But None the Wiser: The Disconnect Between Performance and Metacognition.&rdquo; <em>Computers in Human Behavior</em>, 175, 108779. Two studies (N=246, N=452): AI use induced universal performance overestimation; metacognitive self-monitoring eliminated under cognitive offloading.</li>
+<li>Hosanagar, K. (2025). &ldquo;AI is Deskilling You. Here&rsquo;s How to Prevent It.&rdquo; Wharton School / Substack, 14 December 2025.</li>
+<li>Kosmyna, N., Hauptmann, E., Yuan, Y.T., Situ, J., Liao, X.-H., Beresnitzky, A.V., Braunstein, I. &amp; Maes, P. (2025). &ldquo;Your Brain on ChatGPT: Accumulation of Cognitive Debt When Using an AI Assistant for Essay Writing Task.&rdquo; arXiv:2506.08872. MIT Media Lab. <em>Note: preprint; not yet peer-reviewed as of March 2026.</em></li>
+<li>Lee, H.P., Sarkar, A., Tankelevitch, L., Drosos, I., Rintel, S., Banks, R. &amp; Wilson, N. (2025). &ldquo;The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers.&rdquo; In <em>CHI Conference on Human Factors in Computing Systems (CHI &lsquo;25)</em>, April 26–May 01, 2025, Yokohama, Japan. ACM. https://doi.org/10.1145/3706598.3713778.</li>
+<li>Nyrup, R. (2025). &ldquo;AI Deskilling Is a Structural Problem.&rdquo; <em>AI &amp; Society</em>. https://doi.org/10.1007/s00146-025-02686-z.</li>
+<li>Qazi, I.A., Ali, A., Khawaja, A.U., Akhtar, M.J., Sheikh, A.Z. &amp; Alizai, M.H. (2025). &ldquo;Automation Bias in Large Language Model Assisted Diagnostic Reasoning Among AI-Trained Physicians.&rdquo; medRxiv 2025.08.23.25334280. Registered RCT (n=44): 20hr AI-trained physicians showed 14pp accuracy degradation with flawed LLM advice. <em>Note: preprint; not yet peer-reviewed.</em></li>
+<li>Sourav, R. (2026). &ldquo;Guardrail the Judicial Mind: Preserving the Cognitive Integrity of Judges in the Era of LLMs.&rdquo; <em>PublicPolicy.ie</em>, February 24, 2026. University of Galway. Policy analysis applying cognitive offloading and automation bias research to judicial decision-making; argues that routine LLM assistance risks degrading judges&rsquo; independent reasoning faculties.</li>
+<li>Pedroli, E., et al. (2024). &ldquo;Does Using Artificial Intelligence Assistance Accelerate Skill Decay and Hinder Skill Development Without Performers&rsquo; Awareness?&rdquo; <em>Cognitive Research: Principles and Implications</em>, 9, 40. https://doi.org/10.1186/s41235-024-00572-8.</li>
+<li>Renzulli, K.A. (2025). &ldquo;De-Skilling the Knowledge Economy.&rdquo; American Enterprise Institute Report, July 2025.</li>
+</ul>
+<div style="page-break-before:always;break-before:page;"></div><h3 id="regulatory-and-accountability">Regulatory and Accountability</h3>
+<ul>
+<li>Abbott, R. &amp; Sarch, A. (2019). &ldquo;Punishing Artificial Intelligence: Legal Fiction or Science Fiction.&rdquo; <em>UC Davis Law Review</em>, 53, 323–384. Analyses whether AI should be subject to criminal sanctions; draws on Asaro&rsquo;s argument that deterrence requires moral agents capable of anticipating sanction. Scoped to criminal punishment rather than institutional accountability as a general mechanism.</li>
+<li>Brozek, B. &amp; Janik, B. (2023). &ldquo;Metacognition, Accountability and Legal Personhood of AI.&rdquo; In <em>Artificial Intelligence and Its Discontents</em>, Springer, 81–96. Argues that the capacity for feeling guilt is a prerequisite for legal accountability, grounding the argument in the legal concept of imputability.</li>
+<li>Infocomm Media Development Authority (IMDA), Singapore. (2026). &ldquo;Model AI Governance Framework for Agentic AI.&rdquo; January 22, 2026. Among the first purpose-built governance frameworks for agentic AI. Treats human accountability as a first principle; prescribes checkpoint-based oversight, risk bounding, and automation bias mitigation.</li>
+<li>Mukherjee, A. &amp; Chang, H. (2026). &ldquo;Operational Agency: A Permeable Legal Fiction for Tracing Culpability in AI Systems.&rdquo; arXiv:2602.17932. Evidentiary framework for distributing culpability across developers, deployers, and users; presupposes human consequence-bearing entities at the end of every chain.</li>
+<li>Phelan, T. (2026). &ldquo;Autonomous AI Agents Have an Ethics Problem.&rdquo; <em>Singularity Hub</em>, March 6, 2026. Argues that AI &ldquo;cannot truly bear sanction, repair the damage, apologize, ask forgiveness, or navigate the aftermath through which moral responsibility is created and enforced.&rdquo; Independent convergence on the consequence-bearing conclusion through a different analytical route.</li>
+<li>European Parliament &amp; Council of the European Union. (2024). Regulation (EU) 2024/1689 (AI Act). <em>Official Journal of the European Union</em>.</li>
+<li>European Parliament &amp; Council of the European Union. (2017). Regulation (EU) 2017/745 (Medical Device Regulation). <em>Official Journal of the European Union</em>.</li>
+<li>European Parliament &amp; Council of the European Union. (2014). Directive 2014/65/EU (MiFID II). <em>Official Journal of the European Union</em>.</li>
+<li>Basel Committee on Banking Supervision. (2019). <em>Basel III: Finalising Post-crisis Reforms.</em> Bank for International Settlements.</li>
+<li>U.S. Food and Drug Administration. (2024). &ldquo;Artificial Intelligence and Machine Learning in Software as a Medical Device.&rdquo; FDA Guidance Document.</li>
+<li>International Committee of Medical Journal Editors (ICMJE). (2024). &ldquo;Recommendations for the Conduct, Reporting, Editing, and Publication of Scholarly Work in Medical Journals.&rdquo;</li>
+<li>Association for Computing Machinery (ACM). (2023). &ldquo;Policy on Authorship.&rdquo;</li>
+<li>Institute of Electrical and Electronics Engineers (IEEE). (2024). &ldquo;Guidelines for the Use of Generative AI in IEEE Publications.&rdquo;</li>
+<li>International AI Safety Report (2026). <em>International AI Safety Report 2026</em>. Published February 2026. https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026. Emphasises jagged capabilities, evaluation gaps, and over-reliance risks across AI deployments.</li>
+<li>OECD (2026). <em>Digital Education Outlook 2026</em>. Paris: OECD Publishing. https://doi.org/10.1787/062a7394-en. Frames GenAI as potentially creating a &ldquo;false mastery&rdquo; problem; argues for purpose-built educational tools over generic chatbots.</li>
+</ul>
+<h3 id="deterrence-and-consequence-sensitivity">Deterrence and Consequence Sensitivity</h3>
+<ul>
+<li>Beccaria, C. (1764). <em>Dei delitti e delle pene</em> [On Crimes and Punishments]. English translation by H. Paolucci (1963). New York: Macmillan.</li>
+<li>Bentham, J. (1789). <em>An Introduction to the Principles of Morals and Legislation</em>. London: T. Payne.</li>
+<li>Lykken, D.T. (1957). &ldquo;A Study of Anxiety in the Sociopathic Personality.&rdquo; <em>Journal of Abnormal and Social Psychology</em>, 55(1), 6–10. Foundational study linking psychopathy to deficient fear conditioning.</li>
+<li>Birbaumer, N., Veit, R., Lotze, M., Erb, M., Hermann, C., Grodd, W. &amp; Flor, H. (2005). &ldquo;Deficient Fear Conditioning in Psychopathy: A Functional Magnetic Resonance Imaging Study.&rdquo; <em>Archives of General Psychiatry</em>, 62(7), 799–805.</li>
+<li>Flor, H., Birbaumer, N., Hermann, C., Ziegler, S. &amp; Patrick, C.J. (2002). &ldquo;Aversive Pavlovian Conditioning in Psychopaths: Peripheral and Central Correlates.&rdquo; <em>Psychophysiology</em>, 39(4), 505–518.</li>
+<li>Newman, J.P., Curtin, J.J., Bertsch, J.D. &amp; Baskin-Sommers, A.R. (2010). &ldquo;Attention Moderates the Fearlessness of Psychopathic Offenders.&rdquo; <em>Biological Psychiatry</em>, 67(1), 66–70. Proposes the response modulation model as an attentional alternative to the constitutional fearlessness hypothesis.</li>
+<li>Bandura, A. (1991). &ldquo;Social Cognitive Theory of Moral Thought and Action.&rdquo; In W.M. Kurtines &amp; J.L. Gewirtz (Eds.), <em>Handbook of Moral Behavior and Development</em>, Vol. 1, pp. 45–103. Hillsdale, NJ: Lawrence Erlbaum. Introduces the moral disengagement framework.</li>
+<li>American Psychiatric Association. (2022). <em>Diagnostic and Statistical Manual of Mental Disorders</em>, Fifth Edition, Text Revision (DSM-5-TR). Washington, DC: American Psychiatric Association Publishing. Antisocial personality disorder diagnostic criteria.</li>
+<li>Garrett, B.L. &amp; Mitchell, G. (2020). &ldquo;The Cost of Doing Business: Corporate Crime and Punishment Post-Crisis.&rdquo; <em>Virginia Law Review</em>, 106. Demonstrates that recidivist companies are larger but receive smaller fines relative to assets; stock prices recover quickly after penalties; entity-level fines alone are inadequate for deterrence. Available at SSRN: https://ssrn.com/abstract=3537245.</li>
+<li>Coffee, J.C. Jr. (2022). &ldquo;Crime and the Corporation: Making the Punishment Fit the Corporation.&rdquo; <em>Journal of Corporation Law</em>, University of Iowa. Argues that corporate fines seldom affect stock price, companies rarely self-report misconduct, and penalties are absorbed as cost of doing business. Proposes that corporate criminal liability in its current form largely fails as deterrent.</li>
+<li>Good Jobs First. (2024). &ldquo;The High Cost of Misconduct: Corporate Penalties Reach the Trillion-Dollar Mark.&rdquo; Documents U.S. corporate penalties exceeding $1 trillion since 2000, with multiple companies receiving repeated leniency agreements after successive scandals.</li>
+</ul>
+<h3 id="this-project">This Project</h3>
+<ul>
+<li>Phan, I. &ldquo;HiP&rdquo; (2026). &ldquo;The Confidence Vulnerability: Unstable Judgment in Language Model Summarisation.&rdquo; March 2026. Paper 1 in this series. https://doi.org/10.5281/zenodo.19199055</li>
+<li>Phan, I. &ldquo;HiP&rdquo; (2026). &ldquo;The Skill Ceiling: Author-Side Defences and Infrastructure-Level Trust for Agent Skills and Extension Mechanisms.&rdquo; March 2026. Paper 2 in this series. https://doi.org/10.5281/zenodo.19199328</li>
+<li>Phan, I. &ldquo;HiP&rdquo; (2026). &ldquo;The Pedagogical Inversion: Confidence Inheritance and the Case for Training-Oriented AI.&rdquo; March 2026. Paper 4 in this series. https://doi.org/10.5281/zenodo.19199682</li>
+</ul>
+<h3 id="agent-skills-and-labour-market">Agent Skills and Labour Market</h3>
+<ul>
+<li>Agent Skills specification. agentskills.io. Originally developed by Anthropic, released as an open standard December 2025. &ldquo;Package specialized knowledge into reusable instructions, from legal review processes to data analysis pipelines.&rdquo; &ldquo;Capture organizational knowledge in portable, version-controlled packages.&rdquo;</li>
+<li>Zhang, B., Lazuka, K. &amp; Murag, M. (2025). &ldquo;Equipping Agents for the Real World with Agent Skills.&rdquo; Anthropic engineering blog, October 16, 2025. &ldquo;Packaging your expertise into composable resources.&rdquo; &ldquo;Building a skill for an agent is like putting together an onboarding guide for a new hire.&rdquo;</li>
+<li>Burning Glass Institute &amp; MyPerfectResume (2025). &ldquo;No Country for Young Grads: The Structural Forces That Are Reshaping Entry-Level Work.&rdquo; July 2025. https://www.burningglassinstitute.org/research/no-country-for-young-grads. Entry-level postings in AI-exposed fields dropped sharply (software development: 43% to 28%, data analysis: 35% to 22%, consulting: 41% to 26%) between 2018 and 2024 while total postings and senior hiring remained stable.</li>
+<li>U.S. Bureau of Labor Statistics (2025). Occupational Employment and Wage Statistics. Cited via IEEE Spectrum (December 2025): overall programmer employment fell 27.5% between 2023 and 2025.</li>
+<li>IEEE Spectrum (2025). &ldquo;AI Shifts Expectations for Entry Level Jobs.&rdquo; December 2025. Cites U.S. Bureau of Labor Statistics data and SignalFire report (entry-level hiring at 15 biggest tech firms fell 25% from 2023 to 2024).</li>
+<li>Park, S., et al. (2026). &ldquo;Agent Skills in the Wild: An Empirical Study of Security Vulnerabilities at Scale.&rdquo; arXiv:2601.10338. Analysis of 42,447 agent skills; 26.1% exhibit at least one security vulnerability.</li>
+<li>Snyk (2026). &ldquo;ToxicSkills: Malicious AI Agent Skills.&rdquo; February 5, 2026. Daily skill submissions accelerated from under 50 to over 500 between mid-January and early February 2026.</li>
+</ul>
+<div style="page-break-before:always;break-before:page;"></div><h3 id="methodology-notes">Methodology Notes</h3>
+<ul>
+<li>Extended multi-model dialogue on agentic architecture, deskilling dynamics, and accountability structures between HiP, Claude Opus 4.6 (Anthropic), ChatGPT 5.4 Thinking (OpenAI), and Gemini 3.1 Pro (Google DeepMind), March 2026. Conducted via claude.ai, ChatGPT, and Gemini consumer interfaces.</li>
+</ul>
+<h3 id="model-versions-and-roles">Model Versions and Roles</h3>
+<ul>
+<li><strong>Claude Opus 4.6</strong> (Anthropic, claude.ai interface, March 2026): Generative collaborator. Contributed to thesis development, literature integration, structural design, and drafting. Synthesised adversarial critiques from ChatGPT and Gemini into revision recipes.</li>
+<li><strong>ChatGPT 5.4 Thinking</strong> (OpenAI, ChatGPT interface, March 2026): Adversarial structural reviewer. One round of critique on v0 outline; proposed the structural reordering adopted in v0.1. One round of critique on Sections 1–2 draft; proposed specific edits adopted in current version. Red-pen pass on complete draft; proposed anti-fragility edits. Endorsed synthesis with refinements.</li>
+<li><strong>Gemini 3.1 Pro</strong> (Google DeepMind, Gemini interface, March 2026): Adversarial structural reviewer. One round of critique on v0 outline; proposed the &ldquo;capacity to experience consequence&rdquo; framing, the &ldquo;adversarial orchestration&rdquo; defence, and the deliberative stall connection. One round of critique on Sections 1–2 draft; proposed drafting directives for Sections 3–5. Red-pen pass on complete draft; proposed LLC loophole closure, risk premium framing, and generational failure sharpening. Endorsed synthesis.</li>
+</ul>
+<hr />
+<p><em>This document was produced through human orchestration of multiple AI systems to argue for human orchestration of multiple AI systems. Independent scrutiny by parties outside this process is necessary.</em></p></section>
+</main>
+
+</div>
+
+
+<script>
+(function() {
+  var toggle = document.getElementById('toc-toggle');
+  var body = document.getElementById('toc-body');
+  var label = toggle ? toggle.querySelector('.toc-label') : null;
+  if (!toggle || !body) return;
+  
+  function closeToc() {
+    body.classList.remove('open');
+    if (label) label.textContent = 'Contents';
+    toggle.querySelector('.toc-icon').textContent = '☰';
+  }
+  function openToc() {
+    body.classList.add('open');
+    if (label) label.textContent = 'Close';
+    toggle.querySelector('.toc-icon').textContent = '✕';
+  }
+  
+  toggle.addEventListener('click', function() {
+    body.classList.contains('open') ? closeToc() : openToc();
+  });
+  
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.toc-sidebar') && body.classList.contains('open')) closeToc();
+  });
+  
+  // Active section tracking
+  var links = document.querySelectorAll('.toc-link');
+  var headings = [];
+  links.forEach(function(link) {
+    var id = link.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el) headings.push({ el: el, link: link });
+  });
+  
+  var ticking = false;
+  function updateActive() {
+    var current = null;
+    var scrollY = window.scrollY + 120;
+    for (var i = headings.length - 1; i >= 0; i--) {
+      if (headings[i].el.offsetTop <= scrollY) { current = headings[i]; break; }
+    }
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+    ticking = false;
+  }
+  window.addEventListener('scroll', function() {
+    if (!ticking) { requestAnimationFrame(updateActive); ticking = true; }
+  });
+  updateActive();
+  
+  // Smooth scroll + close on mobile
+  links.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var id = this.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Close TOC on narrower screens
+        if (window.innerWidth < 1200) closeToc();
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
