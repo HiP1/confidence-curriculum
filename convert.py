@@ -943,7 +943,7 @@ def build_paper(md_filename):
         '1-the-confidence-vulnerability-v6.md': ['23-baseline-handling-patterns', '92-harder-but-possible', '6-related-work', '69-provenance-and-digital-trust'],
         '1-the-confidence-vulnerability-appendices': ['d2-false-positives-under-security-framing'],
         '2-the-skill-ceiling': ['6-the-structural-problem-skills-and-prompt-injection-share-a', '64-digital-signatures-as-kerckhoffs-compliant-protection', '8-principle-7-author-side-behavioural-stopgap'],
-        '3-the-knowledge-horizon': ['regulatory-and-accountability', '59-cross-disciplinary-testing-invitation', '32-what-counts-and-what-doesnt', 'agentic-safety-and-misalignment', 'methodology-notes'],
+        '3-the-knowledge-horizon': ['regulatory-and-accountability', '59-cross-disciplinary-testing-invitation', 'agentic-safety-and-misalignment', 'methodology-notes'],
         '4-the-pedagogical-inversion': [],
         '5-the-confidence-collision': ['3-the-proposal-a-post-alignment-epistemic-training-phase'],
         'the-confidence-curriculum-reading-guide': ['4-cognitive-psychologists-and-education-researchers', '5-labour-economists'],
