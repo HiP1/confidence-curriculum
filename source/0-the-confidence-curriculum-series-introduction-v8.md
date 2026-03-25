@@ -122,6 +122,8 @@ Several countermeasures were developed in response; two examples illustrate the 
 
 Full methodology disclosures, including specific model versions and roles, appear in each paper. Confidence levels are stratified throughout the series; the table above provides the series-level summary, and each paper contains its own Confidence Statement with finer-grained assessment.
 
+A late discovery provides partial independent support for the multi-model methodology. Mason (arXiv:2603.08993, March 2026) presents Arbiter, a framework that uses multi-model LLM scouring to detect interference patterns in system prompts. Applied to three major coding agent system prompts, the framework found that multi-model evaluation discovers categorically different vulnerability classes than single-model analysis, and that convergent termination (three consecutive models declining to add findings) provides a calibrated stopping criterion. Mason's core finding is that multi-model evaluation discovers categorically different vulnerability classes than single-model analysis. His thesis: "the agent that resolves the conflict cannot be the agent that detects it." This is the software engineering formalisation of the principle this series applied editorially. The generative collaborator that produces the analysis cannot be the sole evaluator of that analysis. The circularity is not fully broken (the series' AI collaborators still participated in the work they are evaluating), but the structural rationale for multi-model adversarial review now has independent empirical grounding beyond this series' editorial intuition.
+
 ---
 
 ## Research Agenda
