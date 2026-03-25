@@ -940,12 +940,12 @@ def build_paper(md_filename):
     # of break-inside:avoid containers — inject a break element before the guard div)
     FORCE_BREAK_BEFORE = {
         '0-the-confidence-curriculum-series-introduction': ['research-agenda'],
-        '1-the-confidence-vulnerability-v6.md': ['23-baseline-handling-patterns', '92-harder-but-possible', '6-related-work', '69-provenance-and-digital-trust'],
+        '1-the-confidence-vulnerability-v6.md': ['23-baseline-handling-patterns', '8-discussion-and-implications', '83-practical-recommendations', '6-related-work', '69-provenance-and-digital-trust'],
         '1-the-confidence-vulnerability-appendices': ['d2-false-positives-under-security-framing'],
         '2-the-skill-ceiling': ['6-the-structural-problem-skills-and-prompt-injection-share-a'],
-        '3-the-knowledge-horizon': ['regulatory-and-accountability', '59-cross-disciplinary-testing-invitation', 'agentic-safety-and-misalignment', 'methodology-notes'],
+        '3-the-knowledge-horizon': ['3-human-orchestration-as-structured-judgment', 'regulatory-and-accountability', 'agentic-safety-and-misalignment', 'methodology-notes'],
         '4-the-pedagogical-inversion': [],
-        '5-the-confidence-collision': ['3-the-proposal-a-post-alignment-epistemic-training-phase'],
+        '5-the-confidence-collision': ['3-the-proposal-a-post-alignment-epistemic-training-phase', '7-broader-architectural-extensions'],
         'the-confidence-curriculum-reading-guide': ['4-cognitive-psychologists-and-education-researchers', '5-labour-economists'],
     }
     for prefix, ids in FORCE_BREAK_BEFORE.items():
