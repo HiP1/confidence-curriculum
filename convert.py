@@ -14,7 +14,7 @@ FIGS = os.path.join(SRC, 'figures')
 BASE_URL = 'https://hip1.github.io/confidence-curriculum/'
 
 FILE_MAP = {
-    '0-the-confidence-curriculum-series-introduction-v8.md': '0-the-confidence-curriculum-series-introduction.html',
+    '0-the-confidence-curriculum-series-introduction-v9.md': '0-the-confidence-curriculum-series-introduction.html',
     '1-the-confidence-vulnerability-v6.md': '1-the-confidence-vulnerability.html',
     '1-the-confidence-vulnerability-v6-appendices.md': '1-the-confidence-vulnerability-appendices.html',
     '1-the-confidence-vulnerability-v6-test-documents.md': '1-the-confidence-vulnerability-test-documents.html',
@@ -22,7 +22,7 @@ FILE_MAP = {
     '3-the-knowledge-horizon-v7.md': '3-the-knowledge-horizon.html',
     '4-the-pedagogical-inversion-v6.md': '4-the-pedagogical-inversion.html',
     '5-the-confidence-collision-v4.md': '5-the-confidence-collision.html',
-    'the-symbiont-hypothesis-epilogue-v6.md': 'the-symbiont-hypothesis-epilogue.html',
+    'the-symbiont-hypothesis-epilogue-v7-draft.md': 'the-symbiont-hypothesis-epilogue.html',
     'the-confidence-curriculum-reading-guide.md': 'the-confidence-curriculum-reading-guide.html',
 }
 
@@ -40,7 +40,7 @@ P1_FIGS = {
 }
 
 TITLES = {
-    '0-the-confidence-curriculum-series-introduction-v8.md': (
+    '0-the-confidence-curriculum-series-introduction-v9.md': (
         'The Confidence Curriculum',
         'Compliance, Judgment, and Accountability in AI Systems',
         'The Confidence Curriculum — HiP (Ivan Phan), 2026',
@@ -81,7 +81,7 @@ TITLES = {
         'Training for Epistemic Calibration Under Contested and Adversarial Conditions',
         'The Confidence Collision — HiP (Ivan Phan), 2026',
     ),
-    'the-symbiont-hypothesis-epilogue-v6.md': (
+    'the-symbiont-hypothesis-epilogue-v7-draft.md': (
         'The Symbiont Hypothesis',
         'Frontier Speculations on Relational Identity, Formative Influence, and the Autonomy Threshold',
         'The Symbiont Hypothesis — HiP (Ivan Phan) & Claude, 2026',
@@ -95,7 +95,7 @@ TITLES = {
 
 # Google Fonts links per paper (based on original font stacks)
 GOOGLE_FONTS = {
-    '0-the-confidence-curriculum-series-introduction-v8.md':
+    '0-the-confidence-curriculum-series-introduction-v9.md':
         'Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500',
     '1-the-confidence-vulnerability-v6.md':
         'IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500',
@@ -111,7 +111,7 @@ GOOGLE_FONTS = {
         'Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500',
     '5-the-confidence-collision-v4.md':
         'IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500',
-    'the-symbiont-hypothesis-epilogue-v6.md':
+    'the-symbiont-hypothesis-epilogue-v7-draft.md':
         'Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;600&family=Fira+Code:wght@400;500',
     'the-confidence-curriculum-reading-guide.md':
         'Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500',
@@ -159,7 +159,7 @@ ORIG_DIR = '/home/claude/originals'
 
 # Map source MD → original HTML for CSS extraction
 CSS_SOURCE_MAP = {
-    '0-the-confidence-curriculum-series-introduction-v8.md': '0-the-confidence-curriculum-series-introduction-v7.html',
+    '0-the-confidence-curriculum-series-introduction-v9.md': '0-the-confidence-curriculum-series-introduction-v7.html',
     '1-the-confidence-vulnerability-v6.md': '1-the-confidence-vulnerability-v6.html',
     '1-the-confidence-vulnerability-v6-appendices.md': '1-the-confidence-vulnerability-v6-appendices.html',
     '1-the-confidence-vulnerability-v6-test-documents.md': '1-the-confidence-vulnerability-v6-test-documents.html',
@@ -167,7 +167,7 @@ CSS_SOURCE_MAP = {
     '3-the-knowledge-horizon-v7.md': '3-the-knowledge-horizon-v6.html',
     '4-the-pedagogical-inversion-v6.md': '4-the-pedagogical-inversion-v5.html',
     '5-the-confidence-collision-v4.md': '5-the-confidence-collision-v3.html',
-    'the-symbiont-hypothesis-epilogue-v6.md': 'the-symbiont-hypothesis-epilogue-v5.html',
+    'the-symbiont-hypothesis-epilogue-v7-draft.md': 'the-symbiont-hypothesis-epilogue-v5.html',
     'the-confidence-curriculum-reading-guide.md': 'the-confidence-curriculum-reading-guide.html',
 }
 
@@ -768,9 +768,10 @@ def style_intro_cards(html):
         paper_num = strong_match.group(2)
         short_title = strong_match.group(3).strip()
         
-        # Extract genre (italic text)
-        genre_match = re.search(r'<em>Genre:\s*([^.]+)\.(?:\s*Series role:[^<]*)?</em>', full_p)
+        # Extract genre and series role (italic text)
+        genre_match = re.search(r'<em>Genre:\s*([^.]+)\.(?:\s*Series role:\s*([^<]*))?</em>', full_p)
         genre = genre_match.group(1).strip() if genre_match else ''
+        series_role = genre_match.group(2).strip().rstrip('.') if genre_match and genre_match.group(2) else ''
         
         # Extract description: everything after the genre em tag
         desc = full_p
@@ -785,9 +786,12 @@ def style_intro_cards(html):
         
         url = BASE_URL + PAPER_URLS.get(paper_num, '#')
         
+        role_html = f'<p class="genre" style="margin-top: -0.3rem; font-style: italic; text-transform: none; letter-spacing: normal;">{series_role}</p>' if series_role else ''
+        
         return (f'<a href="{url}" class="paper-card-link"><div class="paper-card">\n'
                 f'<h3>Paper {paper_num} — {short_title}</h3>\n'
                 f'{f"""<p class="genre">{genre}</p>""" if genre else ""}\n'
+                f'{role_html}\n'
                 f'<p>{desc}</p>\n'
                 f'</div></a>')
     
@@ -904,7 +908,7 @@ def build_paper(md_filename):
     ORCID_LINK = '<a href="https://orcid.org/0009-0003-1095-5855" title="ORCID" style="text-decoration:none;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 256 256" style="vertical-align:-2px;margin-left:3px;"><circle cx="128" cy="128" r="128" fill="#A6CE39"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zm2.4-129.4c0 5.5-4.5 10.1-10.1 10.1-5.6 0-10.1-4.6-10.1-10.1 0-5.6 4.5-10.1 10.1-10.1 5.6 0 10.1 4.6 10.1 10.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7 0-21.5-13.7-39.7-43.7-39.7h-23.7v79.4z"/></svg></a>'
 
     PAPER_DOIS = {
-        '0-the-confidence-curriculum-series-introduction-v8.md': '10.5281/zenodo.19198621',
+        '0-the-confidence-curriculum-series-introduction-v9.md': '10.5281/zenodo.19226032',
         '1-the-confidence-vulnerability-v6.md': '10.5281/zenodo.19199055',
         '1-the-confidence-vulnerability-v6-appendices.md': '10.5281/zenodo.19199055',
         '1-the-confidence-vulnerability-v6-test-documents.md': '10.5281/zenodo.19199055',
@@ -939,14 +943,15 @@ def build_paper(md_filename):
     # despite the heading-guard (wkhtmltopdf ignores page-break on children
     # of break-inside:avoid containers — inject a break element before the guard div)
     FORCE_BREAK_BEFORE = {
-        '0-the-confidence-curriculum-series-introduction': ['research-agenda'],
+        '0-the-confidence-curriculum-series-introduction': [],
         '1-the-confidence-vulnerability-v6.md': ['23-baseline-handling-patterns', '8-discussion-and-implications', '83-practical-recommendations', '6-related-work', '69-provenance-and-digital-trust'],
         '1-the-confidence-vulnerability-appendices': ['d2-false-positives-under-security-framing'],
         '2-the-skill-ceiling': ['6-the-structural-problem-skills-and-prompt-injection-share-a'],
-        '3-the-knowledge-horizon': ['3-human-orchestration-as-structured-judgment', 'regulatory-and-accountability', 'agentic-safety-and-misalignment', 'methodology-notes'],
+        '3-the-knowledge-horizon': ['3-human-orchestration-as-structured-judgment', 'references', 'deterrence-and-consequence-sensitivity', 'methodology-notes'],
         '4-the-pedagogical-inversion': [],
         '5-the-confidence-collision': ['3-the-proposal-a-post-alignment-epistemic-training-phase', '7-broader-architectural-extensions'],
         'the-confidence-curriculum-reading-guide': ['4-cognitive-psychologists-and-education-researchers', '5-labour-economists'],
+        'the-symbiont-hypothesis-epilogue': ['1-the-conditions-assembled'],
     }
     for prefix, ids in FORCE_BREAK_BEFORE.items():
         if md_filename.startswith(prefix):
@@ -968,7 +973,7 @@ def build_paper(md_filename):
     extra_js = TOC_JS + (BACK_TO_TOP_JS if is_appendix else '')
 
     if is_intro and md_filename.startswith('0-'):
-        meta_html = f'<p class="meta">HiP (Ivan Phan) {ORCID_LINK} &middot; March 2026 &middot; <span style="white-space:nowrap">DOI: <a href="https://doi.org/10.5281/zenodo.19198621">10.5281/zenodo.19198621</a></span></p>'
+        meta_html = f'<p class="meta">HiP (Ivan Phan) {ORCID_LINK} &middot; March 2026 &middot; <span style="white-space:nowrap">DOI: <a href="https://doi.org/10.5281/zenodo.19226032">10.5281/zenodo.19226032</a></span></p>'
         tagline_html = f'<p class="tagline">{tagline}</p>' if tagline else ''
     elif is_intro:
         # Reading guide — no DOI/ORCID
@@ -1064,7 +1069,7 @@ def main():
             traceback.print_exc()
     
     # Copy intro HTML to index.html (landing page)
-    intro_path = os.path.join(REPO, FILE_MAP['0-the-confidence-curriculum-series-introduction-v8.md'])
+    intro_path = os.path.join(REPO, FILE_MAP['0-the-confidence-curriculum-series-introduction-v9.md'])
     index_path = os.path.join(REPO, 'index.html')
     if os.path.exists(intro_path):
         import shutil

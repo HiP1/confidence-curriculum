@@ -13,7 +13,7 @@ repository-code: "https://github.com/HiP1/confidence-curriculum"
 license: CC-BY-4.0
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.19198621"
+    value: "10.5281/zenodo.19226032"
     description: "Series Introduction"
   - type: doi
     value: "10.5281/zenodo.19199055"

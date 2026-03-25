@@ -5,7 +5,7 @@
 *A five-paper research series examining how AI training incentives rewarding confident compliance create exploitable vulnerabilities across model behaviour, ecosystem security, institutional accountability, and human cognition.*
 
 **Author:** HiP (Ivan Phan) [![ORCID](https://img.shields.io/badge/ORCID-0009--0003--1095--5855-A6CE39?logo=orcid)](https://orcid.org/0009-0003-1095-5855) · March 2026
-**DOI:** [10.5281/zenodo.19198621](https://doi.org/10.5281/zenodo.19198621)
+**DOI:** [10.5281/zenodo.19226032](https://doi.org/10.5281/zenodo.19226032)
 
 ---
 
@@ -17,7 +17,7 @@ The papers are designed to be read as styled HTML. Each paper has a visual ident
 
 | # | Paper | Genre | DOI | HTML |
 |---|-------|-------|-----|------|
-| — | Series Introduction | Overview + confidence calibration | [10.5281/zenodo.19198621](https://doi.org/10.5281/zenodo.19198621) | [Read](https://hip1.github.io/confidence-curriculum/) |
+| — | Series Introduction | Overview + confidence calibration | [10.5281/zenodo.19226032](https://doi.org/10.5281/zenodo.19226032) | [Read](https://hip1.github.io/confidence-curriculum/) |
 | 1 | **The Confidence Vulnerability** | Exploratory empirical study | [10.5281/zenodo.19199055](https://doi.org/10.5281/zenodo.19199055) | [Read](https://hip1.github.io/confidence-curriculum/1-the-confidence-vulnerability.html) |
 | 2 | **The Skill Ceiling** | Structural security analysis | [10.5281/zenodo.19199328](https://doi.org/10.5281/zenodo.19199328) | [Read](https://hip1.github.io/confidence-curriculum/2-the-skill-ceiling.html) |
 | 3 | **The Knowledge Horizon** | Institutional and theoretical argument | [10.5281/zenodo.19199657](https://doi.org/10.5281/zenodo.19199657) | [Read](https://hip1.github.io/confidence-curriculum/3-the-knowledge-horizon.html) |
@@ -102,7 +102,7 @@ All HTML files are fully self-contained (CSS, SVGs, and images embedded inline).
 
 ```
 HiP (Ivan Phan). "The Confidence Curriculum: Compliance, Judgment, and
-Accountability in AI Systems." March 2026. https://doi.org/10.5281/zenodo.19198621
+Accountability in AI Systems." March 2026. https://doi.org/10.5281/zenodo.19226032
 ```
 
 For individual papers, cite by title with its DOI:
