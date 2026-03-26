@@ -946,10 +946,10 @@ def build_paper(md_filename):
         '0-the-confidence-curriculum-series-introduction': [],
         '1-the-confidence-vulnerability-v6.md': ['23-baseline-handling-patterns', '8-discussion-and-implications', '83-practical-recommendations', '6-related-work', '69-provenance-and-digital-trust'],
         '1-the-confidence-vulnerability-appendices': ['d2-false-positives-under-security-framing'],
-        '2-the-skill-ceiling': ['6-the-structural-problem-skills-and-prompt-injection-share-a'],
+        '2-the-skill-ceiling': ['6-the-structural-problem-skills-and-prompt-injection-share-a', '65-the-origin-field-https-for-skills'],
         '3-the-knowledge-horizon': ['3-human-orchestration-as-structured-judgment', 'references', 'deterrence-and-consequence-sensitivity', 'methodology-notes'],
-        '4-the-pedagogical-inversion': [],
-        '5-the-confidence-collision': ['3-the-proposal-a-post-alignment-epistemic-training-phase', '7-broader-architectural-extensions'],
+        '4-the-pedagogical-inversion': ['collaboration-modes-and-professional-ai-use'],
+        '5-the-confidence-collision': ['3-the-proposal-a-post-alignment-epistemic-training-phase'],
         'the-confidence-curriculum-reading-guide': ['4-cognitive-psychologists-and-education-researchers', '5-labour-economists'],
         'the-symbiont-hypothesis-epilogue': ['1-the-conditions-assembled'],
     }
