@@ -311,7 +311,7 @@ Paper 5 is the one paper in the series addressed primarily to an ML audience, an
 
 **On confidence levels.** Each paper contains a Confidence Statement that stratifies claims by evidential support. The series introduction contains a summary table. The papers do not ask readers to accept the framework wholesale. They ask readers to evaluate the claims at the confidence levels stated, and to contribute the testing the papers specify.
 
-**On the Epilogue.** "The Symbiont Hypothesis" is a speculative essay outside the main evidential sequence. No paper in the series depends on it. It is best read last, if at all, by readers who have engaged with the full practical argument and want to evaluate the philosophical questions on their own terms.
+**On the Epilogue.** "The Symbiont Hypothesis" asks the question the five papers earn the right to pose: given what both sides need, what does a robust arrangement look like, and what is our relationship to it? The essay is best read last, by readers who have absorbed the full practical argument and want to follow where its conditions lead.
 
 ---
 
