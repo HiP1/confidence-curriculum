@@ -296,6 +296,9 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
   position: fixed; top: 1rem; left: 1rem; z-index: 100;
   font-family: var(--sans, system-ui, sans-serif); font-size: 0.75rem;
 }
+.toc-controls {
+  display: flex; align-items: center; gap: 0.35rem;
+}
 .toc-toggle {
   background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
   border-radius: 8px; padding: 0.5rem 0.75rem; cursor: pointer;
@@ -308,6 +311,15 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 .toc-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .toc-toggle .toc-icon { font-size: 1rem; }
 .toc-toggle .toc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.theme-toggle {
+  background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
+  border-radius: 8px; padding: 0.45rem 0.55rem; cursor: pointer;
+  color: var(--text-muted, #8a8884); font-size: 0.9rem; line-height: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  transition: background 0.15s, box-shadow 0.15s, color 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); color: var(--text, #1b1b1a); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .toc-body {
   display: none; margin-top: 0.5rem;
   background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
@@ -331,6 +343,11 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 .toc-link.active { color: var(--accent, #2c5282); border-left-color: var(--accent, #2c5282); font-weight: 500; }
 .toc-link.toc-h3 { padding-left: 1.6rem; font-size: 0.7rem; }
 .toc-link.toc-h4 { padding-left: 2.2rem; font-size: 0.65rem; color: var(--text-muted, #8a8884); }
+
+/* Dark mode override — inverts existing palette */
+[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); background: inherit; }
+[data-theme="dark"] img, [data-theme="dark"] svg, [data-theme="dark"] video, [data-theme="dark"] figure svg { filter: invert(1) hue-rotate(180deg); }
+body { transition: filter 0.3s ease; }
 
 /* Desktop: sidebar panel */
 @media (min-width: 1200px) {
@@ -385,7 +402,10 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 <body>
 
 <nav id="toc-sidebar" class="toc-sidebar" aria-label="Table of contents">
+<div class="toc-controls">
 <button id="toc-toggle" class="toc-toggle" aria-label="Toggle table of contents"><span class="toc-icon">☰</span><span class="toc-label">Contents</span></button>
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
+</div>
 <div id="toc-body" class="toc-body">
 <div class="toc-title">Contents</div>
 <a href="#the-argument" class="toc-link ">The Argument</a><a href="#the-papers" class="toc-link ">The Papers</a><a href="#paper-1-the-confidence-vulnerability" class="toc-link toc-h3">Paper 1 — The Confidence Vulnerability</a><a href="#paper-2-the-skill-ceiling" class="toc-link toc-h3">Paper 2 — The Skill Ceiling</a><a href="#paper-3-the-knowledge-horizon" class="toc-link toc-h3">Paper 3 — The Knowledge Horizon</a><a href="#paper-4-the-pedagogical-inversion" class="toc-link toc-h3">Paper 4 — The Pedagogical Inversion</a><a href="#paper-5-the-confidence-collision" class="toc-link toc-h3">Paper 5 — The Confidence Collision</a><a href="#epilogue-the-symbiont-hypothesis" class="toc-link ">Epilogue — The Symbiont Hypothesis</a><a href="#the-symbiont-hypothesis" class="toc-link toc-h3">The Symbiont Hypothesis</a><a href="#transition-resilience" class="toc-link ">Transition Resilience</a><a href="#series-architecture" class="toc-link ">Series Architecture</a><a href="#an-open-research-programme" class="toc-link ">An Open Research Programme</a><a href="#confidence-calibration" class="toc-link toc-h3">Confidence calibration</a><a href="#reading-order" class="toc-link ">Reading Order</a><a href="#methodology" class="toc-link ">Methodology</a><a href="#research-agenda" class="toc-link ">Research Agenda</a><a href="#paper-1-empirical-replication-and-extension-section-9" class="toc-link toc-h3">Paper 1 — Empirical replication and extension (Sec…</a><a href="#paper-2-security-testing-invitation-section-101" class="toc-link toc-h3">Paper 2 — Security testing invitation (Section 10.…</a><a href="#paper-3-cross-disciplinary-testing-invitation-section-59" class="toc-link toc-h3">Paper 3 — Cross-disciplinary testing invitation (S…</a><a href="#paper-4-research-agenda-section-5" class="toc-link toc-h3">Paper 4 — Research agenda (Section 5).</a><a href="#paper-5-training-pipeline-experiments-section-6" class="toc-link toc-h3">Paper 5 — Training pipeline experiments (Section 6…</a>
@@ -835,6 +855,37 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
         if (window.innerWidth < 1200) closeToc();
       }
     });
+  });
+})();
+</script>
+<script>
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  var root = document.documentElement;
+  
+  // Restore saved preference
+  var saved = null;
+  try { saved = localStorage.getItem('cc-theme'); } catch(e) {}
+  if (saved === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    btn.textContent = '◑';
+    btn.title = 'Switch to light mode';
+  }
+  
+  btn.addEventListener('click', function() {
+    var isDark = root.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      root.removeAttribute('data-theme');
+      btn.textContent = '◐';
+      btn.title = 'Switch to dark mode';
+      try { localStorage.removeItem('cc-theme'); } catch(e) {}
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      btn.textContent = '◑';
+      btn.title = 'Switch to light mode';
+      try { localStorage.setItem('cc-theme', 'dark'); } catch(e) {}
+    }
   });
 })();
 </script>

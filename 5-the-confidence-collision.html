@@ -190,6 +190,9 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
   position: fixed; top: 1rem; left: 1rem; z-index: 100;
   font-family: var(--sans, system-ui, sans-serif); font-size: 0.75rem;
 }
+.toc-controls {
+  display: flex; align-items: center; gap: 0.35rem;
+}
 .toc-toggle {
   background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
   border-radius: 8px; padding: 0.5rem 0.75rem; cursor: pointer;
@@ -202,6 +205,15 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 .toc-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .toc-toggle .toc-icon { font-size: 1rem; }
 .toc-toggle .toc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.theme-toggle {
+  background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
+  border-radius: 8px; padding: 0.45rem 0.55rem; cursor: pointer;
+  color: var(--text-muted, #8a8884); font-size: 0.9rem; line-height: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  transition: background 0.15s, box-shadow 0.15s, color 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); color: var(--text, #1b1b1a); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .toc-body {
   display: none; margin-top: 0.5rem;
   background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
@@ -226,6 +238,11 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 .toc-link.toc-h3 { padding-left: 1.6rem; font-size: 0.7rem; }
 .toc-link.toc-h4 { padding-left: 2.2rem; font-size: 0.65rem; color: var(--text-muted, #8a8884); }
 
+/* Dark mode override — inverts existing palette */
+[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); background: inherit; }
+[data-theme="dark"] img, [data-theme="dark"] svg, [data-theme="dark"] video, [data-theme="dark"] figure svg { filter: invert(1) hue-rotate(180deg); }
+body { transition: filter 0.3s ease; }
+
 /* Desktop: sidebar panel */
 @media (min-width: 1200px) {
   .toc-body { max-width: 280px; max-height: calc(100vh - 5rem); }
@@ -241,7 +258,10 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 <body>
 
 <nav id="toc-sidebar" class="toc-sidebar" aria-label="Table of contents">
+<div class="toc-controls">
 <button id="toc-toggle" class="toc-toggle" aria-label="Toggle table of contents"><span class="toc-icon">☰</span><span class="toc-label">Contents</span></button>
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
+</div>
 <div id="toc-body" class="toc-body">
 <div class="toc-title">Contents</div>
 <a href="#abstract" class="toc-link ">Abstract</a><a href="#1-introduction" class="toc-link ">1. Introduction</a><a href="#2-the-problem" class="toc-link ">2. The Problem</a><a href="#21-the-sealed-evaluation-loop" class="toc-link toc-h3">2.1 The Sealed Evaluation Loop</a><a href="#22-single-source-anchoring" class="toc-link toc-h3">2.2 Single-Source Anchoring</a><a href="#23-the-bias-problem-goes-all-the-way-down" class="toc-link toc-h3">2.3 The Bias Problem Goes All the Way Down</a><a href="#24-why-training-time-reform-not-only-inference-time-scaffold" class="toc-link toc-h3">2.4 Why Training-Time Reform, Not Only Inference-T…</a><a href="#3-the-proposal-a-post-alignment-epistemic-training-phase" class="toc-link ">3. The Proposal: A Post-Alignment Epistemic Traini…</a><a href="#31-pipeline-position" class="toc-link toc-h3">3.1 Pipeline Position</a><a href="#32-mechanism-1-stochastic-external-verification" class="toc-link toc-h3">3.2 Mechanism 1: Stochastic External Verification</a><a href="#33-mechanism-2-multi-source-triangulation-as-a-reward-signal" class="toc-link toc-h3">3.3 Mechanism 2: Multi-Source Triangulation as a R…</a><a href="#34-the-environmental-requirement-adversarial-information-con" class="toc-link toc-h3">3.4 The Environmental Requirement: Adversarial Inf…</a><a href="#35-design-constraint-the-verification-proxy-trap" class="toc-link toc-h3">3.5 Design Constraint: The Verification Proxy Trap</a><a href="#4-cross-domain-precedent" class="toc-link ">4. Cross-Domain Precedent</a><a href="#5-why-not-existing-approaches" class="toc-link ">5. Why Not Existing Approaches?</a><a href="#6-proposed-experiments" class="toc-link ">6. Proposed Experiments</a><a href="#7-broader-architectural-extensions" class="toc-link ">7. Broader Architectural Extensions</a><a href="#71-a-note-on-inherited-limitations" class="toc-link ">7.1 A Note on Inherited Limitations</a><a href="#8-limitations" class="toc-link ">8. Limitations</a><a href="#9-conclusion" class="toc-link ">9. Conclusion</a><a href="#confidence-statement" class="toc-link ">Confidence Statement</a><a href="#references" class="toc-link ">References</a><a href="#sealed-evaluation-and-judge-gaming" class="toc-link toc-h3">Sealed Evaluation and Judge Gaming</a><a href="#single-source-anchoring-and-triangulation" class="toc-link toc-h3">Single-Source Anchoring and Triangulation</a><a href="#retrieval-utilisation" class="toc-link toc-h3">Retrieval Utilisation</a><a href="#rlvr-and-extensions" class="toc-link toc-h3">RLVR and Extensions</a><a href="#post-alignment-adversarial-training-safety-structural-preced" class="toc-link toc-h3">Post-Alignment Adversarial Training (Safety — Stru…</a><a href="#confidence-calibration-and-alternative-supervision" class="toc-link toc-h3">Confidence Calibration and Alternative Supervision</a><a href="#reasoning-amplification-sycophancy-dynamics-and-role-inferen" class="toc-link toc-h3">Reasoning Amplification, Sycophancy Dynamics, and …</a><a href="#knowledge-sanctuaries" class="toc-link toc-h3">Knowledge Sanctuaries</a><a href="#cross-domain-verification" class="toc-link toc-h3">Cross-Domain Verification</a><a href="#provenance" class="toc-link ">Provenance</a><a href="#methodology" class="toc-link toc-h3">Methodology</a><a href="#series-context" class="toc-link toc-h3">Series Context</a><a href="#model-versions-and-roles" class="toc-link toc-h3">Model Versions and Roles</a>
@@ -676,6 +696,37 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
         if (window.innerWidth < 1200) closeToc();
       }
     });
+  });
+})();
+</script>
+<script>
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  var root = document.documentElement;
+  
+  // Restore saved preference
+  var saved = null;
+  try { saved = localStorage.getItem('cc-theme'); } catch(e) {}
+  if (saved === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    btn.textContent = '◑';
+    btn.title = 'Switch to light mode';
+  }
+  
+  btn.addEventListener('click', function() {
+    var isDark = root.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      root.removeAttribute('data-theme');
+      btn.textContent = '◐';
+      btn.title = 'Switch to dark mode';
+      try { localStorage.removeItem('cc-theme'); } catch(e) {}
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      btn.textContent = '◑';
+      btn.title = 'Switch to light mode';
+      try { localStorage.setItem('cc-theme', 'dark'); } catch(e) {}
+    }
   });
 })();
 </script>

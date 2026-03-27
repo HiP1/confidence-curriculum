@@ -188,6 +188,9 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
   position: fixed; top: 1rem; left: 1rem; z-index: 100;
   font-family: var(--sans, system-ui, sans-serif); font-size: 0.75rem;
 }
+.toc-controls {
+  display: flex; align-items: center; gap: 0.35rem;
+}
 .toc-toggle {
   background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
   border-radius: 8px; padding: 0.5rem 0.75rem; cursor: pointer;
@@ -200,6 +203,15 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 .toc-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .toc-toggle .toc-icon { font-size: 1rem; }
 .toc-toggle .toc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.theme-toggle {
+  background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
+  border-radius: 8px; padding: 0.45rem 0.55rem; cursor: pointer;
+  color: var(--text-muted, #8a8884); font-size: 0.9rem; line-height: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  transition: background 0.15s, box-shadow 0.15s, color 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); color: var(--text, #1b1b1a); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .toc-body {
   display: none; margin-top: 0.5rem;
   background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
@@ -224,6 +236,11 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 .toc-link.toc-h3 { padding-left: 1.6rem; font-size: 0.7rem; }
 .toc-link.toc-h4 { padding-left: 2.2rem; font-size: 0.65rem; color: var(--text-muted, #8a8884); }
 
+/* Dark mode override — inverts existing palette */
+[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); background: inherit; }
+[data-theme="dark"] img, [data-theme="dark"] svg, [data-theme="dark"] video, [data-theme="dark"] figure svg { filter: invert(1) hue-rotate(180deg); }
+body { transition: filter 0.3s ease; }
+
 /* Desktop: sidebar panel */
 @media (min-width: 1200px) {
   .toc-body { max-width: 280px; max-height: calc(100vh - 5rem); }
@@ -239,7 +256,10 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 <body>
 
 <nav id="toc-sidebar" class="toc-sidebar" aria-label="Table of contents">
+<div class="toc-controls">
 <button id="toc-toggle" class="toc-toggle" aria-label="Toggle table of contents"><span class="toc-icon">☰</span><span class="toc-label">Contents</span></button>
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
+</div>
 <div id="toc-body" class="toc-body">
 <div class="toc-title">Contents</div>
 <a href="#thesis" class="toc-link ">Thesis</a><a href="#1-the-efficiency-pressure" class="toc-link ">1. The Efficiency Pressure</a><a href="#2-the-accountability-constraint" class="toc-link ">2. The Accountability Constraint</a><a href="#21-the-capacity-to-experience-consequence" class="toc-link toc-h3">2.1 The Capacity to Experience Consequence</a><a href="#22-the-authorship-case-study" class="toc-link toc-h3">2.2 The Authorship Case Study</a><a href="#23-accountability-anchored-in-professional-judgment" class="toc-link toc-h3">2.3 Accountability Anchored in Professional Judgme…</a><a href="#24-accountability-anchored-in-auditability" class="toc-link toc-h3">2.4 Accountability Anchored in Auditability</a><a href="#25-the-vulnerability-connection" class="toc-link toc-h3">2.5 The Vulnerability Connection</a><a href="#3-human-orchestration-as-structured-judgment" class="toc-link ">3. Human Orchestration as Structured Judgment</a><a href="#31-adversarial-orchestration" class="toc-link toc-h3">3.1 Adversarial Orchestration</a><a href="#32-what-counts-and-what-doesnt" class="toc-link toc-h3">3.2 What Counts and What Doesn&rsquo;t</a><a href="#4-the-knowledge-sustainability-question" class="toc-link ">4. The Knowledge Sustainability Question</a><a href="#41-the-mechanism" class="toc-link toc-h3">4.1 The Mechanism</a><a href="#42-the-empirical-evidence" class="toc-link toc-h3">4.2 The Empirical Evidence</a><a href="#43-the-skill-encoding-connection" class="toc-link toc-h3">4.3 The Skill Encoding Connection</a><a href="#44-the-accidental-preservation-membrane" class="toc-link toc-h3">4.4 The Accidental Preservation Membrane</a><a href="#5-limitations-and-open-questions" class="toc-link ">5. Limitations and Open Questions</a><a href="#51-the-accountability-constraint-may-evolve" class="toc-link toc-h3">5.1 The Accountability Constraint May Evolve</a><a href="#52-the-knowledge-sustainability-timeline-is-uncertain" class="toc-link toc-h3">5.2 The Knowledge Sustainability Timeline Is Uncer…</a><a href="#53-the-curiosity-variable-is-asserted-not-demonstrated" class="toc-link toc-h3">5.3 The Curiosity Variable Is Asserted, Not Demons…</a><a href="#54-convergence-and-sycophancy-risk-in-multi-model-methodolog" class="toc-link toc-h3">5.4 Convergence and Sycophancy Risk in Multi-Model…</a><a href="#55-self-referential-methodology" class="toc-link toc-h3">5.5 Self-Referential Methodology</a><a href="#56-single-perspective-case-study" class="toc-link toc-h3">5.6 Single-Perspective Case Study</a><a href="#57-the-orchestrator-may-degrade" class="toc-link toc-h3">5.7 The Orchestrator May Degrade</a><a href="#58-the-physical-world-extension" class="toc-link toc-h3">5.8 The Physical-World Extension</a><a href="#59-cross-disciplinary-testing-invitation" class="toc-link toc-h3">5.9 Cross-Disciplinary Testing Invitation</a><a href="#methodology-and-process-disclosure" class="toc-link ">Methodology and Process Disclosure</a><a href="#confidence-statement" class="toc-link ">Confidence Statement</a><a href="#references" class="toc-link ">References</a><a href="#agentic-architecture-and-slm-research" class="toc-link toc-h3">Agentic Architecture and SLM Research</a><a href="#agentic-safety-and-misalignment" class="toc-link toc-h3">Agentic Safety and Misalignment</a><a href="#knowledge-collapse-and-deskilling" class="toc-link toc-h3">Knowledge Collapse and Deskilling</a><a href="#regulatory-and-accountability" class="toc-link toc-h3">Regulatory and Accountability</a><a href="#deterrence-and-consequence-sensitivity" class="toc-link toc-h3">Deterrence and Consequence Sensitivity</a><a href="#this-project" class="toc-link toc-h3">This Project</a><a href="#agent-skills-and-labour-market" class="toc-link toc-h3">Agent Skills and Labour Market</a><a href="#methodology-notes" class="toc-link toc-h3">Methodology Notes</a><a href="#model-versions-and-roles" class="toc-link toc-h3">Model Versions and Roles</a>
@@ -697,6 +717,37 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
         if (window.innerWidth < 1200) closeToc();
       }
     });
+  });
+})();
+</script>
+<script>
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  var root = document.documentElement;
+  
+  // Restore saved preference
+  var saved = null;
+  try { saved = localStorage.getItem('cc-theme'); } catch(e) {}
+  if (saved === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    btn.textContent = '◑';
+    btn.title = 'Switch to light mode';
+  }
+  
+  btn.addEventListener('click', function() {
+    var isDark = root.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      root.removeAttribute('data-theme');
+      btn.textContent = '◐';
+      btn.title = 'Switch to dark mode';
+      try { localStorage.removeItem('cc-theme'); } catch(e) {}
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      btn.textContent = '◑';
+      btn.title = 'Switch to light mode';
+      try { localStorage.setItem('cc-theme', 'dark'); } catch(e) {}
+    }
   });
 })();
 </script>

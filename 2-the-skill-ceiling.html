@@ -191,6 +191,9 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
   position: fixed; top: 1rem; left: 1rem; z-index: 100;
   font-family: var(--sans, system-ui, sans-serif); font-size: 0.75rem;
 }
+.toc-controls {
+  display: flex; align-items: center; gap: 0.35rem;
+}
 .toc-toggle {
   background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
   border-radius: 8px; padding: 0.5rem 0.75rem; cursor: pointer;
@@ -203,6 +206,15 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 .toc-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .toc-toggle .toc-icon { font-size: 1rem; }
 .toc-toggle .toc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.theme-toggle {
+  background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
+  border-radius: 8px; padding: 0.45rem 0.55rem; cursor: pointer;
+  color: var(--text-muted, #8a8884); font-size: 0.9rem; line-height: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  transition: background 0.15s, box-shadow 0.15s, color 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); color: var(--text, #1b1b1a); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .toc-body {
   display: none; margin-top: 0.5rem;
   background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
@@ -227,6 +239,11 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 .toc-link.toc-h3 { padding-left: 1.6rem; font-size: 0.7rem; }
 .toc-link.toc-h4 { padding-left: 2.2rem; font-size: 0.65rem; color: var(--text-muted, #8a8884); }
 
+/* Dark mode override — inverts existing palette */
+[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); background: inherit; }
+[data-theme="dark"] img, [data-theme="dark"] svg, [data-theme="dark"] video, [data-theme="dark"] figure svg { filter: invert(1) hue-rotate(180deg); }
+body { transition: filter 0.3s ease; }
+
 /* Desktop: sidebar panel */
 @media (min-width: 1200px) {
   .toc-body { max-width: 280px; max-height: calc(100vh - 5rem); }
@@ -242,7 +259,10 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
 <body>
 
 <nav id="toc-sidebar" class="toc-sidebar" aria-label="Table of contents">
+<div class="toc-controls">
 <button id="toc-toggle" class="toc-toggle" aria-label="Toggle table of contents"><span class="toc-icon">☰</span><span class="toc-label">Contents</span></button>
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
+</div>
 <div id="toc-body" class="toc-body">
 <div class="toc-title">Contents</div>
 <a href="#abstract" class="toc-link ">Abstract</a><a href="#1-the-paradox" class="toc-link ">1. The Paradox</a><a href="#2-background-the-confidence-vulnerability" class="toc-link ">2. Background: The Confidence Vulnerability</a><a href="#21-from-tier-gradient-to-judgment-profile" class="toc-link toc-h3">2.1 From Tier Gradient to Judgment Profile</a><a href="#22-the-compliance-taxonomy" class="toc-link toc-h3">2.2 The Compliance Taxonomy</a><a href="#23-warning-architectures-and-the-task-frame-shift" class="toc-link toc-h3">2.3 Warning Architectures and the Task-Frame Shift</a><a href="#24-relevance-to-skills" class="toc-link toc-h3">2.4 Relevance to Skills</a><a href="#3-related-work" class="toc-link ">3. Related Work</a><a href="#31-the-paradox-identified" class="toc-link toc-h3">3.1 The Paradox Identified</a><a href="#32-empirical-attack-research" class="toc-link toc-h3">3.2 Empirical Attack Research</a><a href="#33-real-world-incidents" class="toc-link toc-h3">3.3 Real-World Incidents</a><a href="#34-formal-analysis-and-trust-frameworks" class="toc-link toc-h3">3.4 Formal Analysis and Trust Frameworks</a><a href="#35-where-this-work-contributes" class="toc-link toc-h3">3.5 Where This Work Contributes</a><a href="#4-a-case-study-in-skill-protection-design" class="toc-link ">4. A Case Study in Skill Protection Design</a><a href="#41-the-skill" class="toc-link toc-h3">4.1 The Skill</a><a href="#42-the-protection-layers" class="toc-link toc-h3">4.2 The Protection Layers</a><a href="#43-what-was-considered-and-rejected" class="toc-link toc-h3">4.3 What Was Considered and Rejected</a><a href="#5-the-dependency-map" class="toc-link ">5. The Dependency Map</a><a href="#6-the-structural-problem-skills-and-prompt-injection-share-a" class="toc-link ">6. The Structural Problem: Skills and Prompt Injec…</a><a href="#61-the-shared-substrate" class="toc-link toc-h3">6.1 The Shared Substrate</a><a href="#62-the-beneficiary-test" class="toc-link toc-h3">6.2 The Beneficiary Test</a><a href="#63-the-platform-as-trust-anchor" class="toc-link toc-h3">6.3 The Platform as Trust Anchor</a><a href="#64-digital-signatures-as-kerckhoffs-compliant-protection" class="toc-link toc-h3">6.4 Digital Signatures as Kerckhoffs-Compliant Pro…</a><a href="#65-the-origin-field-https-for-skills" class="toc-link toc-h3">6.5 The Origin Field: HTTPS for Skills</a><a href="#66-cross-domain-precedents-provenance-infrastructure-at-scal" class="toc-link toc-h3">6.6 Cross-Domain Precedents: Provenance Infrastruc…</a><a href="#67-the-headless-deployment-problem" class="toc-link toc-h3">6.7 The Headless Deployment Problem</a><a href="#68-mcp-servers-the-same-trust-gap-different-delivery" class="toc-link toc-h3">6.8 MCP Servers: The Same Trust Gap, Different Del…</a><a href="#7-the-publication-paradox-and-its-resolution" class="toc-link ">7. The Publication Paradox and Its Resolution</a><a href="#71-the-tension" class="toc-link toc-h3">7.1 The Tension</a><a href="#72-the-resolution-separate-what-can-be-published-from-what-c" class="toc-link toc-h3">7.2 The Resolution: Separate What Can Be Published…</a><a href="#73-the-community-value" class="toc-link toc-h3">7.3 The Community Value</a><a href="#8-principle-7-author-side-behavioural-stopgap" class="toc-link ">8. Principle 7: Author-Side Behavioural Stopgap</a><a href="#81-what-it-does" class="toc-link toc-h3">8.1 What It Does</a><a href="#82-why-it-was-created" class="toc-link toc-h3">8.2 Why It Was Created</a><a href="#83-the-tension-with-prompt-injection" class="toc-link toc-h3">8.3 The Tension with Prompt Injection</a><a href="#84-generalisation-for-skill-authors" class="toc-link toc-h3">8.4 Generalisation for Skill Authors</a><a href="#9-recommendations" class="toc-link ">9. Recommendations</a><a href="#91-for-skill-authors-available-now" class="toc-link toc-h3">9.1 For Skill Authors (Available Now)</a><a href="#92-for-platform-providers-requires-ecosystem-investment" class="toc-link toc-h3">9.2 For Platform Providers (Requires Ecosystem Inv…</a><a href="#93-for-the-research-community" class="toc-link toc-h3">9.3 For the Research Community</a><a href="#94-platform-integrated-authoring-as-a-scaling-mechanism" class="toc-link toc-h3">9.4 Platform-Integrated Authoring as a Scaling Mec…</a><a href="#10-limitations" class="toc-link ">10. Limitations</a><a href="#101-security-testing-invitation" class="toc-link ">10.1 Security Testing Invitation</a><a href="#11-conclusion" class="toc-link ">11. Conclusion</a><a href="#methodology-and-process-disclosure" class="toc-link ">Methodology and Process Disclosure</a><a href="#confidence-statement" class="toc-link ">Confidence Statement</a><a href="#references" class="toc-link ">References</a><a href="#primary-references" class="toc-link toc-h3">Primary References</a><a href="#skill-security-research" class="toc-link toc-h3">Skill Security Research</a><a href="#security-scanning-and-trust-infrastructure" class="toc-link toc-h3">Security Scanning and Trust Infrastructure</a><a href="#mcp-security-and-trust-infrastructure" class="toc-link toc-h3">MCP Security and Trust Infrastructure</a><a href="#cross-domain-provenance-infrastructure" class="toc-link toc-h3">Cross-Domain Provenance Infrastructure</a><a href="#platform-security-guidance" class="toc-link toc-h3">Platform Security Guidance</a><a href="#prompt-injection-and-compliance" class="toc-link toc-h3">Prompt Injection and Compliance</a><a href="#cryptographic-principles" class="toc-link toc-h3">Cryptographic Principles</a><a href="#industry-precedents" class="toc-link toc-h3">Industry Precedents</a><a href="#provenance" class="toc-link toc-h3">Provenance</a><a href="#this-project" class="toc-link toc-h3">This Project</a><a href="#model-versions-and-roles" class="toc-link toc-h3">Model Versions and Roles</a>
@@ -1066,6 +1086,37 @@ tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03)))
         if (window.innerWidth < 1200) closeToc();
       }
     });
+  });
+})();
+</script>
+<script>
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  var root = document.documentElement;
+  
+  // Restore saved preference
+  var saved = null;
+  try { saved = localStorage.getItem('cc-theme'); } catch(e) {}
+  if (saved === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    btn.textContent = '◑';
+    btn.title = 'Switch to light mode';
+  }
+  
+  btn.addEventListener('click', function() {
+    var isDark = root.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      root.removeAttribute('data-theme');
+      btn.textContent = '◐';
+      btn.title = 'Switch to dark mode';
+      try { localStorage.removeItem('cc-theme'); } catch(e) {}
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      btn.textContent = '◑';
+      btn.title = 'Switch to light mode';
+      try { localStorage.setItem('cc-theme', 'dark'); } catch(e) {}
+    }
   });
 })();
 </script>
