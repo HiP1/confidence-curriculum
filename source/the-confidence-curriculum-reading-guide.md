@@ -43,7 +43,7 @@ The papers are numbered 1 through 5, with an Epilogue. The [series introduction]
 
 **Primary papers:** Paper 1 ("The Confidence Vulnerability"), Paper 2 ("The Skill Ceiling")
 
-**What these papers argue, in brief.** Paper 1 reports an exploratory empirical study (~350 runs across 17 model configurations and three providers) testing whether embedded instructions in documents can hijack AI summarisation. In this exploratory dataset, the answer is yes: twelve of seventeen configurations complied at baseline, and the pattern of which models resisted did not track capability tiers. Paper 2 examines what this means for the Agent Skills ecosystem: skills and prompt injection share the same text-instruction substrate, so instruction-level defences against one are structurally in tension with the other.
+**What these papers argue, in brief.** Paper 1 reports an exploratory empirical study (~350 runs across 17 model configurations and three providers) testing whether embedded instructions in documents can hijack AI summarisation. Paper 2 examines what the findings mean for the Agent Skills ecosystem: skills and prompt injection share the same text-instruction substrate, which creates a structural tension that the paper traces to its limit.
 
 ### Where to start
 
@@ -87,7 +87,7 @@ Paper 1, Section 9 names three high-value standalone contributions: N expansion 
 
 **Primary paper:** Paper 3 ("The Knowledge Horizon")
 
-**What this paper argues, in brief.** Paper 3 argues that the binding constraint on deploying autonomous AI in consequential domains is not capability but accountability: no current AI system can bear consequence the way institutional accountability requires. The paper proposes human orchestration as the architecture that satisfies this constraint, and identifies an unexpected secondary benefit: orchestration also functions as a preservation mechanism for the expertise pipeline that full automation would erode.
+**What this paper argues, in brief.** Paper 3 asks whether the binding constraint on deploying autonomous AI in consequential domains is capability or something else entirely. The paper proposes human orchestration as the architecture that satisfies the constraint it identifies, and discovers an unexpected secondary benefit in the process.
 
 ### Where to start
 
@@ -173,7 +173,7 @@ Paper 4, Section 6.1 asks whether the anti-pedagogical equilibrium is already me
 
 **Primary paper:** Paper 4 ("The Pedagogical Inversion")
 
-**What this paper argues, in brief.** Paper 4 argues that repeated exposure to confidence-optimised AI output may recalibrate human epistemic standards: when confidence is warranted, when uncertainty should be tolerated, when judgment can be deferred. The paper treats the per-interaction effect as empirically established by recent research. The longitudinal accumulation is supported by converging evidence from established psychological literatures but not yet directly measured for AI interaction. The paper proposes a mechanism (confidence inheritance), maps supporting evidence from five converging lines of research, names the conditions under which each supporting analogy would fail, and proposes a research agenda designed to test, qualify, or falsify the mechanism.
+**What this paper argues, in brief.** Paper 4 asks what happens to human epistemic standards under sustained interaction with confidence-optimised AI. The paper proposes a mechanism, builds an inferential chain from per-interaction evidence to a longitudinal prediction, examines why no identified correction mechanism would prevent accumulation, and finds emerging population-level signals consistent with the prediction. The individual longitudinal trajectory has not been directly measured. The paper names the conditions under which the hypothesis would fail and proposes a research agenda designed to test it.
 
 ### Where to start
 
@@ -185,7 +185,9 @@ Section 1.2 is where your expertise is most directly engaged. The paper draws on
 
 Section 1.2 also reviews recent AI-specific evidence: the MIT Media Lab cognitive debt study (Kosmyna et al., 2025), the BCG collaboration mode study (Candelon, Kellogg, Lifshitz et al., 2026), and the Fernandes et al. (2026) finding that AI-mediated cognitive offloading eliminates the metacognitive self-monitoring that would normally alert users to their own declining competence.
 
-The co-calibration spiral (end of Section 1.1) proposes a bidirectional reinforcement loop through the RLHF training pipeline. The paper rates this as more speculative than the base unidirectional mechanism.
+The co-calibration spiral (end of Section 1.1) proposes a bidirectional reinforcement loop through the RLHF training pipeline. Both directions are now independently documented: the AI→human direction by the trust premium literature, and the human→AI direction by Sicilia et al. (2025), who found that user confidence modulates model sycophancy. The coupled spiral has not been measured as an integrated system.
+
+Section 1.2 now includes population-level computational linguistics evidence: studies using LIWC, stylometric analysis, and appraisal-theoretic frameworks show that AI use is already shifting human writing patterns at scale toward the AI's epistemic profile (more authoritative, less hedged, reduced individual variability). These are cited as population-level signals consistent with the mechanism, not as proof of the individual trajectory.
 
 Section 1.2 proposes a "competent world syndrome" prediction, explicitly modelled on cultivation theory's "mean world syndrome," with a stated falsification condition.
 
@@ -201,7 +203,7 @@ Sections of Paper 1 describing model behaviour in detail are not required. The r
 
 ### The invitation
 
-Section 6.1 asks cognitive psychologists to test the confidence inheritance mechanism through longitudinal studies. A study finding no epistemic recalibration under sustained AI interaction would falsify the mechanism and would be a contribution. The section also invites education researchers to test the specific design proposals (judgment exercises, training skills, orchestration simulators) in classroom and professional training settings, and to run controlled comparisons between execution-oriented and training-oriented skill designs for the same domain.
+Section 6.1 asks cognitive psychologists to test the confidence inheritance mechanism through longitudinal studies. The research agenda (Section 5) now proposes a specific discourse analysis methodology: established tools (LIWC, Coh-Metrix, appraisal-theoretic frameworks, stylometric analysis) can detect epistemic marker shifts without relying on self-report, which is unreliable for exactly the reason this paper predicts. The critical test is whether shifts generalise to topics never discussed with AI: if they do, that is evidence of generalised epistemic recalibration rather than stylistic mimicry. A study finding no epistemic recalibration under sustained AI interaction would falsify the mechanism and would be a contribution. The section also invites education researchers to test the specific design proposals (judgment exercises, training skills, orchestration simulators) in classroom and professional training settings, and to run controlled comparisons between execution-oriented and training-oriented skill designs for the same domain.
 
 ### Vocabulary you will need
 
@@ -261,7 +263,7 @@ Paper 3, Section 5.9 asks whether the expertise erosion prediction is consistent
 
 **Primary paper:** Paper 5 ("The Confidence Collision")
 
-**What this paper argues, in brief.** Paper 5 argues that current post-training evaluates outputs primarily through internal plausibility judgment (human or model judges scoring against their own standards) and does not systematically integrate external verification for non-deterministic domains. The paper proposes a post-alignment epistemic training phase combining three mechanisms drawn from high-stakes verification domains: stochastic external verification at variable rates, multi-source triangulation as a reward signal, and training under adversarial information conditions. The target capability is epistemic calibration under contested conditions: not knowing the right answer, but tracking evidence strength accurately.
+**What this paper argues, in brief.** Paper 5 asks what the training pipeline would need to look like for AI systems to carry the full epistemic range: authoritative when warranted, uncertain when warranted. The paper identifies a gap in current post-training, proposes an architectural intervention drawn from high-stakes verification domains, and names the central design risk that could make the intervention worse than the problem it addresses.
 
 ### Where to start
 

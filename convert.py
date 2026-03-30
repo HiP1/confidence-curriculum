@@ -999,9 +999,9 @@ def build_paper(md_filename):
         '1-the-confidence-vulnerability-appendices': ['d2-false-positives-under-security-framing'],
         '2-the-skill-ceiling': ['6-the-structural-problem-skills-and-prompt-injection-share-a', '65-the-origin-field-https-for-skills'],
         '3-the-knowledge-horizon': ['3-human-orchestration-as-structured-judgment', 'references', 'deterrence-and-consequence-sensitivity', 'methodology-notes'],
-        '4-the-pedagogical-inversion': ['collaboration-modes-and-professional-ai-use'],
+        '4-the-pedagogical-inversion': [],
         '5-the-confidence-collision': ['3-the-proposal-a-post-alignment-epistemic-training-phase'],
-        'the-confidence-curriculum-reading-guide': ['4-cognitive-psychologists-and-education-researchers', '5-labour-economists'],
+        'the-confidence-curriculum-reading-guide': ['4-cognitive-psychologists-and-education-researchers'],
         'the-symbiont-hypothesis-epilogue': ['1-the-conditions-assembled'],
     }
     for prefix, ids in FORCE_BREAK_BEFORE.items():
