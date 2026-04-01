@@ -960,13 +960,13 @@ def build_paper(md_filename):
 
     PAPER_DOIS = {
         '0-the-confidence-curriculum-series-introduction-v9.md': '10.5281/zenodo.19226032',
-        '1-the-confidence-vulnerability-v6.md': '10.5281/zenodo.19199055',
-        '1-the-confidence-vulnerability-v6-appendices.md': '10.5281/zenodo.19199055',
-        '1-the-confidence-vulnerability-v6-test-documents.md': '10.5281/zenodo.19199055',
-        '2-the-skill-ceiling-v6.md': '10.5281/zenodo.19199328',
-        '3-the-knowledge-horizon-v7.md': '10.5281/zenodo.19199657',
-        '4-the-pedagogical-inversion-v6.md': '10.5281/zenodo.19199682',
-        '5-the-confidence-collision-v4.md': '10.5281/zenodo.19199987',
+        '1-the-confidence-vulnerability-v6.md': '10.5281/zenodo.19365459',
+        '1-the-confidence-vulnerability-v6-appendices.md': '10.5281/zenodo.19365459',
+        '1-the-confidence-vulnerability-v6-test-documents.md': '10.5281/zenodo.19365459',
+        '2-the-skill-ceiling-v6.md': '10.5281/zenodo.19365536',
+        '3-the-knowledge-horizon-v7.md': '10.5281/zenodo.19365537',
+        '4-the-pedagogical-inversion-v6.md': '10.5281/zenodo.19365540',
+        '5-the-confidence-collision-v4.md': '10.5281/zenodo.19365543',
     }
 
     if 'epilogue' in md_filename:
@@ -997,7 +997,7 @@ def build_paper(md_filename):
         '0-the-confidence-curriculum-series-introduction': [],
         '1-the-confidence-vulnerability-v6.md': ['23-baseline-handling-patterns', '8-discussion-and-implications', '83-practical-recommendations', '6-related-work', '69-provenance-and-digital-trust'],
         '1-the-confidence-vulnerability-appendices': ['d2-false-positives-under-security-framing'],
-        '2-the-skill-ceiling': ['6-the-structural-problem-skills-and-prompt-injection-share-a', '65-the-origin-field-https-for-skills'],
+        '2-the-skill-ceiling': ['65-the-origin-field-https-for-skills'],
         '3-the-knowledge-horizon': ['3-human-orchestration-as-structured-judgment', 'references', 'deterrence-and-consequence-sensitivity', 'methodology-notes'],
         '4-the-pedagogical-inversion': [],
         '5-the-confidence-collision': ['3-the-proposal-a-post-alignment-epistemic-training-phase'],
