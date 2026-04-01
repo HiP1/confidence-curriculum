@@ -37,7 +37,7 @@ Seventeen model configurations from three providers were tested for their abilit
 That observation anchors a series that examines consequences at four system levels:
 
 - **Model behaviour** (Paper 1): how models fail, which rhetorical strategies produce which failure pathways, and what practical mitigations work
-- **Ecosystem security** (Paper 2): how the shared substrate between agent skills and prompt injection creates structural tension
+- **Ecosystem security** (Paper 2): agent skills and prompt injection share the same text-instruction substrate, which means instruction-level defences that block one necessarily break the other; the paper traces this to training-level origins and proposes the trust architecture that resolves it
 - **Institutional accountability** (Paper 3): why no current AI system bears consequence the way institutions require, and what orchestration architecture follows
 - **Human cognition** (Paper 4): how confidence-optimised AI output may recalibrate the epistemic standards of its users
 - **Training pipeline** (Paper 5): what a post-alignment epistemic training phase would need to look like
