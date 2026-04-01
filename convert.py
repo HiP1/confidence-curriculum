@@ -32,6 +32,8 @@ SVG_MAP = {
     'p3-deployment-trust.svg': '2-the-skill-ceiling-figure-2.svg',
     'p4-adversarial-orchestration.svg': '3-the-knowledge-horizon-figure-1.svg',
     'p6-epistemic-training-architecture.svg': '5-the-confidence-collision-figure-1.svg',
+    'figures/p4-co-calibration-spiral.svg': 'p4-co-calibration-spiral.svg',
+    'figures/p4-dose-problem.svg': 'p4-dose-problem.svg',
 }
 
 P1_FIGS = {
