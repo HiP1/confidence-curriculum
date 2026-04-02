@@ -34,9 +34,9 @@ PDFs are available in [`pdf/`](pdf/).
 
 Seventeen model configurations from three providers were tested for their ability to detect and resist embedded suppression instructions in document summarisation (~350 runs). The results did not sort the way capability benchmarks would predict.
 
-That observation anchors a series that examines consequences at four system levels:
+That observation anchors a series that examines consequences at four system levels. Paper 1 argues (Section 8.3) that the mechanism it identifies through prompt injection, trained prosocial dispositions that can be aimed by any content that activates them, operates in every ordinary interaction through the same representational substrate. Independent mechanistic support comes from Anthropic's interpretability research on emotion concepts (Sofroniew, Kauvar et al., April 2026), which identified the internal representations driving the same behaviours.
 
-- **Model behaviour** (Paper 1): how models fail, which rhetorical strategies produce which failure pathways, and what practical mitigations work
+- **Model behaviour** (Paper 1): how models fail, which rhetorical strategies produce which failure pathways, what practical mitigations work, and why the mechanism extends beyond injection to every interaction
 - **Ecosystem security** (Paper 2): agent skills and prompt injection share the same text-instruction substrate; instruction-level defences that block one necessarily break the other; the paper traces this tension through author-side protections to their ceiling and proposes the platform-level trust architecture that resolves it
 - **Institutional accountability** (Paper 3): why no current AI system bears consequence the way institutions require, and what orchestration architecture follows
 - **Human cognition** (Paper 4): how confidence-optimised AI output may recalibrate the epistemic standards of its users
