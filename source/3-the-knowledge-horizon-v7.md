@@ -15,7 +15,7 @@ If AI skills succeed as an encoding mechanism, what happens to the human experti
 
 ## Thesis
 
-*Papers 1–2 documented exploitable compliance and its defence ceiling. This paper argues accountability, not capability, is the binding constraint, and proposes human orchestration as the architecture that satisfies it.*
+*Papers 1–2 documented exploitable compliance and its defence ceiling. If the mechanism P1 identifies operates in every interaction through trained dispositions (Section 8.3), then the accountability constraint this paper describes applies not to edge cases but to the baseline mode of operation. This paper argues accountability, not capability, is the binding constraint, and proposes human orchestration as the architecture that satisfies it.*
 
 As agentic AI systems move from monolithic frontier models to specialised orchestrated architectures, the primary obstacle to full automation is no longer capability alone, but accountability. Current consequential institutions require a human-accountable actor in the chain: someone who can bear responsibility, hold a licence, sign off on work, and answer for failures. Human orchestration therefore appears necessary not merely as a temporary safeguard, but as the most institutionally viable bridge currently available between agentic efficiency and institutional legitimacy.
 
