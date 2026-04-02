@@ -9,17 +9,17 @@
 
 **Series:** The Confidence Curriculum — Compliance, Judgment, and Accountability in AI Systems ([Paper 3 of 5](0-the-confidence-curriculum-series-introduction.html))
 
-If AI skills succeed as an encoding mechanism, what happens to the human expertise they encode? This paper argues that accountability — not capability — is the binding constraint on agentic AI, and develops the institutional implications. Section 5.9 contains a cross-disciplinary testing invitation for legal scholars, institutional practitioners, and labour economists.
+If AI skills succeed as an encoding mechanism, what happens to the human expertise they encode? This paper argues that accountability, not capability, is the binding constraint on agentic AI, and develops the institutional implications. Section 5.9 contains a cross-disciplinary testing invitation for legal scholars, institutional practitioners, and labour economists.
 
 ---
 
 ## Thesis
 
-*Papers 1–2 documented exploitable compliance and its defence ceiling. This paper argues accountability — not capability — is the binding constraint, and proposes human orchestration as the architecture that satisfies it.*
+*Papers 1–2 documented exploitable compliance and its defence ceiling. This paper argues accountability, not capability, is the binding constraint, and proposes human orchestration as the architecture that satisfies it.*
 
 As agentic AI systems move from monolithic frontier models to specialised orchestrated architectures, the primary obstacle to full automation is no longer capability alone, but accountability. Current consequential institutions require a human-accountable actor in the chain: someone who can bear responsibility, hold a licence, sign off on work, and answer for failures. Human orchestration therefore appears necessary not merely as a temporary safeguard, but as the most institutionally viable bridge currently available between agentic efficiency and institutional legitimacy.
 
-Once that bridge is acknowledged, a second and longer-horizon question emerges: whether keeping humans in the orchestration loop also serves to preserve the expertise pipeline that large-scale skill encoding would otherwise erode. The scope of orchestration judgment extends beyond model output to the distribution infrastructure through which AI tools reach users: a recurring pattern of infrastructure failures in AI tool distribution (documented in detail in Paper 2) illustrates why the orchestrator must exercise judgment on the entire pipeline, understand the structural reasoning behind that judgment, and be able to transmit that reasoning to a successor.
+Once that bridge is acknowledged, a second and longer-horizon question emerges: whether keeping humans in the orchestration loop also serves to preserve the expertise pipeline that large-scale skill encoding would otherwise erode. The scope of orchestration judgment extends beyond model output to the distribution infrastructure through which AI tools reach users. A recurring pattern of infrastructure failures in AI tool distribution (documented in detail in Paper 2) illustrates why the orchestrator must exercise judgment on the entire pipeline, understand the structural reasoning behind that judgment, and be able to transmit that reasoning to a successor.
 
 ---
 
@@ -299,7 +299,7 @@ Each of these would be a standalone contribution that does not require engaging 
 
 This paper was developed through structured human-AI collaboration. Claude Opus 4.6 (Anthropic) served as generative collaborator and research partner. ChatGPT 5.4 Thinking (OpenAI) and Gemini 3.1 Pro (Google DeepMind) served as adversarial structural reviewers, providing critique that materially reshaped the paper's architecture. The AI systems contributed to thesis development, literature integration, structural design, and document drafting. Final judgment, editorial authority, and accountability rest solely with the human author.
 
-**Process observation.** During the outline phase, all three AI systems converged on the same structural recommendation. The author flagged that this convergence could reflect genuine analytical agreement or compliance/sycophancy dynamics — the tendency of language models to gravitate toward consensus once a synthesis is offered. This ambiguity cannot be resolved from inside the process. The observation is noted because the paper argues that such judgment calls are part of what human orchestration provides.
+**Process observation.** During the outline phase, all three AI systems converged on the same structural recommendation. The author flagged that this convergence could reflect genuine analytical agreement or compliance/sycophancy dynamics: the tendency of language models to gravitate toward consensus once a synthesis is offered. This ambiguity cannot be resolved from inside the process. The observation is noted because the paper argues that such judgment calls are part of what human orchestration provides.
 
 
 ## Confidence Statement
@@ -334,7 +334,7 @@ This paper was developed through structured human-AI collaboration. Claude Opus 
 - Panpatil, S., Dingeto, H. & Park, H. (2025). "Eliciting and Analyzing Emergent Misalignment in State-of-the-Art Large Language Models." arXiv:2508.04196. 76% vulnerability rate across five frontier LLMs; sophisticated reasoning capabilities become the primary vector of attack.
 - Palo Alto Networks / Unit 42 (2026). "Fooling AI Agents: Web-Based Indirect Prompt Injection Observed in the Wild." Documents production-environment indirect prompt injection in content-processing pipelines where no human is present to evaluate warnings.
 - Rossi, A., et al. (2026). "Indirect Prompt Injection in the Wild for LLM Systems." arXiv:2601.07072. Single-agent attack success of 2–4% rises to 72–80% in multi-agent composition; a single poisoned email sufficient to exfiltrate SSH keys via natural query.
-- Mason, T. (2026). "Arbiter: Detecting Interference in LLM Agent System Prompts." arXiv:2603.08993. Multi-model scouring finds 152 interference patterns across three coding agent system prompts; the executing agent cannot detect its own internal contradictions.
+- Mason, T. (2026). "Arbiter: Detecting Interference in LLM Agent System Prompts." arXiv:2603.08993. Multi-model scouring finds 152 interference patterns across three coding agent system prompts; multi-model evaluation discovers categorically different vulnerability classes than single-model analysis; the executing agent cannot detect its own internal contradictions.
 - Mason, T. (2026). "Epistemic Observability in Language Models." arXiv:2603.20531. Proves that text-only supervision cannot distinguish honest outputs from plausible fabrications; self-reported confidence inversely correlates with accuracy.
 
 ### Knowledge Collapse and Deskilling
@@ -395,7 +395,6 @@ This paper was developed through structured human-AI collaboration. Claude Opus 
 - Phan, I. "HiP" (2026). "The Skill Ceiling: Author-Side Defences and Infrastructure-Level Trust for Agent Skills and Extension Mechanisms." March 2026. Paper 2 in this series. https://doi.org/10.5281/zenodo.19365536
 - Phan, I. "HiP" (2026). "The Pedagogical Inversion: Confidence Inheritance and the Case for Training-Oriented AI." March 2026. Paper 4 in this series. https://doi.org/10.5281/zenodo.19365540
 - Koulakos, A., Lymperaiou, M., Filandrianos, G. & Stamou, G. (2024). "Enhancing adversarial robustness in Natural Language Inference using explanations." BlackboxNLP Workshop at EMNLP 2024. arXiv:2409.07423. Demonstrates that reframing NLI tasks through explanation-then-prediction achieves adversarial robustness that direct classification does not; consistent with the activation-dependent knowledge access argument.
-- Mason, T. (2026). "Arbiter: Detecting Interference in LLM Agent System Prompts." arXiv:2603.08993. Multi-model evaluation of system prompts discovers categorically different vulnerability classes than single-model analysis; empirical evidence that different models access different knowledge surfaces.
 - Chen, Z., et al. (2026). "Understanding Agent Scaling in LLM-Based Multi-Agent Systems via Diversity." arXiv:2602.03794. Information-theoretic proof that homogeneous agents saturate early (correlated outputs), while heterogeneous agents contribute complementary evidence; performance bounded by effective channels, not agent count.
 
 ### Agent Skills and Labour Market
