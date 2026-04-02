@@ -241,7 +241,7 @@ But the alternative, fully autonomous orchestration with no human in the evaluat
 
 ### 5.1 The Accountability Constraint May Evolve
 
-Legal frameworks change. If jurisdictions develop mechanisms for AI liability that include genuine consequence-bearing capacity, not merely financial penalties absorbed by operators but sanctions that functionally deter the sanctioned entity from repeating harmful behaviour, the accountability argument for human orchestration weakens. No jurisdiction is close to this as of March 2026, and no credible roadmap describes how to create consequence-bearing capacity in an AI system. But the paper treats the evolution of accountability frameworks as a possibility rather than an impossibility. The "capacity to experience consequence" framing is offered as a structural argument about the current state of affairs, not as a permanent metaphysical claim.
+This paper argues from current institutional conditions. Those conditions are not permanent. The compound deficit (no assets, no continuity, no social consequences) rules out accountability mechanisms that require these properties, but it does not rule out mechanisms the analysis has not considered. If jurisdictions develop AI liability frameworks with genuine consequence-bearing capacity, or if institutional conditions change enough that human orchestration becomes non-functional, legislators will create new frameworks. Whether those involve restructured liability, mandatory AI insurance with investigative authority, consortium-based verification, or mechanisms not yet imagined is speculative. The paper argues from the absence of any identified alternative. Absence of identification is not proof of impossibility.
 
 ### 5.2 The Knowledge Sustainability Timeline Is Uncertain
 
