@@ -27,6 +27,16 @@ The guide does not summarise or restate the papers. It tells you where to look a
 5. [Labour Economists](#5-labour-economists) (Papers 3, 4)
 6. [ML Training and Evaluation Engineers](#6-ml-training-and-evaluation-engineers) (Paper 5)
 
+**If you recognise the phenomenon under a different name.** Paper 4 proposes that several independently studied effects are per-interaction components of a single longitudinal mechanism it calls *confidence inheritance*. If your field studies any of the following, the series is addressing the same phenomenon and Paper 4 is your entry point:
+
+- **Cognitive offloading** (cognitive science) → Paper 4, Sections 1.2 and the MIT cognitive debt evidence
+- **Automation complacency** (human factors engineering) → Paper 4, Section 1.2 (BCG collaboration modes) and Paper 3, Section 4 (Bainbridge's ironies of automation)
+- **Critical thinking reduction** (education research) → Paper 4, Section 1.2 (Lee et al., CHI 2025; Fernandes et al. metacognitive corruption)
+- **AI dependency / problematic use** (clinical psychology) → Paper 4, Section 1.2 (Fang et al. 28-day RCT; Namvarpour & Razi addiction components)
+- **Metacognitive erosion** (Stanford HAI framing) → Paper 4, Section 1.2 (the compound DK-analogous dynamic)
+- **Deskilling** (labour economics) → Paper 3, Section 4 (expertise pipeline) and Paper 4, Section 2 (the pedagogical inversion)
+- **Cultivation effect** (media studies) → Paper 4, Section 1.2 (cultivation theory applied to AI interaction as "competent world syndrome")
+
 ---
 
 ## How to Use This Guide
