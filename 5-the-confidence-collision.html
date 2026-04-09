@@ -10,6 +10,7 @@
 <style>
 
 
+
 /* Paper 5 — The Confidence Collision
    Audience: ML training engineers, alignment researchers
    Aesthetic: Distill.pub, good ML blog. Light, airy, diagrams matter. */
@@ -82,6 +83,151 @@ section.references p { font-size:0.82rem; line-height:1.55; margin-bottom:0.4rem
   a { color: inherit !important; text-decoration: none !important; border-bottom: none !important; }
   a[href]:after { content: none !important; }
 }
+
+
+
+/* Enhanced readability */
+p { margin-bottom: 1.05rem; }
+h2 { margin-top: 3.5rem; margin-bottom: 1rem; }
+h3 { margin-top: 2.5rem; margin-bottom: 0.7rem; }
+.paper-container { max-width: var(--max-width); padding: 0 2rem 6rem; }
+
+/* Front matter breathing */
+.front-matter { padding-bottom: 2.5rem; margin-bottom: 3rem; }
+.front-matter p { margin-bottom: 1rem; }
+
+/* Section spacing */
+section.abstract, section.thesis { margin: 2.5rem 0 3rem; padding: 2rem 2.2rem; }
+section.confidence-statement { margin-top: 3rem; }
+section.references { margin-top: 3rem; }
+section.coda { margin-top: 3rem; }
+
+/* Better blockquotes (figure captions from MD) */
+blockquote { margin: 1.2rem 0; padding: 0.8rem 1.2rem; }
+
+/* Smoother reading on long text */
+.paper-body { line-height: 1.78; }
+
+/* Tables: more air */
+th { padding: 0.6rem 0.8rem; }
+td { padding: 0.55rem 0.8rem; }
+tbody tr { transition: background 0.15s; }
+tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03))); }
+
+/* Scroll margin for anchor links */
+[id] { scroll-margin-top: 1.5rem; }
+
+/* Print: pagination and orphan control */
+@media print {
+  
+  
+  h2, h3, h4 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    /* wkhtmltopdf workaround: force heading to pull next content along */
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  h2 { margin-top: 2rem; padding-bottom: 0; margin-bottom: 0.3rem; }
+  h3 { margin-top: 1.5rem; padding-bottom: 0; margin-bottom: 0.2rem; }
+  
+  /* Wrap heading + first content together to prevent orphans.
+     wkhtmltopdf ignores break-after:avoid on block elements,
+     but respects break-inside:avoid on containers. */
+  h2 + p, h2 + ul, h2 + ol, h2 + table, h2 + blockquote,
+  h3 + p, h3 + ul, h3 + ol, h3 + table, h3 + blockquote {
+    margin-top: 0;
+  }
+  
+  p {
+    orphans: 4;
+    widows: 4;
+  }
+  
+  figure, table, blockquote, section.abstract,
+  section.confidence-statement, .paper-card, .epilogue-card,
+  .stimulus-meta, .parchment {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Heading orphan guards */
+  .heading-guard {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  
+  /* Keep heading with its first paragraph */
+  h2 + p, h3 + p, h2 + ul, h3 + ul, h2 + ol, h3 + ol,
+  h2 + table, h3 + table, h2 + blockquote, h3 + blockquote {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+  
+  /* References: allow breaks but keep each entry together */
+  section.references li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Clean backgrounds for print */
+  body { background: white !important; }
+  .paper-container, .container { padding: 0 !important; max-width: none !important; }
+  .front-matter { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
+  .front-matter hr { display: none; }
+  .meta-block { margin-bottom: 0.3rem; }
+  header.paper-header { padding-bottom: 0.5rem; }
+  section.thesis { margin: 0.5rem 0 1.5rem; padding: 0.8rem 1.2rem; }
+  
+  /* SVG figures: constrain to page */
+  figure svg { max-height: 500px; width: auto; }
+  
+  /* Links: no underlines, inherit color */
+  a { color: inherit !important; text-decoration: none !important; }
+}
+
+
+
+.toc-controls {
+  display: flex; align-items: center; gap: 0.35rem;
+}
+
+.toc-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+.toc-toggle .toc-icon { font-size: 1rem; }
+.toc-toggle .toc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.theme-toggle {
+  background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
+  border-radius: 8px; padding: 0.45rem 0.55rem; cursor: pointer;
+  color: var(--text-muted, #8a8884); font-size: 0.9rem; line-height: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  transition: background 0.15s, box-shadow 0.15s, color 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); color: var(--text, #1b1b1a); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+
+
+
+
+
+
+
+
+
+/* Dark mode override — inverts existing palette */
+[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); background: inherit; }
+[data-theme="dark"] img, [data-theme="dark"] svg, [data-theme="dark"] video, [data-theme="dark"] figure svg { filter: invert(1) hue-rotate(180deg); }
+body { transition: filter 0.3s ease; }
+
+/* Desktop: sidebar panel */
+@media (min-width: 1200px) {
+  
+}
+/* Tablet/mobile: overlay */
+@media (max-width: 1199px) {
+  
+}
+@media print {  }
+
 
 
 
@@ -501,7 +647,8 @@ body { transition: filter 0.3s ease; }
 <p><strong>Why not RL-based confidence calibration (e.g., COREA)?</strong> Zhang et al. (COREA, arXiv:2603.03752, March 2026) train models to express calibrated confidence and defer to a larger model when uncertain, using RL with a confidence calibration reward. This is the closest existing work to the present proposal. The difference is that COREA operates on deterministic tasks where ground truth is verifiable. The confidence reward grades whether the model&rsquo;s expressed certainty matches binary correctness. The epistemic training phase proposed here extends this logic to contested domains where no single correct answer exists, and the reward grades alignment between expressed confidence and evidential convergence rather than binary accuracy.</p>
 <p><strong>Why not ternary reward structures (e.g., TruthRL)?</strong> TruthRL (arXiv:2509.25760, 2025) moves beyond binary correctness by distinguishing three outcomes (correct answers, hallucinations, and abstentions) and reports reduced hallucination plus improved truthfulness across knowledge-intensive settings. This directly validates the present paper&rsquo;s claim that binary reward signals are insufficient: a model that guesses correctly and a model that answers correctly with genuine knowledge should not receive the same reward. The difference is that TruthRL&rsquo;s ternary reward still operates on tasks where ground truth is deterministic. The system can distinguish correct from hallucinated because a correct answer exists. The epistemic training phase proposed here targets domains where the ternary distinction breaks down because ground truth is itself contested: the model must learn to express calibrated uncertainty about the <em>evidence</em>, not merely about its own likelihood of matching a known answer.</p>
 <p><strong>Why not alternative supervision schemes (e.g., peer prediction)?</strong> Peer-prediction methods (arXiv:2601.20299) use information-theoretic scoring rules to elicit truthful reports from evaluators even when ground truth is unavailable, and have shown promise for LLM training. These methods address a real limitation of standard judge-based supervision and are compatible with the epistemic training phase proposed here. They could serve as one implementation of the reward signal this paper describes. The difference is scope: peer prediction improves the supervision mechanism; the proposal is a full architectural stage combining that improved supervision with stochastic scheduling, adversarial environments, and collision-detection reward design.</p>
-<p><strong>Two recent existence proofs validate the training direction.</strong> Wu et al. (arXiv:2512.19920, December 2025) demonstrate that behavioural calibration (training models via RL to stochastically admit uncertainty using proper scoring rules) produces a transferable meta-skill separable from raw predictive accuracy. Their 4B-parameter model surpasses frontier models including GPT-5 on uncertainty quantification benchmarks, achieving superior calibration on both in-domain mathematical reasoning and cross-domain factual QA. Separately, Wang et al. (arXiv:2602.01528, February 2026) propose Epistemic Independence Training (EIT), which makes authority appeals and consensus claims non-predictive of reward through a balanced conflict strategy where bias signals are equally likely to support correct and incorrect answers. A 4B model with EIT outperforms 8B and 14B models without it under adversarial bias conditions, demonstrating that &ldquo;targeted training is more effective than model scaling for bias robustness.&rdquo; Both papers confirm that epistemic calibration can be trained rather than hoped for as an emergent property of scale. Their limitation is domain: both operate on tasks with verifiable ground truth (mathematical reasoning, factual QA, MMLU-Pro). The epistemic training phase proposed here targets the harder regime where ground truth is contested or unavailable. The reward must grade alignment between expressed confidence and evidential convergence rather than binary correctness. EIT&rsquo;s balanced conflict strategy is closest to the adversarial information conditions proposed in Section 3.4, but applied to prompt-level bias cues rather than to the source-level evidential conflicts that characterise contested-information environments.</p>
+<p><strong>Three recent existence proofs validate the training direction.</strong> Wu et al. (arXiv:2512.19920, December 2025) demonstrate that behavioural calibration (training models via RL to stochastically admit uncertainty using proper scoring rules) produces a transferable meta-skill separable from raw predictive accuracy. Their 4B-parameter model surpasses frontier models including GPT-5 on uncertainty quantification benchmarks, achieving superior calibration on both in-domain mathematical reasoning and cross-domain factual QA. Separately, Wang et al. (arXiv:2602.01528, February 2026) propose Epistemic Independence Training (EIT), which makes authority appeals and consensus claims non-predictive of reward through a balanced conflict strategy where bias signals are equally likely to support correct and incorrect answers. A 4B model with EIT outperforms 8B and 14B models without it under adversarial bias conditions, demonstrating that &ldquo;targeted training is more effective than model scaling for bias robustness.&rdquo; Stangel et al. (&ldquo;Rewarding Doubt,&rdquo; arXiv:2503.02623, March 2025) provide the most direct implementation of calibrated confidence training. They model confidence estimation as a betting game: a logarithmic scoring rule rewards high confidence on correct answers and penalises high confidence on incorrect answers, with the optimal policy producing perfectly calibrated confidence expression. The results are concrete. Base models predominantly assigned confidence scores of 8 or above out of 10, reflecting the overconfidence pattern the CC series documents. After Rewarding Doubt training, confidence scores spanned the full range, including low values on uncertain queries. The overconfidence is not an architectural property. It is a trained behaviour that can be retrained. Calibration generalised to unseen tasks without re-training: a model trained on trivia questions (TriviaQA) and tested on medical questions (MedQA) showed a 74% reduction in calibration error (ECE from 0.4480 to 0.1145). The method worked consistently across four model architectures (LLaMA-3.1-8B, Qwen-2.5 3B and 7B, Gemma-2-9B). Task accuracy was preserved in all cases. The calibration adds near-zero inference overhead (a few tokens for the confidence expression), unlike chain-of-thought or self-consistency methods that require lengthy reasoning chains or multiple generations. The limitation is scale: experiments used 3B-9B parameter models, not frontier-scale systems. Whether the approach works at frontier scale is untested.</p>
+<p>All three papers confirm that epistemic calibration can be trained rather than hoped for as an emergent property of scale. Their shared limitation is domain: all operate on tasks with verifiable ground truth (mathematical reasoning, factual QA, MMLU-Pro). The epistemic training phase proposed here targets the harder regime where ground truth is contested or unavailable. The reward must grade alignment between expressed confidence and evidential convergence rather than binary correctness. EIT&rsquo;s balanced conflict strategy is closest to the adversarial information conditions proposed in Section 3.4, but applied to prompt-level bias cues rather than to the source-level evidential conflicts that characterise contested-information environments. Rewarding Doubt&rsquo;s proper scoring rule approach is closest to the reward design proposed in Section 3.3, but applied to factual confidence rather than to the graded evidential convergence this paper targets.</p>
 <hr />
 <div class="heading-guard"><h2 id="6-proposed-experiments">6. Proposed Experiments</h2>
 <p>The following studies would test the core claims of this proposal. Papers 1 through 4 each include targeted invitations to the communities best positioned to test their arguments. Security researchers are invited to test Paper 1&rsquo;s compliance findings; red teams to test Paper 2&rsquo;s defence architecture; legal scholars and institutional practitioners to test Paper 3&rsquo;s accountability analysis; cognitive psychologists and education researchers to test Paper 4&rsquo;s epistemic predictions. This paper&rsquo;s experiments are the corresponding invitation to the ML training and evaluation community. while those disciplines test whether the diagnosis is correct, the experiments below test whether the proposed intervention works.</p></div>
@@ -570,6 +717,7 @@ body { transition: filter 0.3s ease; }
 <li>Shah, S., et al. (2026). &ldquo;The Synthetic Web: Adversarially-Curated Mini-Internets for Diagnosing Epistemic Weaknesses of Language Agents.&rdquo; arXiv:2603.00801. GPT-5 accuracy collapse from 65.1% to 18.2% under single rank-0 misinformation injection.</li>
 <li>Nickerson, R.S. (1998). &ldquo;Confirmation Bias: A Ubiquitous Phenomenon in Many Guises.&rdquo; <em>Review of General Psychology</em>, 2(2), 175–220.</li>
 <li>Talluri, B.C., Urai, A.E., Tsetsos, K., Usher, M. &amp; Donner, T.H. (2022). &ldquo;Confirmation Bias Through Selective Overweighting of Choice-Consistent Evidence.&rdquo; <em>Current Biology</em>, 28(19), 3128–3135.</li>
+<li>Stangel, P., Bani-Harouni, D., Pellegrini, C., Özsoy, E., Zaripova, K., Keicher, M. &amp; Navab, N. (2025). &ldquo;Rewarding Doubt: A Reinforcement Learning Approach to Calibrated Confidence Expression of Large Language Models.&rdquo; arXiv:2503.02623. Logarithmic scoring rule reward function penalises both over- and under-confidence; optimal policy produces perfectly calibrated expression; calibration generalises to unseen tasks; task accuracy preserved.</li>
 </ul>
 <h3 id="retrieval-utilisation">Retrieval Utilisation</h3>
 <ul>
