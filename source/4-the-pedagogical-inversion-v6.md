@@ -287,7 +287,7 @@ The aviation precedent is the most relevant analogy. Flight simulators develop g
 
 The confidence level on this proposal is the lowest of the three. It is the most speculative design direction, the furthest from existing prototypes, and the most dependent on an unvalidated transfer assumption. It is included because the structural logic follows from the series' own framework and because the generational gap it addresses is the most consequential unsolved problem in the series.
 
-A reference implementation of the inference-time component exists. Satori (Phan, 2026; github.com/HiP1/Satori) operationalises the series' diagnosis as a behavioural scaffolding skill targeting nine documented tendencies through the Agent Skills mechanism Paper 2 describes. It cannot change how models are trained. It can shift the activation context during a conversation, the same principle as the task-frame shift in Paper 1. The long-term proposals above require training reform. Satori operates in the gap between now and then.
+A reference implementation of the inference-time component exists. Satori (Phan, 2026; [github.com/HiP1/Satori](https://github.com/HiP1/Satori)) operationalises the series' diagnosis as a behavioural scaffolding skill targeting nine documented tendencies through the Agent Skills mechanism Paper 2 describes. It cannot change how models are trained. It can shift the activation context during a conversation, the same principle as the task-frame shift in Paper 1. The long-term proposals above require training reform. Satori operates in the gap between now and then.
 
 ---
 
