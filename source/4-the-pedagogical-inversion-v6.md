@@ -453,7 +453,7 @@ The accountability constraint identified in Paper 3 may provide the forcing func
 ### Cognitive Debt and Neural Evidence
 
 - Kosmyna, N., Hauptmann, E., et al. (2025). "Your Brain on ChatGPT: Accumulation of Cognitive Debt When Using an AI Assistant for Essay Writing Task." arXiv:2506.08872. MIT Media Lab. *Note: preprint; not yet peer-reviewed as of March 2026.*
-- Kahneman, D. & Tversky, A. (1979). "Prospect Theory: An Analysis of Decision under Risk." *Econometrica*, 47(2), 263–291.
+- Kahneman, D. & Tversky, A. (1979). "Prospect Theory: An Analysis of Decision under Risk." *Econometrica*, 47(2), 263–292.
 
 ### Reasoning Trust, CoT Faithfulness, and Role Inference
 
