@@ -161,15 +161,15 @@ ORIG_DIR = '/home/claude/originals'
 
 # Map source MD → original HTML for CSS extraction
 CSS_SOURCE_MAP = {
-    '0-the-confidence-curriculum-series-introduction-v9.md': '0-the-confidence-curriculum-series-introduction-v7.html',
-    '1-the-confidence-vulnerability-v6.md': '1-the-confidence-vulnerability-v6.html',
-    '1-the-confidence-vulnerability-v6-appendices.md': '1-the-confidence-vulnerability-v6-appendices.html',
-    '1-the-confidence-vulnerability-v6-test-documents.md': '1-the-confidence-vulnerability-v6-test-documents.html',
-    '2-the-skill-ceiling-v6.md': '2-the-skill-ceiling-v6.html',
-    '3-the-knowledge-horizon-v7.md': '3-the-knowledge-horizon-v6.html',
-    '4-the-pedagogical-inversion-v6.md': '4-the-pedagogical-inversion-v5.html',
-    '5-the-confidence-collision-v4.md': '5-the-confidence-collision-v3.html',
-    'the-symbiont-hypothesis-epilogue-v7-draft.md': 'the-symbiont-hypothesis-epilogue-v5.html',
+    '0-the-confidence-curriculum-series-introduction-v9.md': '0-the-confidence-curriculum-series-introduction.html',
+    '1-the-confidence-vulnerability-v6.md': '1-the-confidence-vulnerability.html',
+    '1-the-confidence-vulnerability-v6-appendices.md': '1-the-confidence-vulnerability-appendices.html',
+    '1-the-confidence-vulnerability-v6-test-documents.md': '1-the-confidence-vulnerability-test-documents.html',
+    '2-the-skill-ceiling-v6.md': '2-the-skill-ceiling.html',
+    '3-the-knowledge-horizon-v7.md': '3-the-knowledge-horizon.html',
+    '4-the-pedagogical-inversion-v6.md': '4-the-pedagogical-inversion.html',
+    '5-the-confidence-collision-v4.md': '5-the-confidence-collision.html',
+    'the-symbiont-hypothesis-epilogue-v7-draft.md': 'the-symbiont-hypothesis-epilogue.html',
     'the-confidence-curriculum-reading-guide.md': 'the-confidence-curriculum-reading-guide.html',
 }
 

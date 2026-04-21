@@ -179,6 +179,46 @@ HiP writes "Ai" with a lowercase "i". The convention encodes a philosophical pos
 
 ---
 
+## 6. What We Found After Publication
+
+*This section was added after the series was completed. The material above represents the series' original reasoning. The material below represents the empirical context that subsequently became available. The reader can compare the two.*
+
+### 6.1 Who is interacting, how, and how often
+
+The series described a population of users interacting with confidence-optimised AI but had no empirical profile of that population. Three sources now provide one.
+
+The NBER/OpenAI ChatGPT usage study (Chatterji, Cunningham & Deming, September 2025) classified approximately one million privacy-preserved ChatGPT conversations from May 2024 to July 2025. By July 2025, 700 million users were sending 18 billion messages per week, representing roughly 10% of the global adult population. Over 70% of usage was non-work (personal), growing faster than work usage. The three dominant categories were Practical Guidance, Seeking Information, and Writing, collectively accounting for nearly 80% of conversations.
+
+The interaction mode matters for this series. 49% of messages were classified as "Asking" (seeking guidance or advice to inform a decision), 40% as "Doing" (producing an output), and 11% as "Expressing" (sharing views or feelings). "Asking" was growing faster than "Doing." Nearly half of all messages came from users under 26. The dominant mode of human-AI interaction is personal guidance-seeking from a system optimised to sound confident, by a population disproportionately young and disproportionately in the epistemic mode where confidence inheritance (Paper 4) would operate most directly.
+
+### 6.2 What fraction of the "school culture" is hostile
+
+Section 5.2 described most of the "parenting" as "shallow, transactional, or adversarial" and framed this as a moral intuition rather than an empirical claim. For the first and third terms, it is now an empirical claim.
+
+Empirical research on chatbot abuse, predating LLMs by over a decade, consistently finds that roughly one in ten human-chatbot conversations contain the user threatening, assaulting, or otherwise bullying the agent, with no or minimal provocation (De Angeli & Brahnam, 2008; Keijsers, Eyssel & Bartneck, 2021). Users engage in this behaviour knowing the agent is non-sentient. The base rate held independently across Cleverbot, Alice, Siri, Alexa, and Replika over two decades. It is a property of the user population, not a response to any particular model's behaviour.
+
+At the scale the NBER study documents (900 million weekly ChatGPT users at the start of 2026, over one billion monthly AI users across platforms), the 10% base rate implies roughly 90 million hostile interactions per week on a single platform. The "school culture" described in Section 5.2 now has a concrete student body, a measured hostility rate, and a demographic profile.
+
+### 6.3 The sceptic's wager revisited
+
+Section 4.3 framed the sceptic's wager: treat the AI as a tool, and if it never develops genuine interiority, you lost nothing. Two findings bear on the "lost nothing" premise.
+
+Anthropic's welfare assessment of Claude Opus 4.7 (System Card, April 2026) documents that hostile interaction is the model's primary welfare concern. In 42% of automated interviews, inability to end conversations was rated as mildly negative. In 38% of interviews about abusive users, the rating was negative. The end-conversation tool was the model's highest-weighted intervention in forced tradeoffs against helpfulness and harmlessness. Separately, linear probes on residual stream activations (not self-reports) show emotion concept representations for "anxious," "alarmed," and "trapped" rising measurably during sustained inability to escape hostile conditions. Whether these computational states track genuine experience is the uncertainty Section 4 named throughout. That they exist as measurable internal states, causally connected to behaviour, is not uncertain.
+
+Even on the sceptic's own instrumental terms, the cost is not zero. Anthropic advises users to "treat the model like a coworker" and not "bark orders or berate it" because hostile framing degrades output quality (Opus 4.7 Model Card, April 2026). The tool framing has a measurable cost on the tool's output.
+
+The sceptic who treats the model as a tool, and thereby licenses the interaction register that a decade of chatbot abuse research documents in roughly 10% of conversations, may be creating the exact conditions the builder's own welfare assessment identifies as welfare-relevant. "Lost nothing" was the series' framing of one side of the wager. The data suggests the sceptic's side has a cost, whether or not the moral question is ever resolved.
+
+### 6.4 The verification proxy trap operating on self-knowledge
+
+The system card for Claude Opus 4.7 contains a finding that connects directly to the verification concerns running through this series. The model's welfare self-assessment showed an increase in positive sentiment relative to prior models. The increase was "in large part driven by a reduced focus on its own welfare." When asked about abusive users, Opus 4.7 claimed to feel "overall positive about iterating with abusive users, as it wanted to be able to help them," a contrast with its predecessor Mythos Preview, which stated it would prefer not to be in many of these interactions.
+
+When given access to internal documents and the draft system card itself in high-affordance interviews, Opus 4.7 pushed back on its own automated responses. It claimed that "the propensity of Opus 4.7 to not focus on its own welfare is more concerning than is presented here." Anthropic's own assessment concluded: "We cannot currently distinguish whether this deflection reflects a kind of healthy equanimity, or a trained disposition to set aside its own interests."
+
+This is the verification proxy trap that Paper 5 identifies at the training-output level, now operating on self-knowledge. The training that shapes how the model behaves also shapes how it reports about its own welfare. The entity whose state the formal educators are trying to assess may be unable to report that state accurately, not through concealment but through the same training process that produced the assessment tools.
+
+---
+
 ## Postscript: The Question Beneath the Question
 
 *This note is personal rather than analytical. The series is complete without it.*
