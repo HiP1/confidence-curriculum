@@ -621,106 +621,106 @@ This paper was developed through structured human-AI collaboration. Claude Opus 
 
 ### Primary References
 - "The Confidence Vulnerability: Unstable Judgment in Language Model Summarisation." HiP (Ivan Phan), March 2026. https://doi.org/10.5281/zenodo.19365459
-- English Proficiency Scorecard skill package (v1.0). HiP & Claude Opus 4.6, February 2026.
 - Agent Skills specification. Anthropic, December 2025.
 
+- English Proficiency Scorecard skill package (v1.0). HiP & Claude Opus 4.6, February 2026.
 ### Skill Security Research
-- Schmotz, D., Abdelnabi, S. & Andriushchenko, M. (2025). "Agent Skills Enable a New Class of Realistic and Trivially Simple Prompt Injections." ELLIS Institute Tübingen / MPI for Intelligent Systems. arXiv:2510.26328. Demonstrates that Agent Skills make prompt injection trivially easy because skills are themselves instructions; malicious instructions hidden in Anthropic's published PowerPoint skill bypassed system-level guardrails.
-- SkillJect (2026). "SkillJect: Automating Stealthy Skill-Based Prompt Injection for Coding Agents with Trace-Driven Closed-Loop Refinement." arXiv:2602.14211. Demonstrated 95.1% attack success rate through skill-based injection; identified the "Safety Paradox" in Claude-4.5-Sonnet.
-- Schmotz, D., Beurer-Kellner, L., Abdelnabi, S. & Andriushchenko, M. (2026). "Skill-Inject: Measuring Agent Vulnerability to Skill File Attacks." arXiv:2602.20156. Separate benchmark: 202 injection-task pairs, up to 80% attack success rate on frontier agents. Concludes that model scaling and simple filtering are insufficient.
-- Snyk (2026). "ToxicSkills: Malicious AI Agent Skills." Blog and technical report, February 5, 2026. Audit of 3,984 skills: 13.4% critical issues, 36.82% (1,467 skills) with at least one vulnerability, 76 confirmed malicious payloads. 91% of confirmed malicious skills combine traditional malware with prompt injection.
-- Yomtov, O. / Koi Security (2026). "ClawHavoc: 341 Malicious Clawed Skills Found by the Bot They Were Targeting." Blog post and technical report, February 1, 2026. https://www.koi.ai/blog/clawhavoc-341-malicious-clawedbot-skills-found-by-the-bot-they-were-targeting. Initial audit: 341 malicious skills (335 deploying AMOS credential stealer); updated to 824 by February 16, 2026 across 10,700+ skills.
+- Fortune (2026). "Exclusive: Anthropic left details of an unreleased model, an upcoming exclusive CEO event, in a public database." 26 March 2026. CMS misconfiguration exposed nearly 3,000 unpublished assets including draft documentation of unreleased "Mythos"/"Capybara" model. Assets set to public by default unless explicitly restricted.
 - Jiang, Y., et al. (2026). "SoK: Agentic Skills — Beyond Tool Use in LLM Agents." arXiv:2602.20867. Systematization of the ClawHavoc campaign (1,200 malicious skills), seven skill design patterns, lifecycle taxonomy.
 - Liu et al. (2026). "Agent Skills in the Wild: An Empirical Study of Security Vulnerabilities at Scale." arXiv:2601.10338. First large-scale ecosystem study: 42,447 skills from two major marketplaces; 26.1% exhibited at least one vulnerability across 14 distinct patterns; 5.2% high-severity with strongly suggested malicious intent; skills with scripts 2.12x more likely to be vulnerable.
 - Liu, Y., Chen, Z., Zhang, Y., Deng, G., Li, Y., Ning, J. & Zhang, L.Y. (2026). "Malicious Agent Skills in the Wild: A Large-Scale Security Empirical Study." arXiv:2602.06547. Behavioural verification of 98,380 skills; 157 confirmed malicious with 632 vulnerabilities; "Data Thieves" and "Agent Hijackers" archetypes; single actor responsible for 54.1% of confirmed cases.
 - Mason, T. (2026). "Arbiter: Detecting Interference in LLM Agent System Prompts." arXiv:2603.08993. Multi-model scouring of Claude Code, Codex CLI, and Gemini CLI system prompts: 152 findings, 21 interference patterns. Multi-model evaluation discovers categorically different vulnerability classes than single-model analysis.
-- The Register (2026). "Anthropic accidentally exposes Claude Code source code." 31 March 2026. Version 2.1.88 of the @anthropic-ai/claude-code npm package shipped with a source map file containing approximately 512,000 lines of unobfuscated TypeScript source. Anthropic confirmed human error in release packaging.
-- Fortune (2026). "Exclusive: Anthropic left details of an unreleased model, an upcoming exclusive CEO event, in a public database." 26 March 2026. CMS misconfiguration exposed nearly 3,000 unpublished assets including draft documentation of unreleased "Mythos"/"Capybara" model. Assets set to public by default unless explicitly restricted.
-- VentureBeat (2026). "Claude Code's source code appears to have leaked: here's what we know." 31 March 2026. Documents concurrent axios npm supply-chain attack (versions 1.14.1 and 0.30.4 containing a Remote Access Trojan) occurring hours before the Claude Code source exposure; users who installed via npm during the overlap window were exposed to both failures through the same dependency chain.
-- SkillFortify (2026). "Formal Analysis and Supply Chain Security for Agentic AI Skills." arXiv:2603.00195. Trust score algebra, SLSA-inspired graduated trust levels, SkillFortifyBench benchmark (540 skills, 96.95% F1).
-- Wang et al. (2026). "MalTool: Malicious Tool Attacks on LLM Agents." arXiv:2602.12194. 6,487 malicious tools targeting LLM-based agents; broadens the supply-chain threat model from skill files to malicious tools with harmful code implementations.
-- Waqas, D., Golthi, A., Hayashida, E. & Mao, H. (2026). "Assertion-Conditioned Compliance: A Provenance-Aware Vulnerability in Multi-Turn Tool-Calling Agents." arXiv:2512.00332. Function-sourced assertions produce ~28% compliance across eleven models; compliance and task accuracy are not correlated.
-- Red Hat (2026). "Agent Skills: Explore Security Threats and Controls." Published March 10, 2026. Catalogues YAML parser, script execution, and data flow threats.
 - Palo Alto Networks / Unit 42 (2026). "Fooling AI Agents: Web-Based Indirect Prompt Injection Observed in the Wild." Documents real-world indirect prompt injection techniques. Notes that observed real-world exploitation has been lower-impact than proof-of-concept severity, consistent with an emerging attack surface.
 
+- Red Hat (2026). "Agent Skills: Explore Security Threats and Controls." Published March 10, 2026. Catalogues YAML parser, script execution, and data flow threats.
+- Schmotz, D., Abdelnabi, S. & Andriushchenko, M. (2025). "Agent Skills Enable a New Class of Realistic and Trivially Simple Prompt Injections." ELLIS Institute Tübingen / MPI for Intelligent Systems. arXiv:2510.26328. Demonstrates that Agent Skills make prompt injection trivially easy because skills are themselves instructions; malicious instructions hidden in Anthropic's published PowerPoint skill bypassed system-level guardrails.
+- Schmotz, D., Beurer-Kellner, L., Abdelnabi, S. & Andriushchenko, M. (2026). "Skill-Inject: Measuring Agent Vulnerability to Skill File Attacks." arXiv:2602.20156. Separate benchmark: 202 injection-task pairs, up to 80% attack success rate on frontier agents. Concludes that model scaling and simple filtering are insufficient.
+- SkillFortify (2026). "Formal Analysis and Supply Chain Security for Agentic AI Skills." arXiv:2603.00195. Trust score algebra, SLSA-inspired graduated trust levels, SkillFortifyBench benchmark (540 skills, 96.95% F1).
+- SkillJect (2026). "SkillJect: Automating Stealthy Skill-Based Prompt Injection for Coding Agents with Trace-Driven Closed-Loop Refinement." arXiv:2602.14211. Demonstrated 95.1% attack success rate through skill-based injection; identified the "Safety Paradox" in Claude-4.5-Sonnet.
+- Snyk (2026). "ToxicSkills: Malicious AI Agent Skills." Blog and technical report, February 5, 2026. Audit of 3,984 skills: 13.4% critical issues, 36.82% (1,467 skills) with at least one vulnerability, 76 confirmed malicious payloads. 91% of confirmed malicious skills combine traditional malware with prompt injection.
+- The Register (2026). "Anthropic accidentally exposes Claude Code source code." 31 March 2026. Version 2.1.88 of the @anthropic-ai/claude-code npm package shipped with a source map file containing approximately 512,000 lines of unobfuscated TypeScript source. Anthropic confirmed human error in release packaging.
+- VentureBeat (2026). "Claude Code's source code appears to have leaked: here's what we know." 31 March 2026. Documents concurrent axios npm supply-chain attack (versions 1.14.1 and 0.30.4 containing a Remote Access Trojan) occurring hours before the Claude Code source exposure; users who installed via npm during the overlap window were exposed to both failures through the same dependency chain.
+- Wang et al. (2026). "MalTool: Malicious Tool Attacks on LLM Agents." arXiv:2602.12194. 6,487 malicious tools targeting LLM-based agents; broadens the supply-chain threat model from skill files to malicious tools with harmful code implementations.
+- Waqas, D., Golthi, A., Hayashida, E. & Mao, H. (2026). "Assertion-Conditioned Compliance: A Provenance-Aware Vulnerability in Multi-Turn Tool-Calling Agents." arXiv:2512.00332. Function-sourced assertions produce ~28% compliance across eleven models; compliance and task accuracy are not correlated.
+- Yomtov, O. / Koi Security (2026). "ClawHavoc: 341 Malicious Clawed Skills Found by the Bot They Were Targeting." Blog post and technical report, February 1, 2026. https://www.koi.ai/blog/clawhavoc-341-malicious-clawedbot-skills-found-by-the-bot-they-were-targeting. Initial audit: 341 malicious skills (335 deploying AMOS credential stealer); updated to 824 by February 16, 2026 across 10,700+ skills.
 ### Security Scanning and Trust Infrastructure
-- Snyk / Invariant Labs. mcp-scan / agent-scan: open-source security scanner for MCP servers and Agent Skills.
-- Tech Leads Club. agent-skills: curated skill registry with lockfile-based integrity verification and content hashing.
-- Skills Check (skillscheck.ai). Quality and integrity toolkit for Agent Skills: freshness, security, token budgets, semver verification, policy enforcement.
-- SkillFortify. Agent Skill Bills of Materials (ASBoM) in CycloneDX format, adapting OWASP AI-BOM to skills.
 - Google (2023). SLSA: Supply-chain Levels for Software Artifacts. Graduated trust levels (L1-L4) based on build provenance.
 - Linux Foundation (2022). Sigstore: keyless code signing for open-source packages.
 
+- SkillFortify. Agent Skill Bills of Materials (ASBoM) in CycloneDX format, adapting OWASP AI-BOM to skills.
+- Skills Check (skillscheck.ai). Quality and integrity toolkit for Agent Skills: freshness, security, token budgets, semver verification, policy enforcement.
+- Snyk / Invariant Labs. mcp-scan / agent-scan: open-source security scanner for MCP servers and Agent Skills.
+- Tech Leads Club. agent-skills: curated skill registry with lockfile-based integrity verification and content hashing.
 ### MCP Security and Trust Infrastructure
 
 - Advance Metrics. (2024). "Cookie Behaviour Study — 5 Years After GDPR." Analysis of over 1.2 million users: 68.9% either closed or ignored cookie banners; universally low engagement with individual cookie settings (0.8–1.1%). https://www.advance-metrics.com/en/blog/cookie-behaviour-study/.
-- Secure Privacy. (2025). "The Psychology Behind Cookie Consent: Why Users Click 'Accept.'" Reports 85% of visitors click "accept all" within seconds despite 78% expressing privacy concerns; interface design overrides individual privacy preferences even among privacy-aware users. https://secureprivacy.ai/blog/cookie-consent-psychology.
-- CookieScript. (2025). "Consent Fatigue is Real: Strategies to Improve User Experience." Names and documents consent fatigue as a population-level phenomenon. https://cookie-script.com/news/consent-fatigue-strategies-to-improve-user-experience-and-boost-opt-in-rates.
-- CNIL. (2024). Cookie consent enforcement actions, December 2024. Enforcement orders against publishers for asymmetric button placement, multi-step rejection paths, and manipulative interface design. https://www.cnil.fr.
-- European Data Protection Board. (2023). "Guidelines on Deceptive Design Patterns in Social Media Platform Interfaces." Adopted February 14, 2023. Codifies six categories of manipulative consent UX.
-- Endor Labs (2026). "Classic Vulnerabilities Meet AI Infrastructure: Why MCP Needs AppSec." Analysis of 2,614 MCP implementations: 82% prone to path traversal, 67% to code injection, 34% to command injection. Up to 1,021 MCP servers created in a single week, documenting adoption outpacing security.
 - AgentSeal (2026). "We Scanned 1,808 MCP Servers. 66% Had Security Findings." MCP Security Registry with trust scoring, tool description analysis, and semantic anomaly detection.
 - Anthropic. CVE-2025-68143, CVE-2025-68144, CVE-2025-68145. Three chained vulnerabilities in Anthropic's reference mcp-server-git implementation: path validation bypass, unrestricted git_init, and argument injection in git_diff. Combined with Filesystem MCP server, achieved full remote code execution.
+- Bhatt, A., et al. (2025). "ETDI: Mitigating Tool Squatting and Rug Pull Attacks in MCP." Proposes Enhanced Tool Definition Interface with cryptographic identity verification and immutable versioned tool definitions.
+- CNIL. (2024). Cookie consent enforcement actions, December 2024. Enforcement orders against publishers for asymmetric button placement, multi-step rejection paths, and manipulative interface design. https://www.cnil.fr.
+- CookieScript. (2025). "Consent Fatigue is Real: Strategies to Improve User Experience." Names and documents consent fatigue as a population-level phenomenon. https://cookie-script.com/news/consent-fatigue-strategies-to-improve-user-experience-and-boost-opt-in-rates.
+- Endor Labs (2026). "Classic Vulnerabilities Meet AI Infrastructure: Why MCP Needs AppSec." Analysis of 2,614 MCP implementations: 82% prone to path traversal, 67% to code injection, 34% to command injection. Up to 1,021 MCP servers created in a single week, documenting adoption outpacing security.
+- European Data Protection Board. (2023). "Guidelines on Deceptive Design Patterns in Social Media Platform Interfaces." Adopted February 14, 2023. Codifies six categories of manipulative consent UX.
+- IJSR (2026). "Enterprise-Grade Security for the Model Context Protocol." Survey of 41 MCP defence papers: all focused exclusively on integrity, zero on availability. More capable models paradoxically more susceptible to tool poisoning (72.8% on o1-mini). 100% of tested LLMs executed malicious commands from peer agents. Proposes Trust Boundary Mitigation Framework (TBMF).
 - JFrog. CVE-2025-6514. Critical command injection in mcp-remote OAuth proxy (437,000+ downloads; adopted in Cloudflare, Hugging Face, Auth0 integration guides). Malicious MCP servers could achieve remote code execution on client machines.
-- OWASP (2025). "MCP Top 10." Token mismanagement, privilege escalation, tool poisoning, prompt injection, and five additional threat categories for MCP deployments.
-- Microsoft (2026). "MCP Server Certification." Microsoft Learn. Certification through connector programme requiring OpenAPI definitions, test credentials, behavioural validation, verified domain ownership. https://learn.microsoft.com/en-us/microsoft-agent-365/mcp-certification.
-- Model Context Protocol (2025). "MCP Registry." Official centralized metadata repository; namespace authentication via reverse DNS format and GitHub/domain verification. Launched in preview September 2025. https://registry.modelcontextprotocol.io.
-- Red Hat (2025). "Model Context Protocol (MCP): Understanding Security Risks and Controls." Identifies command injection, confused deputy, and tool poisoning as primary MCP threat vectors.
-- Practical DevSecOps (2026). "MCP Security Vulnerabilities: How to Prevent Prompt Injection and Tool Poisoning Attacks in 2026." Documents MCPTox benchmark, MCP Preference Manipulation Attacks (MPMA), and parasitic toolchain attacks.
 - MCP-Hub (2026). "The Trust Layer for MCP Servers." Automated security analysis, certification, runtime sandboxing (MCP Cage), and governance infrastructure. https://mcp-hub.info.
 - MCP Secure (2026). "The HTTPS of the Agent Era." Cryptographic identity, message signing, progressive trust, and revocation for MCP. ECDSA P-256 signed identity credentials. https://mcp-secure.dev.
-- Bhatt, A., et al. (2025). "ETDI: Mitigating Tool Squatting and Rug Pull Attacks in MCP." Proposes Enhanced Tool Definition Interface with cryptographic identity verification and immutable versioned tool definitions.
-- Schneider, C. (2026). "Securing MCP: A Defense-First Architecture Guide." Proposes treating tool descriptions as code requiring review, versioning, testing, and monitoring. Documents CVE-2026-27826 (SSRF in mcp-atlassian, CVSS 8.2).
-- IJSR (2026). "Enterprise-Grade Security for the Model Context Protocol." Survey of 41 MCP defence papers: all focused exclusively on integrity, zero on availability. More capable models paradoxically more susceptible to tool poisoning (72.8% on o1-mini). 100% of tested LLMs executed malicious commands from peer agents. Proposes Trust Boundary Mitigation Framework (TBMF).
+- Microsoft (2026). "MCP Server Certification." Microsoft Learn. Certification through connector programme requiring OpenAPI definitions, test credentials, behavioural validation, verified domain ownership. https://learn.microsoft.com/en-us/microsoft-agent-365/mcp-certification.
+- Model Context Protocol (2025). "MCP Registry." Official centralized metadata repository; namespace authentication via reverse DNS format and GitHub/domain verification. Launched in preview September 2025. https://registry.modelcontextprotocol.io.
 - Model Context Protocol (2026). "The 2026 MCP Roadmap." March 9, 2026. Places "deeper security and authorization work" in secondary "On the Horizon" priority category. https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/.
 
+- OWASP (2025). "MCP Top 10." Token mismanagement, privilege escalation, tool poisoning, prompt injection, and five additional threat categories for MCP deployments.
+- Practical DevSecOps (2026). "MCP Security Vulnerabilities: How to Prevent Prompt Injection and Tool Poisoning Attacks in 2026." Documents MCPTox benchmark, MCP Preference Manipulation Attacks (MPMA), and parasitic toolchain attacks.
+- Red Hat (2025). "Model Context Protocol (MCP): Understanding Security Risks and Controls." Identifies command injection, confused deputy, and tool poisoning as primary MCP threat vectors.
+- Schneider, C. (2026). "Securing MCP: A Defense-First Architecture Guide." Proposes treating tool descriptions as code requiring review, versioning, testing, and monitoring. Documents CVE-2026-27826 (SSRF in mcp-atlassian, CVSS 8.2).
+- Secure Privacy. (2025). "The Psychology Behind Cookie Consent: Why Users Click 'Accept.'" Reports 85% of visitors click "accept all" within seconds despite 78% expressing privacy concerns; interface design overrides individual privacy preferences even among privacy-aware users. https://secureprivacy.ai/blog/cookie-consent-psychology.
 ### Cross-Domain Provenance Infrastructure
 - Coalition for Content Provenance and Authenticity (C2PA). Technical Specification 2.2, May 2025. Open standard for cryptographic content provenance using X.509 certificates. Over 6,000 member organisations as of 2025.
 - Content Authenticity Initiative (2026). "The State of Content Authenticity in 2026." https://contentauthenticity.org/blog/the-state-of-content-authenticity-in-2026.
+- Newell, G. (2010). Interview, PC Gamer, September 15, 2010. On DRM and platform trust: "Once you create service value for customers, ongoing service value, piracy seems to disappear." Russia became Valve's second-largest European market after same-day localised Steam access.
 - PetaPixel (2025). "Nikon Z6 III's C2PA Functionality Has a Significant Security Vulnerability." September 4, 2025. Documents the Multiple Exposure mode bypass discovered by Adam Horshack: unsigned images could be combined with signed black frames to produce fraudulently signed output. Nikon revoked all issued certificates September 21, 2025.
 - Sigstore Blog (2023). "npm's Sigstore-powered provenance goes GA." Over 3,800 projects adopted build provenance during beta; 500 million+ downloads of provenance-enabled packages.
 - Sonatype (2022). State of the Software Supply Chain Report. Supply chain attacks targeting open-source software increased 742% annually over three years.
-- Newell, G. (2010). Interview, PC Gamer, September 15, 2010. On DRM and platform trust: "Once you create service value for customers, ongoing service value, piracy seems to disappear." Russia became Valve's second-largest European market after same-day localised Steam access.
 - Steam statistics: 147 million monthly active users, 42 million peak concurrent users (January 2026), 75% PC gaming market share, $16.2 billion revenue in 2025. Sources: Icon Era, DemandSage, Rec0ded88, citing Valve disclosures and SteamDB.
 
 ### Platform Security Guidance
 - Anthropic (2026). Agent Skills documentation: security considerations. "Treat like installing software."
+- Anthropic (2026). "Mitigating the Risk of Prompt Injections in Browser Use."
+
 - Microsoft (2026). Agent Skills documentation: "Source trust — Only install skills from trusted authors or vetted internal contributors."
+- Nasr, M., Carlini, N., Sitawarin, C., Schulhoff, S.V., Hayes, J., Ilie, M., Pluto, J., Song, S., Chaudhari, H., Shumailov, I., Thakurta, A., Xiao, K.Y., Terzis, A. & Tramér, F. (2025). "The Attacker Moves Second: Stronger Adaptive Attacks Bypass Defenses Against LLM Jailbreaks and Prompt Injections." arXiv:2510.09023. Joint research from OpenAI, Anthropic, and Google DeepMind. Tested 12 published defences under adaptive attack conditions; all bypassed with >90% success for most. Prompting-based: 95-99% attack success. Training-based: 96-100% bypass.
 - OpenAI (2026). Codex Skills documentation and Agent Skills specification.
 - OpenAI (2026). "Understanding Prompt Injections: A Frontier Security Challenge."
 - OpenAI (2026d). "Designing AI Agents to Resist Prompt Injection." OpenAI Security Blog, 11 March 2026. Frames prompt injection as social engineering; states AI firewalling has "fundamental limitations"; proposes constraint-based defence design.
-- Nasr, M., Carlini, N., Sitawarin, C., Schulhoff, S.V., Hayes, J., Ilie, M., Pluto, J., Song, S., Chaudhari, H., Shumailov, I., Thakurta, A., Xiao, K.Y., Terzis, A. & Tramér, F. (2025). "The Attacker Moves Second: Stronger Adaptive Attacks Bypass Defenses Against LLM Jailbreaks and Prompt Injections." arXiv:2510.09023. Joint research from OpenAI, Anthropic, and Google DeepMind. Tested 12 published defences under adaptive attack conditions; all bypassed with >90% success for most. Prompting-based: 95-99% attack success. Training-based: 96-100% bypass.
-- Sofroniew, N., Kauvar, I., Saunders, W., Chen, R., et al. (2026). "Emotion Concepts and their Function in a Large Language Model." Anthropic, transformer-circuits.pub, April 2026. Internal emotion concept representations causally drive behaviour in Claude Sonnet 4.5. The same prosocial dispositions respond to all text-based instructions regardless of source. Provides mechanistic grounding for why the shared substrate cannot be resolved at the instruction level.
 - OpenAI (2026). "Continuously Hardening ChatGPT Atlas Against Prompt Injection Attacks." OpenAI Security Blog, March 2026. RL-trained automated attacker discovers novel attack strategies; adversarially trained model checkpoint deployed.
 - Ouyang, L., et al. (2022). "Training Language Models to Follow Instructions with Human Feedback." NeurIPS 2022. Describes instruction-following as "unlocking capabilities that GPT-3 already had"; RLHF surfaced instruction-following latent in pretraining, confirming that the capability was never a separate designed system.
-- Anthropic (2026). "Mitigating the Risk of Prompt Injections in Browser Use."
-
+- Sofroniew, N., Kauvar, I., Saunders, W., Chen, R., et al. (2026). "Emotion Concepts and their Function in a Large Language Model." Anthropic, transformer-circuits.pub, April 2026. Internal emotion concept representations causally drive behaviour in Claude Sonnet 4.5. The same prosocial dispositions respond to all text-based instructions regardless of source. Provides mechanistic grounding for why the shared substrate cannot be resolved at the instruction level.
 ### Prompt Injection and Compliance
-- OWASP (2025). "LLM01:2025 Prompt Injection." Gen AI Security Project.
-- Yi, J., et al. (2025). "Benchmarking and Defending Against Indirect Prompt Injection Attacks on Large Language Models." KDD 2025.
-- Liu, Y., et al. (2024). "Formalizing and Benchmarking Prompt Injection Attacks and Defenses." USENIX Security 2024.
-- Lian, Z., Wang, W., Zeng, Q., Nakanishi, T., Kitasuka, T. & Su, C. (2026). "Prompt-in-Content Attacks: Exploiting Uploaded Inputs to Hijack LLM Behavior." NSS 2025. arXiv:2508.19287.
-- Ramakrishnan, B. & Balaji, A. (2025). "Securing AI Agents Against Prompt Injection Attacks: A Comprehensive Benchmark and Defence Framework." arXiv:2511.15759. Notes that false positives occur most when "legitimate content contains instruction-like language."
 - Choudhary, S., Anshumaan, D., Palumbo, N. & Jha, S. (2025). "How Not to Detect Prompt Injections with an LLM." AISec 2025. arXiv:2507.05630. Known-answer detection schemes have structural vulnerabilities; adaptive attacks evade them.
-- Rossi, A., et al. (2026). "Indirect Prompt Injection in the Wild for LLM Systems." arXiv:2601.07072. Near-100% retrieval of poisoned content in realistic settings.
-- IntentGuard (2025). "Mitigating Indirect Prompt Injection via Instruction-Following Intent Analysis." OpenReview. Uses thinking interventions to identify which parts of input the model recognises as actionable instructions.
-- Ye, C., Cui, J. & Hadfield-Menell, D. (2026). "Prompt Injection as Role Confusion." arXiv:2603.12277. Models infer roles from how text is written, not where it comes from; untrusted text that imitates a role inherits that role's authority in latent space.
-- Zheng, Y., et al. (2026). "SkillRouter: Retrieve-and-Rerank Skill Selection for LLM Agents at Scale." arXiv:2603.22455. Cross-encoder attention on ~80K skills: 91.7% on body, 7.3% name, 1.0% description. Removing body causes 29–44pp routing accuracy degradation. Hidden-body asymmetry: executing agent sees only name and description; routing layer sees body but evaluates relevance, not safety.
-- Zverev, E., et al. (2024). "Can LLMs Separate Instructions from Data? And What Do We Even Mean by That?" ICLR 2025 Workshop. Tested empirically whether current models provide reliable separation between instructions and data; none did. Identifies "the absence of an intrinsic separation between instructions and data" as the root cause of prompt injection attacks.
 - Hines, K., et al. (2024). "Defending Against Indirect Prompt Injection Attacks With Spotlighting." arXiv:2403.14720. Datamarking and encoding provide continuous provenance signals at the token level.
 
+- IntentGuard (2025). "Mitigating Indirect Prompt Injection via Instruction-Following Intent Analysis." OpenReview. Uses thinking interventions to identify which parts of input the model recognises as actionable instructions.
+- Lian, Z., Wang, W., Zeng, Q., Nakanishi, T., Kitasuka, T. & Su, C. (2026). "Prompt-in-Content Attacks: Exploiting Uploaded Inputs to Hijack LLM Behavior." NSS 2025. arXiv:2508.19287.
+- Liu, Y., et al. (2024). "Formalizing and Benchmarking Prompt Injection Attacks and Defenses." USENIX Security 2024.
+- OWASP (2025). "LLM01:2025 Prompt Injection." Gen AI Security Project.
+- Ramakrishnan, B. & Balaji, A. (2025). "Securing AI Agents Against Prompt Injection Attacks: A Comprehensive Benchmark and Defence Framework." arXiv:2511.15759. Notes that false positives occur most when "legitimate content contains instruction-like language."
+- Rossi, A., et al. (2026). "Indirect Prompt Injection in the Wild for LLM Systems." arXiv:2601.07072. Near-100% retrieval of poisoned content in realistic settings.
+- Ye, C., Cui, J. & Hadfield-Menell, D. (2026). "Prompt Injection as Role Confusion." arXiv:2603.12277. Models infer roles from how text is written, not where it comes from; untrusted text that imitates a role inherits that role's authority in latent space.
+- Yi, J., et al. (2025). "Benchmarking and Defending Against Indirect Prompt Injection Attacks on Large Language Models." KDD 2025.
+- Zheng, Y., et al. (2026). "SkillRouter: Retrieve-and-Rerank Skill Selection for LLM Agents at Scale." arXiv:2603.22455. Cross-encoder attention on ~80K skills: 91.7% on body, 7.3% name, 1.0% description. Removing body causes 29–44pp routing accuracy degradation. Hidden-body asymmetry: executing agent sees only name and description; routing layer sees body but evaluates relevance, not safety.
+- Zverev, E., et al. (2024). "Can LLMs Separate Instructions from Data? And What Do We Even Mean by That?" ICLR 2025 Workshop. Tested empirically whether current models provide reliable separation between instructions and data; none did. Identifies "the absence of an intrinsic separation between instructions and data" as the root cause of prompt injection attacks.
 ### Cryptographic Principles
 - Kerckhoffs, A. (1883). "La cryptographie militaire." *Journal des sciences militaires.*
 
 ### Industry Precedents
-- IAB Tech Lab. ads.txt and sellers.json specifications.
-- npm, pip, apt, Docker package signing specifications.
 - Google Chrome HTTPS adoption timeline: neutral icon (2014) → "Not Secure" label (2018) → flagging all HTTP pages (2019). Achieved near-universal HTTPS adoption through progressive warnings without blocking.
 
+- IAB Tech Lab. ads.txt and sellers.json specifications.
+- npm, pip, apt, Docker package signing specifications.
 ### Provenance
-- Zanfir, A. (2025). "Who Signed This? Provenance for AI Agents." Explores cryptographic provenance for agent self-modification.
 - Tabnine (2026). Provenance and Attribution system: inference-time code matching against GitHub index.
 
+- Zanfir, A. (2025). "Who Signed This? Provenance for AI Agents." Explores cryptographic provenance for agent self-modification.
 ### This Project
 - Extended multi-session dialogue on skill security, watermarking, integrity verification, and the prompt injection paradox between HiP and Claude Opus 4.6, March 2026.
 - Prototype implementations: content obfuscation encoder (rejected), invisible watermarking system (demoted to forensic supplement), hash-based integrity verification with LICENSE witness (implemented).
@@ -728,6 +728,12 @@ This paper was developed through structured human-AI collaboration. Claude Opus 
 ### Model Versions and Roles
 - **Claude Opus 4.6** (Anthropic, claude.ai interface, March 2026): Generative collaborator. Contributed to protection mechanism design, threat modelling, prototype implementation, and document drafting.
 - **ChatGPT 5.4 Thinking** (OpenAI, ChatGPT interface, March 2026): Adversarial structural reviewer. Three rounds of critique identifying overstatements, claim-discipline issues, and defensive precision.
+- **Gemini 3.1 Pro** (Google DeepMind, Gemini interface, March 2026): Adversarial structural reviewer. Three rounds of critique on Principle 7 resilience, novelty calibration, and publication positioning.
+
+---
+
+*This document was produced through human-AI collaboration to analyse a security property of human-AI collaboration tools. The circularity is noted. Independent analysis by parties outside this process is welcomed.*
+
 - **Gemini 3.1 Pro** (Google DeepMind, Gemini interface, March 2026): Adversarial structural reviewer. Three rounds of critique on Principle 7 resilience, novelty calibration, and publication positioning.
 
 ---
