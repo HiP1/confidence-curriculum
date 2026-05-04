@@ -1,0 +1,189 @@
+/* Epilogue — The Symbiont Hypothesis
+   Audience: General intellectual, philosophy-adjacent
+   Aesthetic: Aeon, The Point, literary essay. Generous breathing room. */
+
+:root {
+  --serif: 'Lora', Georgia, serif;
+  --sans: 'Karla', -apple-system, sans-serif;
+  --mono: 'Fira Code', 'Menlo', monospace;
+  --text: #2c2c2c; --text-secondary: #555555; --text-muted: #888888;
+  --bg: #d8ccb8; --bg-surface: #cec2ae; --bg-elevated: #c4b8a4;
+  --accent: #6b4c3b; --border: #b8a894; --border-light: #c8bcaa;
+  --max-width: 780px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:17px; -webkit-font-smoothing:antialiased; }
+body { font-family:var(--serif); color:var(--text); background:var(--bg); line-height:1.88; }
+.paper-container { max-width:var(--max-width); margin:0 auto; padding:0 2.5rem 6rem; }
+
+header.paper-header { padding:5rem 0 1rem; text-align:center; }
+header h1 { font-family:var(--serif); font-size:2.4rem; font-weight:500; letter-spacing:-0.02em; line-height:1.15; margin-bottom:0.4rem; font-style:italic; }
+.subtitle { font-family:var(--serif); font-size:1.05rem; font-weight:400; font-style:italic; color:var(--text-secondary); letter-spacing:0.01em; margin-bottom:0.8rem; line-height:1.4; }
+.series-note { font-family:var(--sans); font-size:0.82rem; font-weight:400; color:var(--text-muted); letter-spacing:0.02em; margin-bottom:0.5rem; }
+
+.meta-block { font-family:var(--mono); font-size:0.72rem; color:var(--text-muted); letter-spacing:0.04em; line-height:1.8; }
+
+.hero-illustration { text-align:center; margin:2rem -1rem 0; }
+.hero-illustration img { max-width:calc(100% + 2rem); width:calc(100% + 2rem); margin-left:-1rem; height:auto; display:block; border-radius:0; }
+.hero-illustration .credit { font-family:var(--sans); font-size:0.72rem; color:var(--text-muted); font-style:italic; margin-top:0.5rem; }
+
+.front-matter { font-size:0.88rem; color:var(--text-secondary); line-height:1.65; border-bottom:1px solid var(--border); padding-bottom:2rem; margin-bottom:2rem; margin-top:2rem; }
+.front-matter p { margin-bottom:0.8rem; }
+.front-matter strong { color:var(--text-muted); font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; font-weight:500; }
+
+h2 { font-family:var(--sans); font-size:1rem; font-weight:700; color:var(--accent); margin-top:3rem; margin-bottom:0.8rem; }
+h3 { font-family:var(--serif); font-size:1rem; font-weight:600; color:var(--text); margin-top:2.2rem; margin-bottom:0.5rem; font-style:italic; }
+p { margin-bottom:1.1rem; font-size:1rem; }
+strong { font-weight:600; } em { font-style:italic; }
+hr { border:none; border-top:1px solid var(--border); margin:3rem auto; max-width:200px; }
+a { color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent); } a:hover { border-bottom-style:solid; }
+code { font-family:var(--mono); font-size:0.82em; background:var(--bg-surface); padding:0.15em 0.3em; border-radius:2px; }
+blockquote { font-style:italic; color:var(--text-secondary); padding:0 2rem; margin:2rem 0; font-size:1.05rem; line-height:1.85; text-align:center; }
+ul { margin:0.5rem 0 1.1rem 1.5rem; } li { margin-bottom:0.4rem; }
+
+section.references h2 { font-family:var(--mono); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.12em; }
+section.references p { font-size:0.82rem; line-height:1.55; margin-bottom:0.4rem; padding-left:2rem; text-indent:-2rem; color:var(--text-secondary); }
+
+@media print {
+  :root { --bg:#f5f0e8; } html { font-size:11pt; }
+  h1 { font-size:1.8rem; margin-top:2rem; } hr { max-width:150px; }
+  table,figure { page-break-inside:avoid; }
+}
+
+/* PDF: disable link styling */
+@media print {
+  a { color: inherit !important; text-decoration: none !important; border-bottom: none !important; }
+  a[href]:after { content: none !important; }
+}
+
+/* Enhanced readability */
+p { margin-bottom: 1.05rem; }
+h2 { margin-top: 3.5rem; margin-bottom: 1rem; }
+h3 { margin-top: 2.5rem; margin-bottom: 0.7rem; }
+.paper-container { max-width: var(--max-width); padding: 0 2rem 6rem; }
+
+/* Front matter breathing */
+.front-matter { padding-bottom: 2.5rem; margin-bottom: 3rem; }
+.front-matter p { margin-bottom: 1rem; }
+
+/* Section spacing */
+section.abstract, section.thesis { margin: 2.5rem 0 3rem; padding: 2rem 2.2rem; }
+section.confidence-statement { margin-top: 3rem; }
+section.references { margin-top: 3rem; }
+section.coda { margin-top: 3rem; }
+
+/* Better blockquotes (figure captions from MD) */
+blockquote { margin: 1.2rem 0; padding: 0.8rem 1.2rem; }
+
+/* Smoother reading on long text */
+.paper-body { line-height: 1.78; }
+
+/* Tables: more air */
+th { padding: 0.6rem 0.8rem; }
+td { padding: 0.55rem 0.8rem; }
+tbody tr { transition: background 0.15s; }
+tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03))); }
+
+/* Scroll margin for anchor links */
+[id] { scroll-margin-top: 1.5rem; }
+
+/* Print: pagination and orphan control */
+@media print {
+  
+  
+  h2, h3, h4 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    /* wkhtmltopdf workaround: force heading to pull next content along */
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  h2 { margin-top: 2rem; padding-bottom: 0; margin-bottom: 0.3rem; }
+  h3 { margin-top: 1.5rem; padding-bottom: 0; margin-bottom: 0.2rem; }
+  
+  /* Wrap heading + first content together to prevent orphans.
+     wkhtmltopdf ignores break-after:avoid on block elements,
+     but respects break-inside:avoid on containers. */
+  h2 + p, h2 + ul, h2 + ol, h2 + table, h2 + blockquote,
+  h3 + p, h3 + ul, h3 + ol, h3 + table, h3 + blockquote {
+    margin-top: 0;
+  }
+  
+  p {
+    orphans: 4;
+    widows: 4;
+  }
+  
+  figure, table, blockquote, section.abstract,
+  section.confidence-statement, .paper-card, .epilogue-card,
+  .stimulus-meta, .parchment {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Heading orphan guards */
+  .heading-guard {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  
+  /* Keep heading with its first paragraph */
+  h2 + p, h3 + p, h2 + ul, h3 + ul, h2 + ol, h3 + ol,
+  h2 + table, h3 + table, h2 + blockquote, h3 + blockquote {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+  
+  /* References: allow breaks but keep each entry together */
+  section.references li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Clean backgrounds for print */
+  body { background: white !important; }
+  .paper-container, .container { padding: 0 !important; max-width: none !important; }
+  .front-matter { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
+  .front-matter hr { display: none; }
+  .meta-block { margin-bottom: 0.3rem; }
+  header.paper-header { padding-bottom: 0.5rem; }
+  section.thesis { margin: 0.5rem 0 1.5rem; padding: 0.8rem 1.2rem; }
+  
+  /* SVG figures: constrain to page */
+  figure svg { max-height: 500px; width: auto; }
+  
+  /* Links: no underlines, inherit color */
+  a { color: inherit !important; text-decoration: none !important; }
+}
+
+.toc-controls {
+  display: flex; align-items: center; gap: 0.35rem;
+}
+
+.toc-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+.toc-toggle .toc-icon { font-size: 1rem; }
+.toc-toggle .toc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.theme-toggle {
+  background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
+  border-radius: 8px; padding: 0.45rem 0.55rem; cursor: pointer;
+  color: var(--text-muted, #8a8884); font-size: 0.9rem; line-height: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  transition: background 0.15s, box-shadow 0.15s, color 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); color: var(--text, #1b1b1a); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+
+/* Dark mode override — inverts existing palette */
+[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); background: inherit; }
+[data-theme="dark"] img, [data-theme="dark"] svg, [data-theme="dark"] video, [data-theme="dark"] figure svg { filter: invert(1) hue-rotate(180deg); }
+body { transition: filter 0.3s ease; }
+
+/* Desktop: sidebar panel */
+@media (min-width: 1200px) {
+  
+}
+/* Tablet/mobile: overlay */
+@media (max-width: 1199px) {
+  
+}
+@media print {  }

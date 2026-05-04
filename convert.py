@@ -157,50 +157,34 @@ SPECIAL_SECTIONS = [
 ]
 
 
-ORIG_DIR = '/home/claude/originals'
+CSS_DIR = os.path.join(REPO, 'source', 'css')
 
-# Map source MD → original HTML for CSS extraction
+# Map source MD → CSS file in source/css/
 CSS_SOURCE_MAP = {
-    '0-the-confidence-curriculum-series-introduction-v9.md': '0-the-confidence-curriculum-series-introduction.html',
-    '1-the-confidence-vulnerability-v6.md': '1-the-confidence-vulnerability.html',
-    '1-the-confidence-vulnerability-v6-appendices.md': '1-the-confidence-vulnerability-appendices.html',
-    '1-the-confidence-vulnerability-v6-test-documents.md': '1-the-confidence-vulnerability-test-documents.html',
-    '2-the-skill-ceiling-v6.md': '2-the-skill-ceiling.html',
-    '3-the-knowledge-horizon-v7.md': '3-the-knowledge-horizon.html',
-    '4-the-pedagogical-inversion-v6.md': '4-the-pedagogical-inversion.html',
-    '5-the-confidence-collision-v4.md': '5-the-confidence-collision.html',
-    'the-symbiont-hypothesis-epilogue-v7-draft.md': 'the-symbiont-hypothesis-epilogue.html',
-    'the-confidence-curriculum-reading-guide.md': 'the-confidence-curriculum-reading-guide.html',
+    '0-the-confidence-curriculum-series-introduction-v9.md': '0-the-confidence-curriculum-series-introduction.css',
+    '1-the-confidence-vulnerability-v6.md': '1-the-confidence-vulnerability.css',
+    '1-the-confidence-vulnerability-v6-appendices.md': '1-the-confidence-vulnerability-appendices.css',
+    '1-the-confidence-vulnerability-v6-test-documents.md': '1-the-confidence-vulnerability-test-documents.css',
+    '2-the-skill-ceiling-v6.md': '2-the-skill-ceiling.css',
+    '3-the-knowledge-horizon-v7.md': '3-the-knowledge-horizon.css',
+    '4-the-pedagogical-inversion-v6.md': '4-the-pedagogical-inversion.css',
+    '5-the-confidence-collision-v4.md': '5-the-confidence-collision.css',
+    'the-symbiont-hypothesis-epilogue-v7-draft.md': 'the-symbiont-hypothesis-epilogue.css',
+    'the-confidence-curriculum-reading-guide.md': 'the-confidence-curriculum-reading-guide.css',
 }
 
 def load_css(md_filename=None):
-    """Load the original CSS for a specific paper, stripping any stale TOC rules."""
-    # Try per-paper CSS first
+    """Load the CSS for a specific paper from source/css/."""
     if md_filename and md_filename in CSS_SOURCE_MAP:
-        orig = os.path.join(ORIG_DIR, CSS_SOURCE_MAP[md_filename])
-        if os.path.exists(orig):
-            content = open(orig).read()
-            m = re.search(r'<style>(.*?)</style>', content, re.DOTALL)
-            if m:
-                css = m.group(1)
-                # Strip any stale TOC rules from old builds
-                css = re.sub(r'\.toc-sidebar\s*\{[^}]*\}', '', css)
-                css = re.sub(r'\.toc-toggle\s*\{[^}]*\}', '', css)
-                css = re.sub(r'\.toc-body[^{]*\{[^}]*\}', '', css)
-                css = re.sub(r'\.toc-link[^{]*\{[^}]*\}', '', css)
-                css = re.sub(r'\.toc-title\s*\{[^}]*\}', '', css)
-                css = re.sub(r'/\*.*?Floating TOC.*?\*/', '', css)
-                css = re.sub(r'@media[^{]*\{[^}]*toc[^}]*\}[^}]*\}', '', css, flags=re.IGNORECASE)
-                css = re.sub(r'@media[^{]*\{[^}]*\.toc-sidebar[^}]*\}', '', css)
-                return css
+        css_path = os.path.join(CSS_DIR, CSS_SOURCE_MAP[md_filename])
+        if os.path.exists(css_path):
+            return open(css_path).read()
     # Fallback: P1 CSS
-    for fname in ['1-the-confidence-vulnerability.html']:
-        path = os.path.join(ORIG_DIR, fname)
-        if os.path.exists(path):
-            content = open(path).read()
-            m = re.search(r'<style>(.*?)</style>', content, re.DOTALL)
-            if m:
-                return m.group(1)
+    fallback = os.path.join(CSS_DIR, '1-the-confidence-vulnerability.css')
+    if os.path.exists(fallback):
+        print(f"  ⚠ No CSS for {md_filename}, falling back to P1 styles.")
+        return open(fallback).read()
+    print(f"  ⚠ No CSS found at all. Run from the repo root or check source/css/ exists.")
     return ''
 
 
@@ -1107,7 +1091,8 @@ def build_paper(md_filename):
 
 
 def main():
-    targets = sys.argv[1:] if len(sys.argv) > 1 else list(FILE_MAP.keys())
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    targets = args if args else list(FILE_MAP.keys())
     for md_filename in targets:
         if md_filename not in FILE_MAP:
             print(f"✗ Unknown: {md_filename}")
@@ -1136,6 +1121,95 @@ def main():
         import shutil
         shutil.copy2(intro_path, index_path)
         print(f"✓ Copied intro → index.html")
+
+    # --- PDF generation ---
+    if '--no-pdf' in sys.argv:
+        print("\nPDF generation skipped (--no-pdf)")
+    else:
+        pdf_targets = [FILE_MAP[m] for m in targets if m in FILE_MAP]
+        generate_pdfs(pdf_targets)
+
+
+def generate_pdfs(html_targets=None):
+    """Generate PDFs from HTML files. Checks dependencies, installs if possible."""
+    import shutil
+    import subprocess
+
+    # Check for wkhtmltopdf
+    if not shutil.which('wkhtmltopdf'):
+        print("\n⚠ wkhtmltopdf not found. Attempting install...")
+        try:
+            subprocess.run(['apt-get', 'update', '-qq'], capture_output=True, timeout=60)
+            subprocess.run(['apt-get', 'install', '-y', '-qq', 'wkhtmltopdf'],
+                           capture_output=True, timeout=120)
+        except Exception:
+            pass
+        if not shutil.which('wkhtmltopdf'):
+            print("✗ Could not install wkhtmltopdf. Skipping PDF generation.")
+            print("  Install manually: apt-get install wkhtmltopdf")
+            return
+
+    has_pdfinfo = bool(shutil.which('pdfinfo'))
+    if not has_pdfinfo:
+        try:
+            subprocess.run(['apt-get', 'install', '-y', '-qq', 'poppler-utils'],
+                           capture_output=True, timeout=120)
+            has_pdfinfo = bool(shutil.which('pdfinfo'))
+        except Exception:
+            pass
+
+    pdf_dir = os.path.join(REPO, 'pdf')
+    os.makedirs(pdf_dir, exist_ok=True)
+
+    print(f"\n--- PDF generation ---")
+
+    if html_targets is None:
+        html_targets = list(FILE_MAP.values())
+
+    for html_filename in html_targets:
+        html_path = os.path.join(REPO, html_filename)
+        if not os.path.exists(html_path):
+            continue
+
+        pdf_name = html_filename.replace('.html', '.pdf')
+        pdf_path = os.path.join(pdf_dir, pdf_name)
+
+        try:
+            result = subprocess.run([
+                'wkhtmltopdf',
+                '--enable-local-file-access',
+                '--page-size', 'A4',
+                '--margin-top', '20mm',
+                '--margin-bottom', '20mm',
+                '--margin-left', '22mm',
+                '--margin-right', '22mm',
+                '--encoding', 'UTF-8',
+                '--print-media-type',
+                '--no-outline',
+                '--load-error-handling', 'ignore',
+                '--load-media-error-handling', 'ignore',
+                '--dpi', '150',
+                html_path,
+                pdf_path
+            ], capture_output=True, timeout=120)
+
+            if os.path.exists(pdf_path):
+                pages = '?'
+                if has_pdfinfo:
+                    info = subprocess.run(['pdfinfo', pdf_path],
+                                          capture_output=True, text=True, timeout=10)
+                    for line in info.stdout.splitlines():
+                        if line.startswith('Pages:'):
+                            pages = line.split(':')[1].strip()
+                            break
+                print(f"✓ {pdf_name}  [{pages} pages]")
+            else:
+                print(f"✗ {pdf_name}: wkhtmltopdf produced no output")
+
+        except subprocess.TimeoutExpired:
+            print(f"✗ {pdf_name}: timeout")
+        except Exception as e:
+            print(f"✗ {pdf_name}: {e}")
 
 
 if __name__ == '__main__':

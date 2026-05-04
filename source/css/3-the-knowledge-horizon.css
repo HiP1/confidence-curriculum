@@ -1,0 +1,201 @@
+/* Paper 3 — The Knowledge Horizon
+   Audience: Policy readers, governance, law-adjacent
+   Aesthetic: Brookings, Stanford HAI, law review online */
+
+:root {
+  --serif: 'TeX Gyre Pagella', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --mono: 'DM Mono', 'Menlo', monospace;
+  --text: #1c1917; --text-secondary: #44403c; --text-muted: #78716c;
+  --bg: #fffbf7; --bg-surface: #f5f0ea; --bg-elevated: #ece5dd;
+  --accent: #7c2d12; --accent-light: #fef3ee;
+  --border: #d6cfc7; --border-light: #e7e0d8;
+  --max-width: 720px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; -webkit-font-smoothing:antialiased; }
+body { font-family:var(--serif); color:var(--text); background:var(--bg); line-height:1.82; }
+.paper-container { max-width:var(--max-width); margin:0 auto; padding:0 2.5rem 5rem; }
+
+header.paper-header { padding:4rem 0 2rem; border-bottom:2px solid var(--accent); margin-bottom:2rem; text-align:center; }
+header h1 { font-family:var(--serif); font-size:2.2rem; font-weight:700; letter-spacing:-0.02em; line-height:1.2; margin-bottom:0.3rem; }
+.subtitle { font-family:var(--sans); font-size:1rem; font-weight:400; color:var(--text-secondary); margin-bottom:1.5rem; line-height:1.5; }
+.meta-block { font-family:var(--mono); font-size:0.72rem; color:var(--text-muted); letter-spacing:0.04em; line-height:1.8; }
+
+.front-matter { font-size:0.88rem; color:var(--text-secondary); line-height:1.65; border-bottom:1px solid var(--border); padding-bottom:2rem; margin-bottom:2rem; }
+.front-matter p { margin-bottom:0.8rem; }
+.front-matter strong { color:var(--text-muted); font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; font-weight:500; }
+
+h2 { font-family:var(--sans); font-size:1.1rem; font-weight:700; color:var(--accent); margin-top:3rem; margin-bottom:0.7rem; }
+h3 { font-family:var(--sans); font-size:0.92rem; font-weight:700; color:var(--text); margin-top:2rem; margin-bottom:0.5rem; }
+h4 { font-family:var(--serif); font-size:0.9rem; font-weight:700; font-style:italic; color:var(--text-secondary); margin-top:1.5rem; margin-bottom:0.4rem; }
+p { margin-bottom:1rem; font-size:1rem; }
+strong { font-weight:700; } em { font-style:italic; }
+hr { border:none; border-top:1px solid var(--border); margin:2.5rem 0; }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; } a:hover { border-bottom-color:var(--accent); }
+code { font-family:var(--mono); font-size:0.84em; background:var(--bg-surface); padding:0.15em 0.35em; border-radius:3px; }
+blockquote { border-left:3px solid var(--accent); padding-left:1.4rem; margin:1.2rem 0; color:var(--text-secondary); font-size:0.95rem; font-style:italic; }
+ul { margin:0.5rem 0 1rem 1.5rem; } li { margin-bottom:0.4rem; }
+
+table { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:0.85rem; font-family:var(--sans); }
+th { background:var(--accent-light); font-weight:700; text-align:left; padding:0.6rem 0.8rem; border-bottom:2px solid var(--accent); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--accent); }
+td { padding:0.5rem 0.8rem; border-bottom:1px solid var(--border-light); vertical-align:top; }
+
+section.thesis { background:var(--accent-light); border:1px solid var(--border); border-radius:6px; padding:1.5rem 1.8rem; margin:2rem 0; }
+section.thesis h2 { color:var(--accent); margin-top:0; font-size:0.85rem; font-family:var(--mono); text-transform:uppercase; letter-spacing:0.08em; }
+
+figure.paper-figure { margin:2rem -0.5rem; text-align:center; background:white; padding:1.5rem; border:1px solid var(--border-light); border-radius:4px; }
+figure.paper-figure svg { display:block; max-width:100%; margin:0 auto; }
+figcaption { font-family:var(--sans); font-size:0.78rem; color:var(--text-muted); margin-top:0.8rem; line-height:1.5; }
+figcaption strong { font-family:var(--mono); font-size:0.72rem; }
+
+section.confidence-statement { background:var(--bg-surface); border-left:3px solid var(--accent); padding:1.4rem 1.6rem; margin:2rem 0; }
+section.confidence-statement h2 { font-size:0.85rem; margin-top:0; font-family:var(--mono); text-transform:uppercase; letter-spacing:0.08em; }
+section.limitations { border-left:2px solid var(--border); padding-left:1.5rem; margin:2rem 0; }
+section.references h2 { font-family:var(--mono); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted); }
+section.references p { font-size:0.82rem; line-height:1.55; margin-bottom:0.4rem; padding-left:2rem; text-indent:-2rem; color:var(--text-secondary); }
+
+@media print {
+  :root { --bg:white; } html { font-size:10.5pt; }
+  header { padding:2rem 0 1.5rem; } h1 { font-size:1.6rem; }
+  h2 { page-break-after:avoid; } table,figure { page-break-inside:avoid; }
+  section.thesis { page-break-before:always; }
+}
+
+/* PDF: disable link styling */
+@media print {
+  a { color: inherit !important; text-decoration: none !important; border-bottom: none !important; }
+  a[href]:after { content: none !important; }
+}
+
+/* Enhanced readability */
+p { margin-bottom: 1.05rem; }
+h2 { margin-top: 3.5rem; margin-bottom: 1rem; }
+h3 { margin-top: 2.5rem; margin-bottom: 0.7rem; }
+.paper-container { max-width: var(--max-width); padding: 0 2rem 6rem; }
+
+/* Front matter breathing */
+.front-matter { padding-bottom: 2.5rem; margin-bottom: 3rem; }
+.front-matter p { margin-bottom: 1rem; }
+
+/* Section spacing */
+section.abstract, section.thesis { margin: 2.5rem 0 3rem; padding: 2rem 2.2rem; }
+section.confidence-statement { margin-top: 3rem; }
+section.references { margin-top: 3rem; }
+section.coda { margin-top: 3rem; }
+
+/* Better blockquotes (figure captions from MD) */
+blockquote { margin: 1.2rem 0; padding: 0.8rem 1.2rem; }
+
+/* Smoother reading on long text */
+.paper-body { line-height: 1.78; }
+
+/* Tables: more air */
+th { padding: 0.6rem 0.8rem; }
+td { padding: 0.55rem 0.8rem; }
+tbody tr { transition: background 0.15s; }
+tbody tr:hover { background: var(--bg-surface, var(--surface, rgba(0,0,0,0.03))); }
+
+/* Scroll margin for anchor links */
+[id] { scroll-margin-top: 1.5rem; }
+
+/* Print: pagination and orphan control */
+@media print {
+  
+  
+  h2, h3, h4 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    /* wkhtmltopdf workaround: force heading to pull next content along */
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  h2 { margin-top: 2rem; padding-bottom: 0; margin-bottom: 0.3rem; }
+  h3 { margin-top: 1.5rem; padding-bottom: 0; margin-bottom: 0.2rem; }
+  
+  /* Wrap heading + first content together to prevent orphans.
+     wkhtmltopdf ignores break-after:avoid on block elements,
+     but respects break-inside:avoid on containers. */
+  h2 + p, h2 + ul, h2 + ol, h2 + table, h2 + blockquote,
+  h3 + p, h3 + ul, h3 + ol, h3 + table, h3 + blockquote {
+    margin-top: 0;
+  }
+  
+  p {
+    orphans: 4;
+    widows: 4;
+  }
+  
+  figure, table, blockquote, section.abstract,
+  section.confidence-statement, .paper-card, .epilogue-card,
+  .stimulus-meta, .parchment {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Heading orphan guards */
+  .heading-guard {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  
+  /* Keep heading with its first paragraph */
+  h2 + p, h3 + p, h2 + ul, h3 + ul, h2 + ol, h3 + ol,
+  h2 + table, h3 + table, h2 + blockquote, h3 + blockquote {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+  
+  /* References: allow breaks but keep each entry together */
+  section.references li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Clean backgrounds for print */
+  body { background: white !important; }
+  .paper-container, .container { padding: 0 !important; max-width: none !important; }
+  .front-matter { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
+  .front-matter hr { display: none; }
+  .meta-block { margin-bottom: 0.3rem; }
+  header.paper-header { padding-bottom: 0.5rem; }
+  section.thesis { margin: 0.5rem 0 1.5rem; padding: 0.8rem 1.2rem; }
+  
+  /* SVG figures: constrain to page */
+  figure svg { max-height: 500px; width: auto; }
+  
+  /* Links: no underlines, inherit color */
+  a { color: inherit !important; text-decoration: none !important; }
+}
+
+.toc-controls {
+  display: flex; align-items: center; gap: 0.35rem;
+}
+
+.toc-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+.toc-toggle .toc-icon { font-size: 1rem; }
+.toc-toggle .toc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.theme-toggle {
+  background: var(--bg-surface, var(--bg, #f2f1ee)); border: 1px solid var(--border, #d8d7d3);
+  border-radius: 8px; padding: 0.45rem 0.55rem; cursor: pointer;
+  color: var(--text-muted, #8a8884); font-size: 0.9rem; line-height: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  transition: background 0.15s, box-shadow 0.15s, color 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { background: var(--bg-elevated, var(--bg, #eae9e5)); color: var(--text, #1b1b1a); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+
+/* Dark mode override — inverts existing palette */
+[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); background: inherit; }
+[data-theme="dark"] img, [data-theme="dark"] svg, [data-theme="dark"] video, [data-theme="dark"] figure svg { filter: invert(1) hue-rotate(180deg); }
+body { transition: filter 0.3s ease; }
+
+/* Desktop: sidebar panel */
+@media (min-width: 1200px) {
+  
+}
+/* Tablet/mobile: overlay */
+@media (max-width: 1199px) {
+  
+}
+@media print {  }

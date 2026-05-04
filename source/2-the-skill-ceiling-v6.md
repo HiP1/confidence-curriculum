@@ -733,9 +733,3 @@ This paper was developed through structured human-AI collaboration. Claude Opus 
 ---
 
 *This document was produced through human-AI collaboration to analyse a security property of human-AI collaboration tools. The circularity is noted. Independent analysis by parties outside this process is welcomed.*
-
-- **Gemini 3.1 Pro** (Google DeepMind, Gemini interface, March 2026): Adversarial structural reviewer. Three rounds of critique on Principle 7 resilience, novelty calibration, and publication positioning.
-
----
-
-*This document was produced through human-AI collaboration to analyse a security property of human-AI collaboration tools. The circularity is noted. Independent analysis by parties outside this process is welcomed.*
