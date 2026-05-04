@@ -433,9 +433,9 @@ This paper was developed through structured human-AI collaboration. Claude Opus 
 - Chen, Z., et al. (2026). "Understanding Agent Scaling in LLM-Based Multi-Agent Systems via Diversity." arXiv:2602.03794. Information-theoretic proof that homogeneous agents saturate early (correlated outputs), while heterogeneous agents contribute complementary evidence; performance bounded by effective channels, not agent count.
 
 - Koulakos, A., Lymperaiou, M., Filandrianos, G. & Stamou, G. (2024). "Enhancing adversarial robustness in Natural Language Inference using explanations." BlackboxNLP Workshop at EMNLP 2024. arXiv:2409.07423. Demonstrates that reframing NLI tasks through explanation-then-prediction achieves adversarial robustness that direct classification does not; consistent with the activation-dependent knowledge access argument.
-- Phan, I. "HiP" (2026). "The Confidence Vulnerability: Unstable Judgment in Language Model Summarisation." March 2026. Paper 1 in this series. https://doi.org/10.5281/zenodo.19365459
+- Phan, I. "HiP" (2026). "The Confidence Vulnerability: Unstable Judgment in Language Model Summarisation." March 2026. Paper 1 in this series. https://doi.org/10.5281/zenodo.20027850
 - Phan, I. "HiP" (2026). "The Skill Ceiling: Author-Side Defences and Infrastructure-Level Trust for Agent Skills and Extension Mechanisms." March 2026. Paper 2 in this series. https://doi.org/10.5281/zenodo.19365536
-- Phan, I. "HiP" (2026). "The Pedagogical Inversion: Confidence Inheritance and the Case for Training-Oriented AI." March 2026. Paper 4 in this series. https://doi.org/10.5281/zenodo.19365540
+- Phan, I. "HiP" (2026). "The Pedagogical Inversion: Confidence Inheritance and the Case for Training-Oriented AI." March 2026. Paper 4 in this series. https://doi.org/10.5281/zenodo.20027844
 ### Agent Skills and Labour Market
 
 - Agent Skills specification. agentskills.io. Originally developed by Anthropic, released as an open standard December 2025. "Package specialized knowledge into reusable instructions, from legal review processes to data analysis pipelines." "Capture organizational knowledge in portable, version-controlled packages."

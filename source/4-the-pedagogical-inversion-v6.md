@@ -677,7 +677,7 @@ The accountability constraint identified in Paper 3 may provide the forcing func
 - Khan Academy. Khanmigo AI tutor. Socratic-method-based tutoring and teaching assistant. Grew to 700,000+ users across 380+ school districts in 2024–25. DiCerbo, K. (2025). Interview in *Education Week*.
 ### This Project
 
-- Phan, I. "HiP" (2026). "The Confidence Vulnerability: Unstable Judgment in Language Model Summarisation." Paper 1 in this series. https://doi.org/10.5281/zenodo.19365459
+- Phan, I. "HiP" (2026). "The Confidence Vulnerability: Unstable Judgment in Language Model Summarisation." Paper 1 in this series. https://doi.org/10.5281/zenodo.20027850
 - Phan, I. "HiP" (2026). "The Skill Ceiling: Author-Side Defences and Infrastructure-Level Trust for Agent Skills and Extension Mechanisms." Paper 2 in this series. https://doi.org/10.5281/zenodo.19365536
 - Phan, I. "HiP" (2026). "The Knowledge Horizon: Accountability, Expertise Erosion, and the Case for Human Orchestration in Agentic AI." Paper 3 in this series. https://doi.org/10.5281/zenodo.19365537
 - Phan, I. "HiP" (2026d). "Divided Focus: The Native Memory Problem and Architectural Solutions for Persistent LLM Context." DOI: 10.5281/zenodo.19365086. Documents the verification inversion: verification consumes irrecoverable tokens in a finite context, and training rewards output accuracy without rewarding the verification process.

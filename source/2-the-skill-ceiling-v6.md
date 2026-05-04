@@ -620,7 +620,7 @@ This paper was developed through structured human-AI collaboration. Claude Opus 
 
 
 ### Primary References
-- "The Confidence Vulnerability: Unstable Judgment in Language Model Summarisation." HiP (Ivan Phan), March 2026. https://doi.org/10.5281/zenodo.19365459
+- "The Confidence Vulnerability: Unstable Judgment in Language Model Summarisation." HiP (Ivan Phan), March 2026. https://doi.org/10.5281/zenodo.20027850
 - Agent Skills specification. Anthropic, December 2025.
 
 - English Proficiency Scorecard skill package (v1.0). HiP & Claude Opus 4.6, February 2026.

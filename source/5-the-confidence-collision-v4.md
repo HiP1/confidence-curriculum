@@ -447,10 +447,10 @@ This paper was developed through structured human-AI collaboration. Claude Opus 
 
 ### Series Context
 
-- Phan, I. "HiP" (2026). "The Confidence Vulnerability." Paper 1 in this series. https://doi.org/10.5281/zenodo.19365459
+- Phan, I. "HiP" (2026). "The Confidence Vulnerability." Paper 1 in this series. https://doi.org/10.5281/zenodo.20027850
 - Phan, I. "HiP" (2026). "The Skill Ceiling." Paper 2 in this series. https://doi.org/10.5281/zenodo.19365536
 - Phan, I. "HiP" (2026). "The Knowledge Horizon." Paper 3 in this series. https://doi.org/10.5281/zenodo.19365537
-- Phan, I. "HiP" (2026). "The Pedagogical Inversion." Paper 4 in this series. https://doi.org/10.5281/zenodo.19365540
+- Phan, I. "HiP" (2026). "The Pedagogical Inversion." Paper 4 in this series. https://doi.org/10.5281/zenodo.20027844
 - Phan, I. "HiP" (2026). "The Judgment Paradox." Paper 2 in the Training Landscape series. DOI: 10.5281/zenodo.19594378. RLHF annotation destroys information by collapsing expert disagreement and reasoning into consensus labels. Proposes the Rich Annotation Object (RAO) and supervised fine-tuning as alternative that bypasses the RL proxy trap.
 - Phan, I. "HiP" (2026). "The Tunnel Pipeline: What Gets Lost, What It Costs, and the Case for PARIA." Paper 3 in the Training Landscape series. DOI: 10.5281/zenodo.19804186. Five structural conditions for the judgment pipeline (preservation, adequacy, reproducibility, independence, accountability). Maps preservation failure at the aggregation step to calibration collapse. CC's core thesis is the preferred mechanism for the preservation-to-calibration-collapse mapping.
 

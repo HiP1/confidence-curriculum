@@ -962,12 +962,12 @@ def build_paper(md_filename):
 
     PAPER_DOIS = {
         '0-the-confidence-curriculum-series-introduction-v9.md': '10.5281/zenodo.19226032',
-        '1-the-confidence-vulnerability-v6.md': '10.5281/zenodo.19365459',
-        '1-the-confidence-vulnerability-v6-appendices.md': '10.5281/zenodo.19365459',
-        '1-the-confidence-vulnerability-v6-test-documents.md': '10.5281/zenodo.19365459',
+        '1-the-confidence-vulnerability-v6.md': '10.5281/zenodo.20027850',
+        '1-the-confidence-vulnerability-v6-appendices.md': '10.5281/zenodo.20027850',
+        '1-the-confidence-vulnerability-v6-test-documents.md': '10.5281/zenodo.20027850',
         '2-the-skill-ceiling-v6.md': '10.5281/zenodo.19365536',
         '3-the-knowledge-horizon-v7.md': '10.5281/zenodo.19365537',
-        '4-the-pedagogical-inversion-v6.md': '10.5281/zenodo.19365540',
+        '4-the-pedagogical-inversion-v6.md': '10.5281/zenodo.20027844',
         '5-the-confidence-collision-v4.md': '10.5281/zenodo.19365543',
     }
 
