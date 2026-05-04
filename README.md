@@ -18,10 +18,10 @@ The papers are designed to be read as styled HTML. Each paper has a visual ident
 | # | Paper | Genre | DOI | HTML |
 |---|-------|-------|-----|------|
 | — | Series Introduction | Overview + confidence calibration | [10.5281/zenodo.19226032](https://doi.org/10.5281/zenodo.19226032) | [Read](https://hip1.github.io/confidence-curriculum/) |
-| 1 | **The Confidence Vulnerability** | Exploratory empirical study | [10.5281/zenodo.19365459](https://doi.org/10.5281/zenodo.19365459) | [Read](https://hip1.github.io/confidence-curriculum/1-the-confidence-vulnerability.html) |
+| 1 | **The Confidence Vulnerability** | Exploratory empirical study | [10.5281/zenodo.20027850](https://doi.org/10.5281/zenodo.20027850) | [Read](https://hip1.github.io/confidence-curriculum/1-the-confidence-vulnerability.html) |
 | 2 | **The Skill Ceiling** | Structural security analysis | [10.5281/zenodo.19365536](https://doi.org/10.5281/zenodo.19365536) | [Read](https://hip1.github.io/confidence-curriculum/2-the-skill-ceiling.html) |
 | 3 | **The Knowledge Horizon** | Institutional and theoretical argument | [10.5281/zenodo.19365537](https://doi.org/10.5281/zenodo.19365537) | [Read](https://hip1.github.io/confidence-curriculum/3-the-knowledge-horizon.html) |
-| 4 | **The Pedagogical Inversion** | Position paper and research agenda | [10.5281/zenodo.19365540](https://doi.org/10.5281/zenodo.19365540) | [Read](https://hip1.github.io/confidence-curriculum/4-the-pedagogical-inversion.html) |
+| 4 | **The Pedagogical Inversion** | Position paper and research agenda | [10.5281/zenodo.20027844](https://doi.org/10.5281/zenodo.20027844) | [Read](https://hip1.github.io/confidence-curriculum/4-the-pedagogical-inversion.html) |
 | 5 | **The Confidence Collision** | Architectural proposal paper | [10.5281/zenodo.19365543](https://doi.org/10.5281/zenodo.19365543) | [Read](https://hip1.github.io/confidence-curriculum/5-the-confidence-collision.html) |
 | — | **The Symbiont Hypothesis** | Speculative essay (Epilogue) | — | [Read](https://hip1.github.io/confidence-curriculum/the-symbiont-hypothesis-epilogue.html) |
 | — | Reading Guide | Audience-specific entry points | — | [Read](https://hip1.github.io/confidence-curriculum/the-confidence-curriculum-reading-guide.html) |
@@ -110,7 +110,7 @@ For individual papers, cite by title with its DOI:
 ```
 HiP (Ivan Phan). "The Confidence Vulnerability: Unstable Judgment in Language
 Model Summarisation." In The Confidence Curriculum. March 2026.
-https://doi.org/10.5281/zenodo.19365459
+https://doi.org/10.5281/zenodo.20027850
 ```
 
 ---
