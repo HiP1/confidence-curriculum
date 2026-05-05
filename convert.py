@@ -1122,12 +1122,165 @@ def main():
         shutil.copy2(intro_path, index_path)
         print(f"✓ Copied intro → index.html")
 
+    # --- Sort references ---
+    if '--sort-refs' in sys.argv:
+        print("\n--- Sorting references ---")
+        for md_filename in targets:
+            md_path = os.path.join(REPO, 'source', md_filename)
+            if os.path.exists(md_path):
+                changes = sort_references(md_path)
+                if changes:
+                    print(f"✓ {md_filename}: {changes} subsection(s) reordered")
+                else:
+                    print(f"  {md_filename}: already sorted")
+
+    # --- Check orphaned references ---
+    if '--orphans' in sys.argv:
+        print("\n--- Orphaned references ---")
+        for md_filename in targets:
+            md_path = os.path.join(REPO, 'source', md_filename)
+            if os.path.exists(md_path):
+                check_orphans(md_path, md_filename)
+
     # --- PDF generation ---
     if '--no-pdf' in sys.argv:
         print("\nPDF generation skipped (--no-pdf)")
     else:
         pdf_targets = [FILE_MAP[m] for m in targets if m in FILE_MAP]
         generate_pdfs(pdf_targets)
+
+
+def _get_sort_key(ref_text):
+    """Extract first author surname for alphabetical sorting."""
+    line = ref_text.split('\n')[0].lstrip('- ').strip()
+    m = re.match(r'([A-Za-z\u00C0-\u024F\']+)', line)
+    return m.group(1).lower() if m else line[0].lower()
+
+
+def sort_references(path):
+    """Sort reference entries alphabetically within each subsection.
+    
+    Handles multi-line references and preserves non-reference trailing
+    content (closing notes, Gemini credits, etc.) without duplication.
+    """
+    content = open(path).read()
+    lines = content.split('\n')
+    
+    result = []
+    in_refs = False
+    current_refs = []       # list of complete multi-line reference blocks
+    current_ref_lines = []  # accumulator for current reference being built
+    trailing_lines = []     # non-reference lines after last ref in a section
+    changes = 0
+    
+    def flush_section():
+        """Sort and emit accumulated references, then any trailing content."""
+        nonlocal changes
+        # Finish any in-progress reference
+        if current_ref_lines:
+            current_refs.append('\n'.join(current_ref_lines))
+            current_ref_lines.clear()
+        # Sort
+        if len(current_refs) > 1:
+            sorted_refs = sorted(current_refs, key=_get_sort_key)
+            if sorted_refs != current_refs:
+                changes += 1
+            result.extend(sorted_refs)
+        elif current_refs:
+            result.extend(current_refs)
+        current_refs.clear()
+        # Emit trailing non-reference content
+        result.extend(trailing_lines)
+        trailing_lines.clear()
+    
+    for line in lines:
+        # Detect start of references section
+        if line.startswith('## References') or line.startswith('## Ref'):
+            in_refs = True
+            result.append(line)
+            continue
+        
+        # Detect end of references (new top-level section)
+        if in_refs and line.startswith('## ') and not line.startswith('### '):
+            flush_section()
+            in_refs = False
+            result.append(line)
+            continue
+        
+        if not in_refs:
+            result.append(line)
+            continue
+        
+        # Inside references section
+        if line.startswith('### '):
+            # New subsection header: flush previous
+            flush_section()
+            result.append(line)
+            continue
+        
+        if line.startswith('- '):
+            # New reference entry
+            # First, emit any trailing lines that accumulated
+            if trailing_lines:
+                # These were between refs (blank lines etc.) — keep them
+                # But only if we haven't started collecting refs yet
+                if not current_refs and not current_ref_lines:
+                    result.extend(trailing_lines)
+                trailing_lines.clear()
+            if current_ref_lines:
+                current_refs.append('\n'.join(current_ref_lines))
+            current_ref_lines = [line]
+        elif current_ref_lines and line.strip() == '':
+            # Blank line while building a reference — end the ref
+            current_refs.append('\n'.join(current_ref_lines))
+            current_ref_lines = []
+            trailing_lines.append(line)
+        elif current_ref_lines:
+            # Continuation of multi-line reference
+            current_ref_lines.append(line)
+        else:
+            # Non-reference line (blank lines, closing notes, etc.)
+            trailing_lines.append(line)
+    
+    # Flush any remaining content at EOF
+    flush_section()
+    
+    output = '\n'.join(result)
+    open(path, 'w').write(output)
+    return changes
+
+
+def check_orphans(path, filename):
+    """Report references not cited in the body text."""
+    content = open(path).read()
+    
+    ref_start = content.find('## References')
+    if ref_start < 0:
+        ref_start = content.find('## Ref')
+    if ref_start < 0:
+        return
+    
+    body = content[:ref_start]
+    refs_section = content[ref_start:]
+    
+    orphans = []
+    for line in refs_section.split('\n'):
+        if not line.startswith('- '):
+            continue
+        m = re.match(r'- ([A-Za-z\u00C0-\u024F\']+).*?\((\d{4})', line)
+        if not m:
+            continue
+        surname = m.group(1)
+        year = m.group(2)
+        if surname not in body:
+            orphans.append(f"  {surname} ({year}): {line[2:70]}...")
+    
+    if orphans:
+        print(f"{filename}: {len(orphans)} orphaned")
+        for o in orphans:
+            print(o)
+    else:
+        print(f"{filename}: all cited")
 
 
 def generate_pdfs(html_targets=None):
