@@ -401,8 +401,8 @@ This paper's contribution is to define the training problem precisely enough for
 
 - Bukharin, A., Qian, H., Sun, S., Renduchintala, A., Singhal, S., Wang, Z., Kuchaiev, O., Delalleau, O. & Zhao, T. (2025). "Adversarial Training of Reward Models." arXiv:2504.06141 (Adv-RM).
 - Liu, H., et al. (2026). "Dual-Modality Multi-Stage Adversarial Safety Training: Robustifying Multimodal Web Agents Against Cross-Modal Attacks." arXiv:2603.04364 (DMAST). Three-stage adversarial pipeline including RL self-play for web agent safety.
-- Waqas, D., Golthi, A., Hayashida, E. & Mao, H. (2026). "Assertion-Conditioned Compliance: A Provenance-Aware Vulnerability in Multi-Turn Tool-Calling Agents." arXiv:2512.00332. Compliance with misleading assertions (20–47%) decoupled from task accuracy; standard benchmarks mask procedural vulnerability.
 - Wang, Y., et al. (2025). "Adversarial Preference Learning for Robust LLM Alignment." In *Findings of ACL 2025* (APL).
+- Waqas, D., Golthi, A., Hayashida, E. & Mao, H. (2026). "Assertion-Conditioned Compliance: A Provenance-Aware Vulnerability in Multi-Turn Tool-Calling Agents." arXiv:2512.00332. Compliance with misleading assertions (20–47%) decoupled from task accuracy; standard benchmarks mask procedural vulnerability.
 - Yi, X., Li, Y., Shi, D., Wang, L., Wang, X. & He, L. (2025). "Latent-Space Adversarial Training with Post-Aware Calibration for Defending Large Language Models Against Jailbreak Attacks." *Expert Systems with Applications*. arXiv:2501.10639 (LATPC).
 
 ### Confidence Calibration and Alternative Supervision
