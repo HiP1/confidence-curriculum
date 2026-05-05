@@ -949,10 +949,10 @@ def build_paper(md_filename):
         '1-the-confidence-vulnerability-v6.md': '10.5281/zenodo.20027850',
         '1-the-confidence-vulnerability-v6-appendices.md': '10.5281/zenodo.20027850',
         '1-the-confidence-vulnerability-v6-test-documents.md': '10.5281/zenodo.20027850',
-        '2-the-skill-ceiling-v6.md': '10.5281/zenodo.19365536',
-        '3-the-knowledge-horizon-v7.md': '10.5281/zenodo.19365537',
+        '2-the-skill-ceiling-v6.md': '10.5281/zenodo.20044533',
+        '3-the-knowledge-horizon-v7.md': '10.5281/zenodo.20044541',
         '4-the-pedagogical-inversion-v6.md': '10.5281/zenodo.20027844',
-        '5-the-confidence-collision-v4.md': '10.5281/zenodo.19365543',
+        '5-the-confidence-collision-v4.md': '10.5281/zenodo.20044544',
     }
 
     if 'epilogue' in md_filename:
